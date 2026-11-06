@@ -1,0 +1,4 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = ["database: requires isolated PostgreSQL and RUN_DATABASE_TESTS=1"]
