@@ -1,0 +1,26 @@
+// Dependency-free client checks; not a substitute for tsc/Vitest/browser validation.
+import assert from 'node:assert/strict';
+import { api, ApiError, kickoff, safeUrl, validSelection } from '../src/api/client.ts';
+let requested;
+const controller = new AbortController();
+globalThis.fetch = async (url, options) => { requested = {url,options}; return new Response(JSON.stringify({data:[]}),{headers:{'content-type':'application/json'}}); };
+await api.schedule(2025,'POST','DIV',controller.signal);
+assert.equal(requested.url,'/api/seasons/2025/schedule?season_type=POST&round=DIV');
+assert.equal(requested.options.signal,controller.signal);
+await api.schedule(2026,'REG','9');
+assert.equal(requested.url,'/api/seasons/2026/schedule?season_type=REG&week=9');
+await api.schedule(2026,'POST','all');
+assert.equal(requested.url,'/api/seasons/2026/schedule?season_type=POST');
+await api.game('id/with/slash');
+assert.equal(requested.url,'/api/games/id%2Fwith%2Fslash');
+globalThis.fetch = async () => new Response('{}',{status:503});
+await assert.rejects(api.seasons(),error => error instanceof ApiError && error.status === 503);
+globalThis.fetch = async () => new Response('<html/>',{headers:{'content-type':'text/html'}});
+await assert.rejects(api.seasons(),/unexpected response/);
+assert.match(kickoff('2026-09-13T17:00:00Z'),/EDT/);
+assert.match(kickoff('2026-12-13T18:00:00Z'),/EST/);
+assert.equal(kickoff(null),'Kickoff not announced');
+assert.equal(safeUrl('javascript:alert(1)'),undefined);
+assert.equal(validSelection('REG','19'),false);
+assert.equal(validSelection('POST','WC'),true);
+console.log('Client smoke checks passed (URLs, cancellation, errors, timezone, nulls and selection validation).');

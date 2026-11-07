@@ -1,6 +1,6 @@
 # Architecture and Product Decision Register
 
-**Approved through Decision 56 (2026-11-07).** Decision numbers reflect the design conversation. If a number compresses multiple earlier sub-decisions, the binding source is the consolidated specification below; the agent must not invent unrecorded approvals.
+**Approved through Decision 57 (2026-11-07).** Decision numbers reflect the design conversation. If a number compresses multiple earlier sub-decisions, the binding source is the consolidated specification below; the agent must not invent unrecorded approvals.
 
 | ID | Decision |
 |---|---|
@@ -41,6 +41,8 @@
 | 55 | Owner approved Task 004 on 2026-11-06 after reporting successful WSL foundation validation: development-only schedule ingestion on `feature/schedule-ingestion`, preserving Decision 53, UNKNOWN/reported scores, nonunique legacy IDs and declared-origin limitations. Use transactional full-snapshot reconciliation, canonical UUIDs, immutable raw artifact snapshots and correction receipts in existing artifact notes; no schema change or new dependency. Ambiguous identity changes and disappearing existing records reject the batch rather than guessing or deleting. No API/frontend, production, deployment, commit or merge authorization. See [Task 004](agent-task-004.md) and [ingestion guide](schedule-ingestion.md) for implementation and actual test limitations. |
 
 | 56 | Owner approved Task 005 on 2026-11-07 on `feature/schedule-api`, after reporting 842 development games imported, idempotent reimport (0/0/842) and 78 passing tests. Implement read-only season coverage, stage/week/round schedule selection and canonical UUID lookup with typed JSON/OpenAPI, provenance and explicit reported-score/finality semantics. Preserve Decision 53; no schema/dependency/infrastructure changes or status inference. Use bounded single-season eager reads so schedule coverage and returned games share a statement snapshot. No frontend, editing/ingestion triggers, unrelated features, commit, merge, push or deployment. See [API guide](schedule-api.md) for actual new-test evidence and pending WSL checks. |
+
+| 57 | Owner approved Task 006 React weekly schedule dashboard on `feature/schedule-dashboard`, reporting API/backend merged and 139 tests passed/two warnings. Use approved React/TypeScript/Vite, React Router, TanStack Query, Tailwind/shadcn primitives, current GET schemas and loopback development Compose integration. Preserve nulls, UNKNOWN/reported-score semantics, declared provenance and missing POST coverage. No schema/ingestion/API contract changes, unrelated features or deployment. Author tests and report blocked package/build/browser checks honestly; no commit/merge/push. See [dashboard guide](schedule-dashboard.md). |
 
 ## Change control
 

@@ -178,3 +178,7 @@ Validation-only requests and unsupported methods can execute using HTTPX async A
 Remaining risks: source origin/checksum uncertainty, no explicit operational status source, source abbreviations as display names, unbenchmarked query performance, and pending successful-request/PostgreSQL runtime validation in normal WSL. The API provides no current-data freshness guarantee or independently verified final results. Existing dependency ranges are not immutable locks; no packages were installed or changed here.
 
 Next proposed task **for owner approval**, after reviewing this API and completing WSL validation: the React weekly schedule and basic matchup view, consuming these contracts and visibly labeling UNKNOWN/reported scores, provenance and missing POST coverage. No frontend work, commit, merge, push or deployment is authorized or performed in Task 005. Stop for review.
+
+## Subsequent owner validation and dashboard scope
+
+Before Task 006, the owner reported this API/backend validated with 139 passing tests/two deprecation warnings, committed and merged to main; 842 games remain imported. Those user-reported results supersede the earlier normal-WSL pending gate without retroactively becoming agent-executed checks. [Task 006 dashboard](schedule-dashboard.md) consumes the existing schema unchanged. New frontend test/build/browser evidence is reported separately.

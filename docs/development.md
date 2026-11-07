@@ -1,5 +1,7 @@
 # Development foundation and schedule schema
 
+**Task 006 update:** Owner reports prior backend/API validation complete (139 tests/two warnings, 842 imported games). The React dashboard and development frontend service are now implemented; follow [dashboard install/start/test commands](schedule-dashboard.md) for required WSL frontend validation. Foundation-specific holds and “no frontend” statements below describe earlier task boundaries.
+
 **Scope implemented:** PostgreSQL + FastAPI development foundation, Pydantic Settings, SQLAlchemy models, initial Alembic migration and automated tests. Task 004 adds a separate development-only importer and read-only raw-data mount on its opt-in Compose service; see [schedule ingestion](schedule-ingestion.md). No frontend, schedule API, production load, scheduler, Caddy/Tailscale deployment or live status integration. The raw CSV is not mounted into FastAPI or included in its build context.
 
 **Historical agent recovery diagnosis:** [Task 003 results](runtime-validation.md) supersede the older environment diagnosis below. Docker CLI and Compose are installed; Compose rendering passes. This agent cannot connect to the Docker socket or create an IPv4 socket (EPERM), so host engine/DNS health is unresolved. A private ignored `.env` was created; do not overwrite it with `.env.example`. No package/WSL/Docker/security setting change was made. Runtime migration/tests/HTTP checks remain blocked.
@@ -136,3 +138,7 @@ The development-only importer is now implemented; see [schedule ingestion comman
 ## Task 005 — read-only schedule API
 
 Owner now reports Task 004 validated in normal WSL: 842 development games with expected seasonal counts, reimport 0 inserts/0 updates/842 unchanged and 78 passing tests. These are prior-task user-reported results, not independent evidence for the new API. [Task 005](agent-task-005.md) authorizes only read-only schedule/coverage/UUID endpoints, now implemented without schema, dependencies, infrastructure or ingestion changes. See [API guide](schedule-api.md) for exact WSL test/start/curl commands, response contracts and actual agent results. Earlier “no schedule API” statements describe the foundation/ingestion task boundaries. Frontend and later features still require approval.
+
+## Task 006 — React weekly schedule dashboard
+
+See [scope](agent-task-006.md) and [complete frontend guide/inventory](schedule-dashboard.md). The only Compose addition is non-root frontend Vite on 127.0.0.1:5173, proxying relative `/api` requests to the existing API. No CORS, schema, ingestion, database-port or backend contract changes. Install approved dependencies locally in `frontend/`, then run `npm run typecheck`, `npm test`, `npm run build`; generate/review the missing lockfile before claiming reproducibility. Dependency installation failed registry DNS in the agent, so these checks must run in normal WSL. Existing backend test and migration procedures remain unchanged; this task needs no development migration or reimport.

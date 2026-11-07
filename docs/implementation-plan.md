@@ -1,6 +1,6 @@
 # Vertical-Slice Implementation Roadmap
 
-**Status:** Foundation committed and runtime-validated in normal WSL according to the owner (45 tests passed, two warnings; migration and health/readiness successful). Owner reports Task 004 ingestion validated with 842 games, idempotent reimport and 78 passing tests. Task 005 read-only API is implemented; its remaining PostgreSQL/successful-HTTP runtime checks are pending in normal WSL. Frontend remains planned. No task may begin without user-approved scope. Each slice has independent data-source validation, end-to-end functionality, tests and a review gate. Do not treat all six phases as one large agent assignment.
+**Status:** Owner reports foundation, ingestion and read-only API validated/committed/merged with 842 games and 139 passing backend tests/two warnings. Task 006 React schedule dashboard is implemented; frontend install/build/tests and real browser/API validation remain pending due agent environment restrictions. Milestone 1 is not yet end-to-end accepted. Each task remains approval-gated.
 
 ## Preflight — Research gate (first agent task)
 
@@ -10,7 +10,7 @@
 
 ## Milestone 1 — Complete weekly NFL schedule (first functional vertical slice)
 
-Current approved subset: [Task 005 read-only schedule API](agent-task-005.md), following owner-reported successful foundation/ingestion validation. [API contracts and test evidence](schedule-api.md) distinguish local unit/validation HTTP checks from pending successful-request/PostgreSQL checks. Schedule API implementation does not authorize the frontend or any remaining milestone feature.
+Current approved subset: [Task 006 React schedule dashboard](agent-task-006.md). [Implementation, validation evidence and exact WSL commands](schedule-dashboard.md) distinguish completed code/client smoke checks from unexecuted frontend build/RTL/browser acceptance. No subsequent milestone, statistics feature or deployment is authorized.
 
 **Outcome:** The user runs the local environment, opens the app, selects 2024/2025/2026 and season stage/week, sees real game information and opens a basic matchup overview.
 

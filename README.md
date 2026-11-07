@@ -1,6 +1,6 @@
 # NFL Betting Research
 
-**Status:** Foundation and schedule ingestion are complete according to owner-reported normal-WSL validation: 842 games imported, idempotent reimport, 78 passing tests. The approved [read-only schedule API](docs/schedule-api.md) is now implemented; new API runtime validation remains pending where this agent cannot access Docker or synchronous HTTP transport. No frontend yet.
+**Status:** Owner reports foundation, ingestion and read-only API validated/committed/merged: 842 games and 139 passing backend tests (two deprecation warnings). The approved [React schedule dashboard](docs/schedule-dashboard.md) is implemented; dependency installation, frontend build/tests and browser acceptance remain blocked in this agent environment. See the exact WSL verification procedure before accepting the frontend.
 
 A private, self-hosted, NFL statistics and player-prop research web app. The first working vertical slice is a 2024–2026 weekly NFL schedule, backed by real imported data in PostgreSQL and served by FastAPI to React.
 
@@ -19,7 +19,15 @@ The first agent task is **source feasibility**, not application development. Sou
 
 That first research task and subsequent CSV validation, [foundation/schema](docs/agent-task-002.md), [environment validation](docs/agent-task-003.md) and [schedule ingestion](docs/agent-task-004.md) are complete. The original CSV remains unchanged. The owner reports successful development import and normal-WSL tests; historical agent environment failures remain recorded in the task reports.
 
-Current approved scope is [Task 005: read-only schedule API](docs/agent-task-005.md). [Endpoint contracts, actual tests and WSL checks](docs/schedule-api.md) distinguish new API verification from the owner's prior results. [Schedule contract](docs/schedule-data-contract.md) and [original dataset validation](docs/schedule-validation-report.md) retain UNKNOWN-status, nonunique secondary-ID and declared-origin safeguards. Source authentication/checksum limitations remain unresolved. No frontend or subsequent feature task is authorized.
+Current approved scope is [Task 006: React weekly schedule dashboard](docs/agent-task-006.md). It uses the existing [API contract](docs/schedule-api.md) with UNKNOWN/reported-score and declared-origin safeguards from the [schedule data contract](docs/schedule-data-contract.md). Source authentication/checksum limitations remain unresolved. No later statistics, betting feature or deployment is authorized.
+
+Development startup after completing the frontend checks in the guide:
+
+```bash
+docker compose up -d --build --wait db api frontend
+```
+
+Visit http://127.0.0.1:5173. Full install/test/build commands, limitations and changed files: [dashboard guide](docs/schedule-dashboard.md).
 
 ## Key constraints
 

@@ -2,7 +2,7 @@
 
 ## System decomposition
 
-**Current implementation:** development PostgreSQL/FastAPI foundation, schedule schema and ingestion, plus the approved [read-only schedule API](schedule-api.md) under [Task 005](agent-task-005.md). The owner reports successful foundation/ingestion runtime checks; new API PostgreSQL/HTTP runtime verification remains pending in normal WSL. The API follows HTTP/schema → service → repository layering with typed contracts, eager relationships and no ingestion triggers. [Development guide](development.md) documents loopback-only API and internal database/test networks. The scheduler/frontend/deployment architecture below remains the approved target and is not initialized by this task.
+**Current implementation:** development PostgreSQL/FastAPI foundation, schedule ingestion and [read-only API](schedule-api.md), owner-reported validated with 139 tests and 842 games. [Task 006](agent-task-006.md) adds the React schedule/matchup frontend and a loopback-only Vite Compose service, proxying `/api` through the existing default network without API/CORS changes. [Dashboard guide](schedule-dashboard.md) records pending frontend dependency/build/browser checks. Scheduler/Caddy/Tailscale deployment remains a target, not an initialized service.
 
 **Frontend:** React + TypeScript + Vite; React Router for bookmarkable views; TanStack Query for backend state, caching and per-section failures; Tailwind CSS + shadcn/ui; Recharts for player game-log/bar/reference-line visuals; TanStack Table for rankings, game logs and book comparisons.
 
@@ -28,7 +28,7 @@
 
 - Frontend: `/schedule/:season/week/:week`, `/games/:gameId`, `/teams/:teamId`, `/players/:playerId`.
 - API: `/api/seasons/:season/schedule`, `/api/games/:id/overview`, `/api/games/:id/team-rankings`, `/api/players/:id/game-logs`, `/api/players/:id/prop-research`, `/api/games/:id/injuries`, `/api/games/:id/depth-chart`, `/api/games/:id/odds`, `/api/data-status`.
-- The examples above remain illustrative future contracts. Implemented Task 005 routes are `GET /api/seasons`, `GET /api/seasons/{season}/schedule` (explicit REG/POST, optional week/round) and `GET /api/games/{game_id}` (canonical UUID). See [the API guide](schedule-api.md) and generated OpenAPI for the actual contract. There is no frontend or statistics endpoint. Broader-scope pagination is deferred; the bounded schedule reads one season.
+- The examples above remain illustrative future contracts. Implemented Task 005 routes are `GET /api/seasons`, `GET /api/seasons/{season}/schedule` (explicit REG/POST, optional week/round) and `GET /api/games/{game_id}` (canonical UUID). See [the API guide](schedule-api.md) and generated OpenAPI for the actual contract. Task 006 frontend routes are `/schedule/:season/:stage/:selection` and `/games/:gameId`; no statistics endpoint is implemented. Broader-scope pagination is deferred; the bounded schedule reads one season.
 
 ## Security and configuration
 
