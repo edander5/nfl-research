@@ -37,6 +37,24 @@ services:
       timeout: 5s
       retries: 3
 
+  ingestion:
+    build: ./backend
+    profiles: [ingestion]
+    environment:
+      APP_DB_HOST: db
+      APP_DB_PORT: '5432'
+      APP_DB_NAME: ${POSTGRES_DB:?Set POSTGRES_DB in .env}
+      APP_DB_USER: ${POSTGRES_USER:?Set POSTGRES_USER in .env}
+      APP_DB_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    command: [python, -m, ingestion.schedule, --file, /data/raw/games.csv, --dry-run]
+    volumes:
+      - ./data/raw:/data/raw:ro
+      - schedule_snapshots:/app/snapshots
+    networks: [database]
+    depends_on:
+      db:
+        condition: service_healthy
+
   db_test:
     image: postgres:17-bookworm
     command: [postgres, -c, timezone=UTC]
@@ -72,6 +90,7 @@ services:
 
 volumes:
   postgres_dev:
+  schedule_snapshots:
 
 networks:
   database:

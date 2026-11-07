@@ -47,3 +47,7 @@
 - Are real `receiving_tds`, `rushing_tds` and `passing_tds` present by game for all supported years?
 
 These are **validation gates**, not permission to invent defaults.
+
+## Task 004 ingestion implementation note
+
+[Development schedule ingestion](schedule-ingestion.md) uses the existing schema without a migration. Original artifacts and structured correction/import receipts in `source_artifacts.provenance_notes` retain correction evidence; per-game raw dictionaries, canonical JSON hashes and physical source lines are populated. Canonical UUIDs survive unambiguously evidenced source-ID changes. Provider aliases are checked, legacy IDs remain nonunique, and unknown values/finality remain unchanged in meaning. Runtime tests for this importer remain pending outside the agent's restricted Docker environment.
