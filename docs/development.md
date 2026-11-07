@@ -1,8 +1,10 @@
 # Development foundation and schedule schema
 
-**Scope implemented:** PostgreSQL + FastAPI development foundation, Pydantic Settings, SQLAlchemy models, initial Alembic migration and automated tests. No frontend, schedule API/importer, production load, scheduler, Caddy/Tailscale deployment or live status integration. The raw CSV is never mounted into the application containers or included in the build context.
+**Scope implemented:** PostgreSQL + FastAPI development foundation, Pydantic Settings, SQLAlchemy models, initial Alembic migration and automated tests. Task 004 adds a separate development-only importer and read-only raw-data mount on its opt-in Compose service; see [schedule ingestion](schedule-ingestion.md). No frontend, schedule API, production load, scheduler, Caddy/Tailscale deployment or live status integration. The raw CSV is not mounted into FastAPI or included in its build context.
 
-**Current recovery diagnosis:** [Task 003 results](runtime-validation.md) supersede the older environment diagnosis below. Docker CLI and Compose are installed; Compose rendering passes. This agent cannot connect to the Docker socket or create an IPv4 socket (EPERM), so host engine/DNS health is unresolved. A private ignored `.env` was created; do not overwrite it with `.env.example`. No package/WSL/Docker/security setting change was made. Runtime migration/tests/HTTP checks remain blocked.
+**Historical agent recovery diagnosis:** [Task 003 results](runtime-validation.md) supersede the older environment diagnosis below. Docker CLI and Compose are installed; Compose rendering passes. This agent cannot connect to the Docker socket or create an IPv4 socket (EPERM), so host engine/DNS health is unresolved. A private ignored `.env` was created; do not overwrite it with `.env.example`. No package/WSL/Docker/security setting change was made. Runtime migration/tests/HTTP checks remain blocked.
+
+**Current status:** Owner reports successful normal-WSL foundation runtime validation (45 passed/two warnings, migration successful, health/readiness 200). Agent socket access remains denied. New ingestion verification is reported separately in [Task 004 results](schedule-ingestion.md); previous dependency/network failures below do not describe current normal WSL.
 
 ## Layout
 
@@ -124,3 +126,9 @@ The dependency ranges and container tags are bounded but not immutable locks/dig
 Project requirements: [architecture](architecture.md), [schedule contract](schedule-data-contract.md), [actual CSV validation](schedule-validation-report.md), [data model](data-model.md). Implementation references checked 2026-11-05: [SQLAlchemy declarative mapping](https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html), [Alembic environments](https://alembic.sqlalchemy.org/en/latest/tutorial.html), [Pydantic Settings](https://docs.pydantic.dev/latest/concepts/pydantic_settings/), [FastAPI testing](https://fastapi.tiangolo.com/tutorial/testing/), [Psycopg installation](https://www.psycopg.org/psycopg3/docs/basic/install.html), [Docker WSL integration](https://docs.docker.com/desktop/features/wsl/).
 
 Next proposed implementation task, for approval: first run the provided isolated PostgreSQL suite after environment recovery, resolve any failures, then implement a development-only schedule ingester with idempotency, staged validation/quarantine, correction provenance and last-good preservation. It must retain the known ID and origin limitations and keep every unsupported status UNKNOWN. No ingestion/frontend/production work is authorized by this foundation task.
+
+## Task 004 — development schedule ingestion
+
+The owner subsequently approved [Task 004](agent-task-004.md) after reporting successful normal-WSL foundation validation: 45 tests passed/two warnings, Compose and PostgreSQL healthy, initial migration successful, health/readiness HTTP 200. Those are user-reported results. Earlier environment failures and ingestion holds above are historical.
+
+The development-only importer is now implemented; see [schedule ingestion commands, provenance safeguards and actual verification](schedule-ingestion.md). The existing schema/migration is unchanged. Immutable artifact captures and versioned import/correction receipts now supply provenance for imports; no dedicated audit tables were added. Full runtime verification of these additions still requires the separate test database through normal WSL. No frontend or schedule API is authorized by this task.

@@ -5,7 +5,7 @@ This file governs any AI coding agent working in this repository. Read `README.m
 ## Hard rules
 
 1. Work **only** within a user-approved, narrowly scoped task. Do not start the next task without approval.
-2. Task 001 (`docs/agent-task-001.md`) was research-only. Foundation/schema scope is recorded in `docs/agent-task-002.md`; the current owner-approved recovery/runtime-validation scope is `docs/agent-task-003.md`. Follow that scope; no frontend, ingestion, unrelated features or deployment without approval. System package, WSL networking, Docker Desktop and privileged changes require prior owner approval during recovery.
+2. Task 001 (`docs/agent-task-001.md`) was research-only. Foundation/schema scope is recorded in `docs/agent-task-002.md`; recovery/runtime-validation is recorded in `docs/agent-task-003.md`. The current owner-approved development-only schedule ingestion scope is `docs/agent-task-004.md`. Follow that scope; no frontend, schedule API, unrelated features or deployment without approval. System package, WSL networking, Docker Desktop and privileged changes require prior owner approval during recovery.
 3. Honor the existing stack: React/TypeScript/Vite, React Router, TanStack Query, Tailwind/shadcn/ui, Recharts, TanStack Table; Python/FastAPI, SQLAlchemy/Alembic, PostgreSQL; Docker Compose, Caddy, Tailscale.
 4. $0/month sports data API budget is non-negotiable. Never sign up for a paid tier, enable overages, or expose credentials. Verify licenses and terms before using a dataset.
 5. Never change business/statistical definitions without approval. Pregame cutoffs and regular/postseason separation are mandatory. Missing != zero; DNP != an eligible zero-performance game; pushes are distinct outcomes.

@@ -3,7 +3,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_DISABLE_PIP_VERSION_CHECK=1
 WORKDIR /app
 COPY requirements.txt requirements-dev.txt ./
 RUN pip install --no-cache-dir -r requirements-dev.txt
-RUN useradd --create-home --uid 10001 appuser && chown appuser:appuser /app
+RUN useradd --create-home --uid 10001 appuser && mkdir /app/snapshots && chown appuser:appuser /app /app/snapshots
 COPY --chown=appuser:appuser . .
 USER appuser
 EXPOSE 8000
