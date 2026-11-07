@@ -1,6 +1,9 @@
 """All records here are synthetic fixtures, never production schedule data."""
 import os
+from datetime import date, datetime, time, timezone
 from pathlib import Path
+from types import SimpleNamespace
+from uuid import uuid4
 
 import pytest
 from alembic import command
@@ -67,3 +70,24 @@ def synthetic_game(db_session):
         return Game(**values)
 
     return factory
+
+
+# Synthetic HTTP/service fixture, intentionally independent of PostgreSQL.
+@pytest.fixture
+def api_game():
+    now = datetime(2026, 11, 7, tzinfo=timezone.utc)
+    artifact = SimpleNamespace(id=uuid4(), sha256='a'*64, origin_status='DECLARED',
+        documented_source_url='https://example.invalid/synthetic-source', declared_source_url=None,
+        source_revision=None, publisher_sha256='b'*64, origin_verified_at=None, verification_method=None,
+        provider_published_at=None, retrieved_at=None, recorded_at=now,
+        license_url='https://creativecommons.org/licenses/by/4.0/', attribution='Synthetic test data',
+        artifact_path='/private/never-return.csv', provenance_notes='private raw receipt')
+    return SimpleNamespace(id=uuid4(), provider='nflverse', source_game_id='synthetic-game',
+        season=2026, season_type='REG', week=9, game_type='REG',
+        home_team=SimpleNamespace(id=uuid4(), code='AAA', name='Synthetic Home'),
+        away_team=SimpleNamespace(id=uuid4(), code='BBB', name='Synthetic Away'),
+        scheduled_kickoff_utc=now, source_gameday=date(2026,11,7), source_gametime=time(12),
+        source_timezone='America/New_York', reported_home_score=0, reported_away_score=7,
+        status='UNKNOWN', final_evidence_url=None, final_verified_at=None,
+        neutral_site=None, overtime=None, updated_at=now, source_artifact=artifact,
+        source_record_sha256='c'*64, source_line=2)

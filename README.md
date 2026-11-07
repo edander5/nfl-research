@@ -1,6 +1,6 @@
 # NFL Betting Research
 
-**Status:** Milestone 1 foundation/schema written; Compose configuration now validates. Runtime checks are blocked by this agent process's Docker/network socket denials and missing dependencies; host Docker/DNS health outside the agent remains unconfirmed. See [current recovery results](docs/runtime-validation.md) and [development setup](docs/development.md). No schedule importer or frontend yet.
+**Status:** Foundation and schedule ingestion are complete according to owner-reported normal-WSL validation: 842 games imported, idempotent reimport, 78 passing tests. The approved [read-only schedule API](docs/schedule-api.md) is now implemented; new API runtime validation remains pending where this agent cannot access Docker or synchronous HTTP transport. No frontend yet.
 
 A private, self-hosted, NFL statistics and player-prop research web app. The first working vertical slice is a 2024–2026 weekly NFL schedule, backed by real imported data in PostgreSQL and served by FastAPI to React.
 
@@ -17,9 +17,9 @@ A private, self-hosted, NFL statistics and player-prop research web app. The fir
 
 The first agent task is **source feasibility**, not application development. Source references were checked on **2026-11-04**; public documentation may change. The provisional data sources and sample route names are not contractual until verified.
 
-That first research task and subsequent local CSV validation are complete. The owner approved foundation/schema work only; current scope is recorded in [Task 002](docs/agent-task-002.md). [Schedule contract](docs/schedule-data-contract.md) and [actual validation report](docs/schedule-validation-report.md) define the UNKNOWN-status, nonunique secondary-ID and declared-origin safeguards. The original CSV is unchanged and not imported. Start/test commands and schema tradeoffs are in [docs/development.md](docs/development.md); implementation beyond this task still needs approval.
+That first research task and subsequent CSV validation, [foundation/schema](docs/agent-task-002.md), [environment validation](docs/agent-task-003.md) and [schedule ingestion](docs/agent-task-004.md) are complete. The original CSV remains unchanged. The owner reports successful development import and normal-WSL tests; historical agent environment failures remain recorded in the task reports.
 
-The subsequent approved [Task 003](docs/agent-task-003.md) covers environment recovery and runtime validation only. It does not authorize ingestion. No system/Docker/WSL setting was changed; normal-terminal Docker/DNS checks are pending before recommending such changes.
+Current approved scope is [Task 005: read-only schedule API](docs/agent-task-005.md). [Endpoint contracts, actual tests and WSL checks](docs/schedule-api.md) distinguish new API verification from the owner's prior results. [Schedule contract](docs/schedule-data-contract.md) and [original dataset validation](docs/schedule-validation-report.md) retain UNKNOWN-status, nonunique secondary-ID and declared-origin safeguards. Source authentication/checksum limitations remain unresolved. No frontend or subsequent feature task is authorized.
 
 ## Key constraints
 

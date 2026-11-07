@@ -2,7 +2,7 @@
 
 ## System decomposition
 
-**Current implementation:** only the development PostgreSQL/FastAPI foundation and initial schedule schema exist, per approved Task 002. [Development guide](development.md) documents the backend layout, loopback-only API, internal database/test networks, explicit migration commands and environment blockers. The full runtime/scheduler/frontend/deployment architecture below remains the approved target; these services are not silently initialized by the development foundation.
+**Current implementation:** development PostgreSQL/FastAPI foundation, schedule schema and ingestion, plus the approved [read-only schedule API](schedule-api.md) under [Task 005](agent-task-005.md). The owner reports successful foundation/ingestion runtime checks; new API PostgreSQL/HTTP runtime verification remains pending in normal WSL. The API follows HTTP/schema → service → repository layering with typed contracts, eager relationships and no ingestion triggers. [Development guide](development.md) documents loopback-only API and internal database/test networks. The scheduler/frontend/deployment architecture below remains the approved target and is not initialized by this task.
 
 **Frontend:** React + TypeScript + Vite; React Router for bookmarkable views; TanStack Query for backend state, caching and per-section failures; Tailwind CSS + shadcn/ui; Recharts for player game-log/bar/reference-line visuals; TanStack Table for rankings, game logs and book comparisons.
 
@@ -24,11 +24,11 @@
 4. Detailed sections load independently. Odds adapter consults centralized quota/cooldown/deduplication before any provider request.
 5. Data ingestion updates records independently of FastAPI; source data versioning/correction metadata supports auditing and selective cache invalidation.
 
-## Sample routes (provisional)
+## Routes
 
 - Frontend: `/schedule/:season/week/:week`, `/games/:gameId`, `/teams/:teamId`, `/players/:playerId`.
 - API: `/api/seasons/:season/schedule`, `/api/games/:id/overview`, `/api/games/:id/team-rankings`, `/api/players/:id/game-logs`, `/api/players/:id/prop-research`, `/api/games/:id/injuries`, `/api/games/:id/depth-chart`, `/api/games/:id/odds`, `/api/data-status`.
-- These are illustrative contracts to refine with OpenAPI; **not implemented**. Stable internal IDs, type-safe frontend schemas, pagination/filter validation and consistent errors are required.
+- The examples above remain illustrative future contracts. Implemented Task 005 routes are `GET /api/seasons`, `GET /api/seasons/{season}/schedule` (explicit REG/POST, optional week/round) and `GET /api/games/{game_id}` (canonical UUID). See [the API guide](schedule-api.md) and generated OpenAPI for the actual contract. There is no frontend or statistics endpoint. Broader-scope pagination is deferred; the bounded schedule reads one season.
 
 ## Security and configuration
 

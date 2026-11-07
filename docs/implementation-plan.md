@@ -1,6 +1,6 @@
 # Vertical-Slice Implementation Roadmap
 
-**Status:** Foundation committed and runtime-validated in normal WSL according to the owner (45 tests passed, two warnings; migration and health/readiness successful). Task 004 development schedule ingestion is implemented, with new PostgreSQL runtime checks pending; API/frontend remain planned. No task may begin without user-approved scope. Each slice has independent data-source validation, end-to-end functionality, tests and a review gate. Do not treat all six phases as one large agent assignment.
+**Status:** Foundation committed and runtime-validated in normal WSL according to the owner (45 tests passed, two warnings; migration and health/readiness successful). Owner reports Task 004 ingestion validated with 842 games, idempotent reimport and 78 passing tests. Task 005 read-only API is implemented; its remaining PostgreSQL/successful-HTTP runtime checks are pending in normal WSL. Frontend remains planned. No task may begin without user-approved scope. Each slice has independent data-source validation, end-to-end functionality, tests and a review gate. Do not treat all six phases as one large agent assignment.
 
 ## Preflight — Research gate (first agent task)
 
@@ -10,7 +10,7 @@
 
 ## Milestone 1 — Complete weekly NFL schedule (first functional vertical slice)
 
-Current approved subset: [Task 004 schedule ingestion](agent-task-004.md), following the owner-reported successful Task 002/003 foundation validation. The importer and tests are written; [actual checks and normal-WSL commands](schedule-ingestion.md) distinguish local parser success from pending PostgreSQL integration validation. Schedule endpoints and frontend have not begun and require separate approval.
+Current approved subset: [Task 005 read-only schedule API](agent-task-005.md), following owner-reported successful foundation/ingestion validation. [API contracts and test evidence](schedule-api.md) distinguish local unit/validation HTTP checks from pending successful-request/PostgreSQL checks. Schedule API implementation does not authorize the frontend or any remaining milestone feature.
 
 **Outcome:** The user runs the local environment, opens the app, selects 2024/2025/2026 and season stage/week, sees real game information and opens a basic matchup overview.
 

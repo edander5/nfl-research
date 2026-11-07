@@ -111,3 +111,7 @@ Remaining risks: unauthenticated source origin/published checksum discrepancy; u
 | `docs/development.md`, `docs/implementation-plan.md`, `docs/data-model.md`, `docs/schedule-data-contract.md` | Synchronize current scope/status and link ingestion details while preserving historical research records |
 
 No application API/model or Alembic migration files were changed. No dependency manifests were changed. Stop for owner review before committing, merging or starting the next feature task.
+
+## Subsequent owner runtime confirmation — 2026-11-07
+
+Before approving [Task 005](agent-task-005.md), the owner reported the original 842-game development import successful, expected seasonal counts confirmed, unchanged reimport resulting in 0 inserts/0 updates/842 unchanged, and the full prior suite passing 78 tests. This supersedes the historical pending-WSL gate above at the user-reported-evidence level. It does not independently authenticate source origin, resolve the checksum discrepancy, establish FINAL status, or validate subsequently added API code. New read-only API evidence and remaining checks are in [schedule-api.md](schedule-api.md).

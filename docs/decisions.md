@@ -1,6 +1,6 @@
 # Architecture and Product Decision Register
 
-**Approved through Decision 54 (2026-11-05).** Decision numbers reflect the design conversation. If a number compresses multiple earlier sub-decisions, the binding source is the consolidated specification below; the agent must not invent unrecorded approvals.
+**Approved through Decision 56 (2026-11-07).** Decision numbers reflect the design conversation. If a number compresses multiple earlier sub-decisions, the binding source is the consolidated specification below; the agent must not invent unrecorded approvals.
 
 | ID | Decision |
 |---|---|
@@ -39,6 +39,8 @@
 | 54 | Owner subsequently approved Milestone 1 development foundation and schedule schema only (Task 002). Implement PostgreSQL/FastAPI Compose development services, Pydantic Settings, SQLAlchemy, initial Alembic migration and tests. Internal UUIDs plus unique provider/source game IDs preserve links; `old_game_id` stays nonunique. Separate artifact provenance distinguishes declared origin from verified matching-hash evidence. UNKNOWN defaults and explicit final-evidence constraints preserve Decision 53. No importer/frontend/stats/odds/deployment. Runtime tests and migrations remain unexecuted due environment blockers, as recorded in development.md. No new business/statistical definition or full-milestone authorization is implied. |
 
 | 55 | Owner approved Task 004 on 2026-11-06 after reporting successful WSL foundation validation: development-only schedule ingestion on `feature/schedule-ingestion`, preserving Decision 53, UNKNOWN/reported scores, nonunique legacy IDs and declared-origin limitations. Use transactional full-snapshot reconciliation, canonical UUIDs, immutable raw artifact snapshots and correction receipts in existing artifact notes; no schema change or new dependency. Ambiguous identity changes and disappearing existing records reject the batch rather than guessing or deleting. No API/frontend, production, deployment, commit or merge authorization. See [Task 004](agent-task-004.md) and [ingestion guide](schedule-ingestion.md) for implementation and actual test limitations. |
+
+| 56 | Owner approved Task 005 on 2026-11-07 on `feature/schedule-api`, after reporting 842 development games imported, idempotent reimport (0/0/842) and 78 passing tests. Implement read-only season coverage, stage/week/round schedule selection and canonical UUID lookup with typed JSON/OpenAPI, provenance and explicit reported-score/finality semantics. Preserve Decision 53; no schema/dependency/infrastructure changes or status inference. Use bounded single-season eager reads so schedule coverage and returned games share a statement snapshot. No frontend, editing/ingestion triggers, unrelated features, commit, merge, push or deployment. See [API guide](schedule-api.md) for actual new-test evidence and pending WSL checks. |
 
 ## Change control
 
