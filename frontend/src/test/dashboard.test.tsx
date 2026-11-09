@@ -25,7 +25,7 @@ function mock(handler: (url: string) => Response | Promise<Response> = defaultRe
 }
 function open(path='/schedule/2026/REG/1') { const client = new QueryClient({defaultOptions:{queries:{retry:false,gcTime:0}}}); render(<QueryClientProvider client={client}><MemoryRouter initialEntries={[path]}><App /></MemoryRouter></QueryClientProvider>); return client; }
 describe('weekly schedule', () => {
-  it('fetches seasons and redirects home to latest available season', async () => { const fetcher=mock();open('/');expect(await screen.findByRole('heading',{name:'Week 1'})).toBeInTheDocument();expect(fetcher.mock.calls.some(([url]) => url === '/api/seasons/2026/schedule?season_type=REG&week=1')).toBe(true); });
+  it('fetches schedule dates and redirects home to the active week', async () => { vi.spyOn(Date, 'now').mockReturnValue(new Date('2026-09-13T17:00:00Z').getTime()); const fetcher=mock();open('/');expect(await screen.findByRole('heading',{name:'Week 1'})).toBeInTheDocument();expect(fetcher.mock.calls.some(([url]) => url === '/api/seasons/2026/schedule?season_type=REG&week=1')).toBe(true); });
   it('displays reported zero and UNKNOWN without claiming FINAL', async () => { mock();open();expect(await screen.findByText('Synthetic Away')).toBeInTheDocument();expect(screen.getByText('0')).toBeInTheDocument();expect(screen.getByText('UNKNOWN · Finality unverified')).toBeInTheDocument();expect(screen.getByText('Reported scores · Finality unverified')).toBeInTheDocument();expect(screen.queryByText('Confirmed final scores')).not.toBeInTheDocument(); });
   it('changes week with bookmarkable route and complete query key', async () => { const fetcher=mock();open();await screen.findByText('Synthetic Away');fireEvent.click(screen.getByRole('link',{name:'W2'}));await waitFor(() => expect(fetcher.mock.calls.some(([url]) => url.endsWith('season_type=REG&week=2'))).toBe(true));expect(screen.getByRole('heading',{name:'Week 2'})).toBeInTheDocument(); });
   it('selects another season and available postseason round', async () => {const fetcher=mock();open();await screen.findByText('Synthetic Away');fireEvent.change(screen.getByLabelText('Season'),{target:{value:'2024'}});await waitFor(() => expect(fetcher.mock.calls.some(([url]) => url.includes('/2024/schedule?season_type=REG'))).toBe(true));fireEvent.click(screen.getByRole('button',{name:'Postseason'}));await waitFor(() => expect(fetcher.mock.calls.some(([url]) => url.endsWith('season_type=POST&round=WC'))).toBe(true));expect(screen.getByRole('heading',{name:'Wild Card'})).toBeInTheDocument();});
@@ -52,4 +52,63 @@ describe('API client and formatting', () => {
   it('rejects HTML proxy errors rather than treating them as data', async () => {vi.stubGlobal('fetch',vi.fn().mockResolvedValue(new Response('<html/>',{headers:{'content-type':'text/html'}})));await expect(api.seasons()).rejects.toThrow('unexpected response');});
   it('uses explicit Eastern daylight and standard time', () => {expect(kickoff('2026-09-13T17:00:00Z')).toContain('EDT');expect(kickoff('2026-12-13T18:00:00Z')).toContain('EST');expect(kickoff(null)).toBe('Kickoff not announced');});
   it('rejects executable source URLs', () => {expect(safeUrl('javascript:alert(1)')).toBeUndefined();expect(safeUrl(null)).toBeUndefined();});
+});
+
+describe('current-week home routing', () => {
+  it('opens the actual active week instead of week 1', async () => {
+    vi.spyOn(Date,'now').mockReturnValue(new Date('2026-11-09T17:00:00Z').getTime());
+    const fetcher = mock(url => {
+      if (url === '/api/seasons') return response(seasons);
+      if (url === '/api/seasons/2026/schedule?season_type=REG') return response(schedule([
+        game({week:9,scheduled_kickoff_utc:'2026-11-06T01:15:00Z'}),
+        game({week:9,scheduled_kickoff_utc:'2026-11-10T01:15:00Z'}),
+        game({week:10,scheduled_kickoff_utc:'2026-11-13T01:15:00Z'}),
+      ]));
+      return defaultResponse(url);
+    });
+    open('/');
+    expect(await screen.findByRole('heading',{name:'Week 9'})).toBeInTheDocument();
+    expect(fetcher.mock.calls.some(([url]) => url.endsWith('season_type=REG&week=9'))).toBe(true);
+    fireEvent.click(screen.getByRole('link',{name:'W1'}));
+    expect(await screen.findByRole('heading',{name:'Week 1'})).toBeInTheDocument();
+  });
+  it.each([
+    ['/schedule/2024/REG/2','Week 2','/api/seasons/2024/schedule?season_type=REG&week=2'],
+    ['/schedule/2025/POST/DIV','Divisional','/api/seasons/2025/schedule?season_type=POST&round=DIV'],
+  ])('preserves explicit URL %s without loading the default calendar', async (path,title,endpoint) => {
+    vi.spyOn(Date,'now').mockReturnValue(new Date('2026-11-09T17:00:00Z').getTime());
+    const fetcher=mock();
+    open(path);
+    expect(await screen.findByRole('heading',{name:title})).toBeInTheDocument();
+    await screen.findByText('Synthetic Away');
+    expect(fetcher.mock.calls.map(([url]) => url)).toEqual(['/api/seasons',endpoint]);
+  });
+  it('opens the current postseason round in the previous calendar-year NFL season', async () => {
+    vi.spyOn(Date,'now').mockReturnValue(new Date('2027-02-07T18:00:00Z').getTime());
+    const available={...seasons,data:seasons.data.map(y => y.season === 2026 ? {...y,coverage:y.coverage.map(c => c.season_type === 'POST' ? {...c,game_count:1,weeks:[22],rounds:['SB' as const]} : c)} : y)};
+    mock(url => url === '/api/seasons' ? response(available) : url.includes('/2026/schedule?season_type=POST') ?
+      response(schedule([game({season:2026,season_type:'POST',week:22,game_type:'SB',scheduled_kickoff_utc:'2027-02-07T23:30:00Z'})])) : defaultResponse(url));
+    open('/');
+    expect(await screen.findByRole('heading',{name:'Super Bowl'})).toBeInTheDocument();
+  });
+  it('shows a disclosed fallback when all kickoff dates are unknown', async () => {
+    mock(url => url === '/api/seasons' ? response(seasons) : response(schedule([
+      game({scheduled_kickoff_utc:null,source_gameday:null}),
+    ])));
+    open('/');
+    expect(await screen.findByText(/Schedule dates are unavailable/)).toBeInTheDocument();
+    expect(screen.getByRole('heading',{name:'Week 1'})).toBeInTheDocument();
+  });
+  it('waits for full calendar data before deciding the default', async () => {
+    mock(url => url === '/api/seasons' ? response(seasons) : new Promise<Response>(() => {}));
+    open('/');
+    expect(await screen.findByText('Finding the current schedule week…')).toBeInTheDocument();
+    expect(screen.queryByRole('heading',{name:'Week 1'})).not.toBeInTheDocument();
+  });
+  it('reports calendar request failures rather than guessing week 1', async () => {
+    mock(url => url === '/api/seasons' ? response(seasons) : response({},503));
+    open('/');
+    expect(await screen.findByRole('alert')).toBeInTheDocument();
+    expect(screen.queryByRole('heading',{name:'Week 1'})).not.toBeInTheDocument();
+  });
 });

@@ -19,7 +19,7 @@ The first agent task is **source feasibility**, not application development. Sou
 
 That first research task and subsequent CSV validation, [foundation/schema](docs/agent-task-002.md), [environment validation](docs/agent-task-003.md) and [schedule ingestion](docs/agent-task-004.md) are complete. The original CSV remains unchanged. The owner reports successful development import and normal-WSL tests; historical agent environment failures remain recorded in the task reports.
 
-Current approved scope is [Task 007: Guarded NFL Schedule Refresh Runner](docs/agent-task-007.md). The [refresh guide](docs/schedule-refresh.md) documents dry-run, snapshot-specific review/apply, hard blockers and exact WSL verification commands. Source authentication/checksum and unsupported finality limitations remain governed by the [schedule data contract](docs/schedule-data-contract.md). No unattended updates, new statistics features or deployment are authorized.
+The guarded refresh scope is recorded in [Task 007](docs/agent-task-007.md). Current approved work is [Task 008: frontend current-week home default](docs/agent-task-008.md), using actual Eastern schedule dates and preserving explicit URL choices. The [refresh guide](docs/schedule-refresh.md) documents dry-run, snapshot-specific review/apply, hard blockers and exact WSL verification commands. Source authentication/checksum and unsupported finality limitations remain governed by the [schedule data contract](docs/schedule-data-contract.md). No unattended updates, new statistics features or deployment are authorized.
 
 Development startup after completing the frontend checks in the guide:
 

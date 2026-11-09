@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router';
+import { Link, useLocation, useNavigate, useParams } from 'react-router';
 import { api, roundLabels, schedulePath, validSelection } from '../api/client';
 import type { Round, SeasonType } from '../api/types';
 import { Card, CardContent } from '../components/ui/card';
 import { Empty, Failure, GameCard, Loading, PolicyNotice } from '../components/shared';
+import { ScheduleDefault } from './ScheduleDefault';
 
 export function Schedule() {
   const { season, stage, selection } = useParams();
@@ -17,10 +18,7 @@ export function Schedule() {
   if (seasons.isPending) return <Loading label="Loading available seasons…" />;
   if (!seasons.data) return <Failure retry={() => void seasons.refetch()} />;
   if (!seasons.data.data.length) return <Empty title="No seasons available"><p>No NFL schedule records are currently available from the service.</p><button className="button secondary" onClick={() => void seasons.refetch()}>Refresh seasons</button></Empty>;
-  if (!season) {
-    const latest = [...seasons.data.data].sort((a,b) => b.season-a.season)[0];
-    return <Navigate replace to={schedulePath(latest.season, 'REG', '1')} />;
-  }
+  if (!season) return <ScheduleDefault seasons={seasons.data.data} />;
   if (!valid || !available) return <Empty title="Schedule selection unavailable"><p>Choose an available season and valid week or round.</p><Link className="button" to="/">Browse schedule</Link></Empty>;
   const coverage = games.data?.meta.season_coverage ?? available.coverage;
   const current = coverage.find(c => c.season_type === stage);
@@ -32,6 +30,7 @@ export function Schedule() {
     navigate(schedulePath(newYear, newStage, newStage === 'REG' ? (stage === 'REG' ? selection! : '1') : postCoverage?.rounds[0] ?? 'all'));
   };
   return <>
+    {location.state?.defaultNotice && <p role="status" className="coverage-note">{location.state.defaultNotice}</p>}
     <div className="page-heading"><div><p className="eyebrow">NFL / SCHEDULE EXPLORER</p><h1>League schedule<span>.</span></h1><p className="subtitle">Follow the matchups. Keep the context.</p></div><div className="season-control"><label htmlFor="season">Season</label><select id="season" value={year} onChange={e => move(Number(e.target.value), 'REG')}>{[...seasons.data.data].sort((a,b) => b.season-a.season).map(y => <option key={y.season} value={y.season}>{y.season} season</option>)}</select></div></div>
     {seasons.isError && <Failure stale retry={() => void seasons.refetch()} />}
     <div className="summary-grid"><Card><CardContent><span className="metric-label">Season games</span><strong className="metric">{coverage.reduce((sum,c) => sum+c.game_count,0)}</strong><span className="metric-note">Imported matchup records</span></CardContent></Card><Card><CardContent><span className="metric-label">{stage === 'REG' ? 'Regular season' : 'Postseason'}</span><strong className="metric">{current?.game_count ?? '—'}</strong><span className="metric-note">{current?.reported_score_pairs ?? '—'} with reported scores</span></CardContent></Card><Card className="context-card"><CardContent><span className="metric-label">Know what you’re seeing</span><strong>Reported ≠ confirmed final</strong><p>Scores may be present while game status remains UNKNOWN.</p></CardContent></Card></div>

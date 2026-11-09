@@ -12,7 +12,7 @@ The interface uses a forest sidebar, neutral panels, responsive matchup cards an
 
 ## Routes and behavior
 
-- `/` fetches available seasons and redirects to week 1 REG of the newest returned season. It does **not** guess a current NFL week from the clock.
+- `/` now uses actual API schedule dates to choose the current available NFL week/round in Eastern Time. See the Task 008 policy and verified tests below; the original Task 006 week-1 default has been replaced.
 - `/schedule/:season/REG/:week` supports weeks 1–18; `/schedule/:season/POST/:round` supports WC/DIV/CON/SB, with `all` representing the whole POST stage.
 - Available seasons come from `GET /api/seasons`. Only returned seasons are selectable. POST controls/rounds use API coverage; missing POST remains disclosed and normally disabled. A direct missing-POST link shows a real empty state, never invented matchups or scores.
 - Schedule requests use `/api/seasons/{season}/schedule?season_type=REG&week=…` or `season_type=POST&round=…`; `POST/all` omits week/round. There is no combined-stage query.
@@ -140,3 +140,34 @@ The inventory below includes every authored/modified task file. No generated loc
 | `docs/implementation-plan.md` | Current slice status and remaining acceptance gate |
 | `docs/schedule-api.md` | Record owner-reported API validation; unchanged API contract |
 | `docs/schedule-data-contract.md` | Document frontend projection retaining existing safeguards |
+
+## Task 008 — current-week home default
+
+Owner-approved frontend usability scope: [Task 008](agent-task-008.md). Implemented on the existing `main` checkout as uncommitted changes; no branch switch, commit, merge or push. No backend/API, schema, ingestion/refresh, dependencies, lockfile or Docker configuration changed.
+
+Only `/` performs automatic selection. It fetches every available nonempty season/stage using the existing full-stage GET contract (omitting week/round, with separate REG/POST requests). With the original coverage that means five calendar requests plus the selected-week request; there is no new endpoint or combined-stage format. Full-stage data uses normal TanStack Query caching. Initial calendar failures show retry rather than guessing; previously cached calendar data can be used with a refresh-failure disclosure.
+
+Navigation assumptions (not game-status/statistical definitions):
+
+1. Group actual records by their NFL season and REG week or POST round. Convert known UTC kickoffs to **America/New_York** calendar dates, independent of the viewer's timezone. If kickoff time is unknown, a valid source Eastern `source_gameday` can locate the date without inventing a time.
+2. Each dated group spans its first through last known Eastern day, inclusive. Among groups that have started, prioritize the most recent start; if today is still within that group's span, select it. This keeps the normal Thursday-through-Monday selection through Monday and prevents an older postponed outlier dragging navigation back after a newer week starts.
+3. In the gap after that group's last date, select the next actual upcoming group. Thus Tuesday/Wednesday normally show the coming week; postseason gaps similarly advance to the next available round. No fixed seven-day calculation or hard-coded season opener is used.
+4. Before a published season starts, show the closest upcoming group. After all available groups end, show the most recently started dated group, including the last postseason round. January/February games retain the API's NFL season rather than taking the calendar year.
+5. Completely undated groups cannot establish “current.” If there are no usable dates anywhere, choose the first actual available group in the newest season (REG first, otherwise ordered POST), falling back to API coverage if game responses are empty. Disclose that dates are unavailable. If no selectable data exists, show an empty state. No missing postseason fixtures are generated.
+
+The client clock must represent the correct instant. The result is a schedule-navigation default, not an independently verified league week or completion signal. Missing/incorrect/stale source dates can limit the default's accuracy; undated fixtures cannot extend a known group's span. An unsupported current real-world season falls back to available data, not an invented season. Scores and statuses are never consulted or mutated.
+
+Selection runs once upon home entry and redirects to the normal bookmarkable route. Explicit `/schedule/:season/:stage/:selection` routes bypass the full-calendar picker entirely, including direct postseason/all selections. Clicking other weeks/seasons/rounds or returning from matchup details remains under URL control. Midnight, query refresh and background data updates do not relocate an already selected explicit URL. Returning to `/` intentionally computes the default again.
+
+Changed files: `frontend/src/pages/Schedule.tsx` (home delegation/notice), `frontend/src/pages/ScheduleDefault.tsx` (home-only queries/redirect), `frontend/src/schedule/defaultSelection.ts` (pure date policy), `frontend/src/test/defaultSelection.test.ts` and `frontend/src/test/dashboard.test.tsx` (date/routing regression tests), plus `AGENTS.md`, `README.md`, `docs/agent-task-008.md`, `docs/decisions.md` and this guide for scope/assumptions/evidence.
+
+Actual verification on 2026-11-09:
+
+- `npm --prefix frontend run typecheck`: **passed**.
+- `npm --prefix frontend test`: **48 passed**, including 18 date-policy cases, seven home-routing cases and the retained dashboard/API/navigation cases.
+- `TZ=UTC npm --prefix frontend test`: **48 passed**.
+- `TZ=Asia/Tokyo npm --prefix frontend test`: **48 passed**.
+- `npm --prefix frontend run build`: **passed**, including TypeScript; Vite produced the production HTML/CSS/JS bundle. Generated `dist/` remains ignored.
+- Coverage includes regular-season spans/gaps, irregular dates, postponed overlap, January season labels, current/next POST rounds, preseason/postseason offseason fallbacks, missing/invalid dates, EST/EDT midnight and DST rollback, source-date fallback, explicit URL preservation, free week navigation, root loading and calendar failures. Synthetic test records are not application fallback data.
+
+No real-browser or running-API acceptance was performed in this task; RTL uses the actual routing/query components with synthetic HTTP fixtures. Backend regression tests were not rerun because backend code/contracts are unchanged. No packages were installed. Normal WSL can repeat the same commands, rebuild the existing frontend container, then inspect `/` and a bookmarked `/schedule/2024/REG/2` at http://127.0.0.1:5173. A brief real-browser/API acceptance check is the proposed next task for owner approval, not an authorization for other features.

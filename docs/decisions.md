@@ -1,6 +1,6 @@
 # Architecture and Product Decision Register
 
-**Approved through Decision 58 (2026-11-07).** Decision numbers reflect the design conversation. If a number compresses multiple earlier sub-decisions, the binding source is the consolidated specification below; the agent must not invent unrecorded approvals.
+**Approved through Decision 59 (2026-11-09).** Decision numbers reflect the design conversation. If a number compresses multiple earlier sub-decisions, the binding source is the consolidated specification below; the agent must not invent unrecorded approvals.
 
 | ID | Decision |
 |---|---|
@@ -45,6 +45,8 @@
 | 57 | Owner approved Task 006 React weekly schedule dashboard on `feature/schedule-dashboard`, reporting API/backend merged and 139 tests passed/two warnings. Use approved React/TypeScript/Vite, React Router, TanStack Query, Tailwind/shadcn primitives, current GET schemas and loopback development Compose integration. Preserve nulls, UNKNOWN/reported-score semantics, declared provenance and missing POST coverage. No schema/ingestion/API contract changes, unrelated features or deployment. Author tests and report blocked package/build/browser checks honestly; no commit/merge/push. See [dashboard guide](schedule-dashboard.md). |
 
 | 58 | Owner approved Task 007 on `feature/schedule-auto-updates`: unscheduled, development-only guarded refresh using the approved release CSV, immutable archives and existing reconciliation. Dry-run first, then saved-candidate apply bound to operator review of source/DB diff; new scores remain UNKNOWN. Removed scores, ambiguous/disappearing identities and changed FINAL records cannot be overridden. Reuse existing schema with actual retrieval provenance and durable operational journal/commit recovery; no new dependencies, frontend, API/schema changes, scheduling, production or git publication. See [refresh guide](schedule-refresh.md) for commands, evidence and remaining runtime blocks. |
+
+| 59 | Owner approved Task 008 frontend usability only: home defaults to the current available NFL season/week/round from actual API kickoff dates in America/New_York; explicit URL choices are preserved. Implementation uses documented dated-group spans, upcoming/latest offseason selection and disclosed undated fallback rather than opener arithmetic. These are navigation assumptions for review, not changes to statistical eligibility or UNKNOWN/finality. No backend/schema/source/dependency/refresh changes or git publication. See [dashboard policy and tests](schedule-dashboard.md#task-008--current-week-home-default). |
 
 ## Change control
 
