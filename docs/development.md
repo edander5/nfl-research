@@ -142,3 +142,7 @@ Owner now reports Task 004 validated in normal WSL: 842 development games with e
 ## Task 006 — React weekly schedule dashboard
 
 See [scope](agent-task-006.md) and [complete frontend guide/inventory](schedule-dashboard.md). The only Compose addition is non-root frontend Vite on 127.0.0.1:5173, proxying relative `/api` requests to the existing API. No CORS, schema, ingestion, database-port or backend contract changes. Install approved dependencies locally in `frontend/`, then run `npm run typecheck`, `npm test`, `npm run build`; generate/review the missing lockfile before claiming reproducibility. Dependency installation failed registry DNS in the agent, so these checks must run in normal WSL. Existing backend test and migration procedures remain unchanged; this task needs no development migration or reimport.
+
+## Task 007 — guarded manual refresh
+
+The owner approved an unscheduled development refresh workflow after [feasibility research](schedule-auto-update-feasibility.md). Follow the [refresh guide](schedule-refresh.md) for `docker compose --profile refresh run --build --rm refresh` dry-run, reviewing the full saved report, token-bound saved-candidate apply, commit recovery and exact WSL tests. The profile uses separate durable state plus existing archives, no ports or timers, and never replaces the original CSV. No development migration, frontend change or source API contract change. New-source and PostgreSQL integration remain unverified here; unit evidence is distinguished in the guide.

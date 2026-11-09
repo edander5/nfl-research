@@ -1,6 +1,6 @@
 # Vertical-Slice Implementation Roadmap
 
-**Status:** Owner reports foundation, ingestion and read-only API validated/committed/merged with 842 games and 139 passing backend tests/two warnings. Task 006 React schedule dashboard is implemented; frontend install/build/tests and real browser/API validation remain pending due agent environment restrictions. Milestone 1 is not yet end-to-end accepted. Each task remains approval-gated.
+**Status:** Owner reports foundation, ingestion, API and React dashboard completed/merged. Task 007 implements a guarded manual development refresh runner; real-source and PostgreSQL acceptance remains pending outside this restricted environment. No unattended scheduler, source-finality enrichment, later research feature or deployment is authorized.
 
 ## Preflight — Research gate (first agent task)
 
@@ -10,7 +10,7 @@
 
 ## Milestone 1 — Complete weekly NFL schedule (first functional vertical slice)
 
-Current approved subset: [Task 006 React schedule dashboard](agent-task-006.md). [Implementation, validation evidence and exact WSL commands](schedule-dashboard.md) distinguish completed code/client smoke checks from unexecuted frontend build/RTL/browser acceptance. No subsequent milestone, statistics feature or deployment is authorized.
+Current approved subset: [Task 007 guarded refresh](agent-task-007.md). See [commands and actual checks](schedule-refresh.md). This task adds a controlled manual update workflow, not a cron job or blanket approval for Milestone 6 operations. The previous dashboard acceptance is owner-reported; original API/schema/source safeguards remain in force.
 
 **Outcome:** The user runs the local environment, opens the app, selects 2024/2025/2026 and season stage/week, sees real game information and opens a basic matchup overview.
 

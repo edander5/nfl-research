@@ -1,6 +1,6 @@
 # Architecture and Product Decision Register
 
-**Approved through Decision 57 (2026-11-07).** Decision numbers reflect the design conversation. If a number compresses multiple earlier sub-decisions, the binding source is the consolidated specification below; the agent must not invent unrecorded approvals.
+**Approved through Decision 58 (2026-11-07).** Decision numbers reflect the design conversation. If a number compresses multiple earlier sub-decisions, the binding source is the consolidated specification below; the agent must not invent unrecorded approvals.
 
 | ID | Decision |
 |---|---|
@@ -43,6 +43,8 @@
 | 56 | Owner approved Task 005 on 2026-11-07 on `feature/schedule-api`, after reporting 842 development games imported, idempotent reimport (0/0/842) and 78 passing tests. Implement read-only season coverage, stage/week/round schedule selection and canonical UUID lookup with typed JSON/OpenAPI, provenance and explicit reported-score/finality semantics. Preserve Decision 53; no schema/dependency/infrastructure changes or status inference. Use bounded single-season eager reads so schedule coverage and returned games share a statement snapshot. No frontend, editing/ingestion triggers, unrelated features, commit, merge, push or deployment. See [API guide](schedule-api.md) for actual new-test evidence and pending WSL checks. |
 
 | 57 | Owner approved Task 006 React weekly schedule dashboard on `feature/schedule-dashboard`, reporting API/backend merged and 139 tests passed/two warnings. Use approved React/TypeScript/Vite, React Router, TanStack Query, Tailwind/shadcn primitives, current GET schemas and loopback development Compose integration. Preserve nulls, UNKNOWN/reported-score semantics, declared provenance and missing POST coverage. No schema/ingestion/API contract changes, unrelated features or deployment. Author tests and report blocked package/build/browser checks honestly; no commit/merge/push. See [dashboard guide](schedule-dashboard.md). |
+
+| 58 | Owner approved Task 007 on `feature/schedule-auto-updates`: unscheduled, development-only guarded refresh using the approved release CSV, immutable archives and existing reconciliation. Dry-run first, then saved-candidate apply bound to operator review of source/DB diff; new scores remain UNKNOWN. Removed scores, ambiguous/disappearing identities and changed FINAL records cannot be overridden. Reuse existing schema with actual retrieval provenance and durable operational journal/commit recovery; no new dependencies, frontend, API/schema changes, scheduling, production or git publication. See [refresh guide](schedule-refresh.md) for commands, evidence and remaining runtime blocks. |
 
 ## Change control
 

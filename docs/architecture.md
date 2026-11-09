@@ -55,3 +55,7 @@ Representative controlled-network **p95** targets: schedule and matchup overview
 - Source identifiers mapped into canonical internal team/player/game IDs; transfers retain per-game actual team membership.
 - Sportsbook odds are optional, on-demand, budgeted, and never block historical research.
 - New paid services/dependencies/production changes require user approval.
+
+## Task 007 — guarded manual refresh
+
+The [manual refresh runner](schedule-refresh.md) adds one-shot retrieval/validation/comparison and reviewed transactional apply to the existing Python ingestion package. It uses standard-library HTTPS, filesystem locks/atomic archives and a durable local run journal, plus existing SQLAlchemy. The opt-in Compose `refresh` service has outbound access on the default network and isolated development DB access on the internal database network, without ports or recurring work. The existing scheduler architecture remains planned. No source-status API/frontend or database schema changed. Source-only scores remain reported/UNKNOWN and need explicit operator review. Current approval: [Task 007](agent-task-007.md).

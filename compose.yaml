@@ -71,6 +71,25 @@ services:
       db:
         condition: service_healthy
 
+  refresh:
+    build: ./backend
+    profiles: [refresh]
+    environment:
+      APP_DB_HOST: db
+      APP_DB_PORT: '5432'
+      APP_DB_NAME: ${POSTGRES_DB:?Set POSTGRES_DB in .env}
+      APP_DB_USER: ${POSTGRES_USER:?Set POSTGRES_USER in .env}
+      APP_DB_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    command: [python, -m, ingestion.refresh, --source, nflverse-release]
+    volumes:
+      - ./data/raw:/data/raw:ro
+      - schedule_snapshots:/app/snapshots
+      - schedule_refresh:/app/refresh-state
+    networks: [default, database]
+    depends_on:
+      db:
+        condition: service_healthy
+
   db_test:
     image: postgres:17-bookworm
     command: [postgres, -c, timezone=UTC]
@@ -107,6 +126,7 @@ services:
 volumes:
   postgres_dev:
   schedule_snapshots:
+  schedule_refresh:
 
 networks:
   database:

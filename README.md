@@ -1,6 +1,6 @@
 # NFL Betting Research
 
-**Status:** Owner reports foundation, ingestion and read-only API validated/committed/merged: 842 games and 139 passing backend tests (two deprecation warnings). The approved [React schedule dashboard](docs/schedule-dashboard.md) is implemented; dependency installation, frontend build/tests and browser acceptance remain blocked in this agent environment. See the exact WSL verification procedure before accepting the frontend.
+**Status:** Owner reports foundation, ingestion, read-only API and dashboard completed/merged, with 842 imported games and the prior 139-test backend suite validated. The approved [guarded manual refresh runner](docs/schedule-refresh.md) is implemented; fresh-source and new PostgreSQL runtime checks remain blocked in this agent environment. No unattended scheduler is active.
 
 A private, self-hosted, NFL statistics and player-prop research web app. The first working vertical slice is a 2024–2026 weekly NFL schedule, backed by real imported data in PostgreSQL and served by FastAPI to React.
 
@@ -19,7 +19,7 @@ The first agent task is **source feasibility**, not application development. Sou
 
 That first research task and subsequent CSV validation, [foundation/schema](docs/agent-task-002.md), [environment validation](docs/agent-task-003.md) and [schedule ingestion](docs/agent-task-004.md) are complete. The original CSV remains unchanged. The owner reports successful development import and normal-WSL tests; historical agent environment failures remain recorded in the task reports.
 
-Current approved scope is [Task 006: React weekly schedule dashboard](docs/agent-task-006.md). It uses the existing [API contract](docs/schedule-api.md) with UNKNOWN/reported-score and declared-origin safeguards from the [schedule data contract](docs/schedule-data-contract.md). Source authentication/checksum limitations remain unresolved. No later statistics, betting feature or deployment is authorized.
+Current approved scope is [Task 007: Guarded NFL Schedule Refresh Runner](docs/agent-task-007.md). The [refresh guide](docs/schedule-refresh.md) documents dry-run, snapshot-specific review/apply, hard blockers and exact WSL verification commands. Source authentication/checksum and unsupported finality limitations remain governed by the [schedule data contract](docs/schedule-data-contract.md). No unattended updates, new statistics features or deployment are authorized.
 
 Development startup after completing the frontend checks in the guide:
 

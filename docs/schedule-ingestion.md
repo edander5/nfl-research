@@ -115,3 +115,7 @@ No application API/model or Alembic migration files were changed. No dependency 
 ## Subsequent owner runtime confirmation — 2026-11-07
 
 Before approving [Task 005](agent-task-005.md), the owner reported the original 842-game development import successful, expected seasonal counts confirmed, unchanged reimport resulting in 0 inserts/0 updates/842 unchanged, and the full prior suite passing 78 tests. This supersedes the historical pending-WSL gate above at the user-reported-evidence level. It does not independently authenticate source origin, resolve the checksum discrepancy, establish FINAL status, or validate subsequently added API code. New read-only API evidence and remaining checks are in [schedule-api.md](schedule-api.md).
+
+## Task 007 — use the guarded runner for new downloads
+
+Newly fetched source updates should use [guarded refresh](schedule-refresh.md), not the older backfill/reimport CLI as a way around review. The original manual interface remains compatible, but lacks the new refresh-specific diff/token/score-regression gates. Shared archive capture now uses temporary files, fsync and atomic no-replace linking; existing evidence is checked and never overwritten. Optional measured acquisition receipts populate the existing provenance columns on reviewed refreshes. Reconciliation identity/FINAL/deletion/null rules and the schema are unchanged. No scheduler is activated.

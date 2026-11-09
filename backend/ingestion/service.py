@@ -1,7 +1,10 @@
 """Transactional reconciliation. Caller owns the transaction and must roll it back on error."""
 import hashlib
 import json
+import os
+import tempfile
 from pathlib import Path
+from datetime import datetime
 
 from sqlalchemy import select, text
 from sqlalchemy.orm import Session
@@ -19,19 +22,39 @@ def reject(code: str, message: str):
 
 def capture(snapshot: Snapshot, directory: Path) -> Path:
     """Keep exact source bytes, never overwrite an existing artifact or the input."""
+    if hashlib.sha256(snapshot.data).hexdigest() != snapshot.sha256:
+        reject('snapshot_hash_mismatch', 'Snapshot hash does not match bytes')
     directory.mkdir(parents=True, exist_ok=True)
     target = directory / f'{snapshot.sha256}.csv'
+    fd, temporary = tempfile.mkstemp(prefix='.capture-', dir=directory)
     try:
-        with target.open('xb') as stream:
+        with os.fdopen(fd, 'wb') as stream:
             stream.write(snapshot.data)
-    except FileExistsError:
-        if hashlib.sha256(target.read_bytes()).hexdigest() != snapshot.sha256:
-            reject('snapshot_collision', 'Existing archive bytes do not match their filename hash')
+            stream.flush()
+            os.fsync(stream.fileno())
+        try:
+            os.link(temporary, target)
+        except FileExistsError:
+            if target.is_symlink() or hashlib.sha256(target.read_bytes()).hexdigest() != snapshot.sha256:
+                reject('snapshot_collision', 'Existing archive bytes do not match their filename hash')
+        directory_fd = os.open(directory, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(directory_fd)
+        finally:
+            os.close(directory_fd)
+    finally:
+        os.unlink(temporary)
     return target.resolve()
 
 
-def reconcile(session: Session, snapshot: Snapshot, artifact_path: Path) -> dict:
+def reconcile(session: Session, snapshot: Snapshot, artifact_path: Path, *, acquisition: dict | None = None) -> dict:
     """Apply a prevalidated full snapshot; no commit, deletion or status inference."""
+    if acquisition is not None:
+        metadata = acquisition.get('metadata') or {}
+        if (acquisition.get('source_url') != SOURCE_URL or acquisition.get('sha256') != snapshot.sha256
+                or acquisition.get('byte_size') != len(snapshot.data) or acquisition.get('origin_status') != 'DECLARED'
+                or metadata.get('publisher_sha256') not in (None,snapshot.sha256)):
+            reject('acquisition_mismatch', 'Refresh receipt does not match captured source bytes/origin')
     database = session.scalar(text('select current_database()'))
     if database not in ('nfl_research_dev', 'nfl_research_test'):
         reject('database_guard', 'Only isolated nfl_research_dev/nfl_research_test databases are allowed')
@@ -100,6 +123,15 @@ def reconcile(session: Session, snapshot: Snapshot, artifact_path: Path) -> dict
             historical_listing_observed_date='2026-11-05',
             corrections=corrections, summary=result), sort_keys=True),
     )
+    if acquisition is not None:
+        # Only the refresh runner supplies this measured receipt; no status/finality override.
+        artifact.declared_source_url = acquisition['source_url']
+        artifact.retrieved_at = datetime.fromisoformat(acquisition['retrieved_at'])
+        metadata = acquisition.get('metadata') or {}
+        artifact.publisher_sha256 = metadata.get('publisher_sha256')
+        artifact.source_revision = str(metadata['asset_id']) if metadata.get('asset_id') is not None else None
+        artifact.provenance_notes = json.dumps(dict(kind='schedule_refresh', version=1,
+            acquisition=acquisition, corrections=corrections, summary=result), sort_keys=True)
     session.add(artifact)
     session.flush()
     for code in TEAM_CODES:
