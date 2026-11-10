@@ -50,6 +50,8 @@
 
 | 60 | Owner approved Task 009 on `feature/schedule-freshness`: expose a sanitized read-only projection of the existing runner checkpoint through GET `/api/data-status/schedule`, with the shared volume mounted read-only in API. Distinguish checks, successful applies (including unchanged reconciliation), and observed changes; timestamps do not establish source publication or game finality. Dashboard loads once with explicit manual reload, local-time timestamps and unavailable/stale/error states. Default check-age warning is 36 hours, an operational display policy rather than a data-completeness promise. No schema/dependency/refresh/scheduler changes or git publication. See [freshness guide](schedule-freshness.md). |
 
+| 61 | Owner approved offline NFL team-statistics validation on `feature/team-stats-feasibility`: NET team passing including sacks, with gross passing and original signed sack values preserved. Derive allowed yards from reciprocal opponent records. Establish the sign using actual artifacts and reviewed reference totals before calculating net values; no sign assumption or absolute-value repair. Source capture/audit and read-only canonical identity exports only; completion eligibility stays unverified without evidence. No statistics ingestion, schema changes, ranking publication, new API/frontend, jobs or git publication. See [validator guide](team-stats-validation.md). |
+
 ## Change control
 
 New architectural or scope decisions are **proposals** until explicitly approved. Record each change, date, rationale, downstream docs/tests to update, and author/reviewer. Do not silently substitute providers, accept paid tiers, change rank definitions or increase agent autonomy.

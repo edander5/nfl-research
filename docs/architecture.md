@@ -64,3 +64,8 @@ The [manual refresh runner](schedule-refresh.md) adds one-shot retrieval/validat
 ## Task 009 — operational freshness projection
 
 The API reads the existing runner checkpoint through a bounded, allowlisted repository/service/schema layer. Its existing refresh volume is mounted read-only. The dashboard uses a separate TanStack Query request with explicit reload and no polling. PostgreSQL schema and schedule response contracts are unchanged. See [freshness design and limitations](schedule-freshness.md).
+
+
+## Offline team-statistics audit
+
+The [team-statistics validator](team-stats-validation.md) is a standard-library-only CLI under `backend/ingestion/team_stats/`. It captures official release bytes and produces local reports, with no application settings, SQLAlchemy session, PostgreSQL connection, API or scheduler. Optional canonical UUID exports are read-only input files. It reuses only the pure schedule validation contract; existing schedule ingestion/refresh services are unchanged.

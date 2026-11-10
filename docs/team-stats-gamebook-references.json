@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "references": [
+    {
+      "season": 2024,
+      "game_id": "2024_01_BAL_KC",
+      "team": "BAL",
+      "source_url": "https://static.www.nfl.com/gamecenter/7d3e8f84-1312-11ef-afd1-646009f18b2e.pdf",
+      "locator": "PDF page 4 (1-based), Final Team Statistics, Visitor column; rows Gross yards passing, NET YARDS PASSING, NET YARDS RUSHING, FINAL SCORE; sack losses in Times thrown - yards lost attempting to pass.",
+      "reviewed_at": "2026-11-10T04:49:47+00:00",
+      "use": "reference_only",
+      "gross_passing_yards": 273,
+      "net_passing_yards": 267,
+      "rushing_yards": 185,
+      "points_scored": 20,
+      "points_allowed": 27
+    },
+    {
+      "season": 2024,
+      "game_id": "2024_01_BAL_KC",
+      "team": "KC",
+      "source_url": "https://static.www.nfl.com/gamecenter/7d3e8f84-1312-11ef-afd1-646009f18b2e.pdf",
+      "locator": "PDF page 4 (1-based), Final Team Statistics, Home column; rows Gross yards passing, NET YARDS PASSING, NET YARDS RUSHING, FINAL SCORE; sack losses in Times thrown - yards lost attempting to pass.",
+      "reviewed_at": "2026-11-10T04:49:47+00:00",
+      "use": "reference_only",
+      "gross_passing_yards": 291,
+      "net_passing_yards": 281,
+      "rushing_yards": 72,
+      "points_scored": 27,
+      "points_allowed": 20
+    },
+    {
+      "season": 2025,
+      "game_id": "2025_01_DAL_PHI",
+      "team": "DAL",
+      "source_url": "https://static.www.nfl.com/image/upload/v1757046615/gamecenter/f5908b6d-311e-11f0-b670-ae1250fadad1.pdf",
+      "locator": "PDF page 3 (1-based), Final Team Statistics, Visitor column; rows Gross yards passing, NET YARDS PASSING, NET YARDS RUSHING, FINAL SCORE; sack losses in Times thrown - yards lost attempting to pass.",
+      "reviewed_at": "2026-11-10T04:49:47+00:00",
+      "use": "reference_only",
+      "gross_passing_yards": 188,
+      "net_passing_yards": 188,
+      "rushing_yards": 119,
+      "points_scored": 20,
+      "points_allowed": 24
+    },
+    {
+      "season": 2025,
+      "game_id": "2025_01_DAL_PHI",
+      "team": "PHI",
+      "source_url": "https://static.www.nfl.com/image/upload/v1757046615/gamecenter/f5908b6d-311e-11f0-b670-ae1250fadad1.pdf",
+      "locator": "PDF page 3 (1-based), Final Team Statistics, Home column; rows Gross yards passing, NET YARDS PASSING, NET YARDS RUSHING, FINAL SCORE; sack losses in Times thrown - yards lost attempting to pass.",
+      "reviewed_at": "2026-11-10T04:49:47+00:00",
+      "use": "reference_only",
+      "gross_passing_yards": 152,
+      "net_passing_yards": 144,
+      "rushing_yards": 158,
+      "points_scored": 24,
+      "points_allowed": 20
+    },
+    {
+      "season": 2026,
+      "game_id": "2026_08_CHI_SEA",
+      "team": "CHI",
+      "source_url": "https://static.www.nfl.com/image/upload/v1793693186/gamecenter/ab37feaa-4feb-11f1-abca-2c54536568a9.pdf",
+      "locator": "PDF page 4 (1-based), Final Team Statistics, Visitor column; rows Gross yards passing, NET YARDS PASSING, NET YARDS RUSHING, FINAL SCORE; sack losses in Times thrown - yards lost attempting to pass.",
+      "reviewed_at": "2026-11-10T04:49:47+00:00",
+      "use": "reference_only",
+      "gross_passing_yards": 247,
+      "net_passing_yards": 237,
+      "rushing_yards": 126,
+      "points_scored": 34,
+      "points_allowed": 17
+    },
+    {
+      "season": 2026,
+      "game_id": "2026_08_CHI_SEA",
+      "team": "SEA",
+      "source_url": "https://static.www.nfl.com/image/upload/v1793693186/gamecenter/ab37feaa-4feb-11f1-abca-2c54536568a9.pdf",
+      "locator": "PDF page 4 (1-based), Final Team Statistics, Home column; rows Gross yards passing, NET YARDS PASSING, NET YARDS RUSHING, FINAL SCORE; sack losses in Times thrown - yards lost attempting to pass.",
+      "reviewed_at": "2026-11-10T04:49:47+00:00",
+      "use": "reference_only",
+      "gross_passing_yards": 188,
+      "net_passing_yards": 171,
+      "rushing_yards": 81,
+      "points_scored": 17,
+      "points_allowed": 34
+    }
+  ]
+}

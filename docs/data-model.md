@@ -51,3 +51,8 @@ These are **validation gates**, not permission to invent defaults.
 ## Task 004 ingestion implementation note
 
 [Development schedule ingestion](schedule-ingestion.md) uses the existing schema without a migration. Original artifacts and structured correction/import receipts in `source_artifacts.provenance_notes` retain correction evidence; per-game raw dictionaries, canonical JSON hashes and physical source lines are populated. Canonical UUIDs survive unambiguously evidenced source-ID changes. Provider aliases are checked, legacy IDs remain nonunique, and unknown values/finality remain unchanged in meaning. Runtime tests for this importer remain pending outside the agent's restricted Docker environment.
+
+
+## Approved team passing definition — offline validation follow-up
+
+Decision 61 selects **NET team passing yards**, including sacks, for offense and opponent-derived defense. Preserve gross passing and original signed sack values. Validate each artifact convention against reviewed reference totals before adding a signed negative adjustment or subtracting a proven positive loss; never use absolute values to repair ambiguous data. See [offline validator](team-stats-validation.md). Proposed statistics tables remain unimplemented; this approval authorizes no schema migration, import or historical eligibility inference.

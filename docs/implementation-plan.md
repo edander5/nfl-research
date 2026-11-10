@@ -1,6 +1,6 @@
 # Vertical-Slice Implementation Roadmap
 
-**Status:** Owner reports foundation, ingestion, API, dashboard, guarded manual refresh and current-week defaults implemented/merged. Current approved work is [Task 009 freshness indicator](agent-task-009.md), with runtime acceptance pending. No unattended scheduling or deployment is authorized.
+**Status:** Owner reports schedule ingestion/API/dashboard/manual refresh/current-week/freshness implemented and validated. Current approved work is the [offline team-statistics validator and audit](team-stats-validation.md). No statistics database ingestion, ranking publication, unattended scheduling or deployment is authorized.
 
 ## Preflight — Research gate (first agent task)
 
@@ -29,6 +29,8 @@ Suggested approved tasks (one at a time):
 Decision 53 permits explicit UNKNOWN status and clearly labeled reported scores when finality is unverified; no invented in-progress/postponed state or kickoff-only finality. The [local validation report](schedule-validation-report.md) supports conditional readiness, subject to retaining declared provenance/digest warnings, handling nonunique `old_game_id` aliases, and rerunning validation on each imported snapshot. The 2026 postseason selector must disclose absent source matchups without synthetic game rows. This evidence does not itself authorize any implementation task.
 
 ## Milestone 2 — Team statistics, rankings, matchup context
+
+Current subset: offline source/identity audit only; NET team passing is approved with artifact-specific sack-sign verification. See [results and remaining gates](team-stats-validation.md). Schema and rankings remain gated.
 
 - Verify source semantics for passing/rushing yards and *yards allowed* at the game level.
 - Add team game stats, canonical relationships and pregame-cutoff calculation endpoints.

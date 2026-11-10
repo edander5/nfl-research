@@ -1,0 +1,104 @@
+{
+  "audit_exit_code": 0,
+  "completion_eligibility": "unverified",
+  "created_at": "2026-11-10T04:50:06.721534+00:00",
+  "database_access": false,
+  "full_audit_local_path": "/tmp/nfl-team-stats-reference-review/audit-2753a18a488e4ae4974edc3ed7a223f7.json",
+  "full_audit_sha256": "b1594d2879e047fa2671a3ef3d2f6e6ba899fde37801469d79a576f5f53362da",
+  "identity_map": {
+    "origin": "operator_supplied",
+    "sha256": "8524cab9609523b85d7f51db2ec3d2618e4c6f42767d10dff9c855f719aa6534"
+  },
+  "identity_scope": "canonical_export_and_schedule",
+  "rankings_published": false,
+  "reference_manifest_sha256": "5c1d88cf5b56bc75c06864d16aa89221e6db5dd66ca0891b0ecfe53385065779",
+  "schedule": {
+    "provenance": "declared; no independent authentication or current database assertion",
+    "selected_games": 842,
+    "sha256": "66f7a71b12eeb8da8a5c332cfadb245da693aa66e2064fba734983dc41e68fd5"
+  },
+  "seasons": {
+    "2024": {
+      "artifact_sha256": "b207a1430c2715d03bbf1844c4eae98695f364851ff6025f422febc2c13f5255",
+      "canonical_identity_paired_games": 285,
+      "eligible_games_verified": 0,
+      "net_metrics_validated_games": 285,
+      "reference_matches": [
+        {
+          "game_id": "2024_01_BAL_KC",
+          "schedule_score_comparison": "matched",
+          "state": "matched",
+          "team": "BAL"
+        },
+        {
+          "game_id": "2024_01_BAL_KC",
+          "schedule_score_comparison": "matched",
+          "state": "matched",
+          "team": "KC"
+        }
+      ],
+      "rows_read": 570,
+      "sack_convention": "negative_validated_against_reviewed_reference",
+      "sack_sign_counts": {
+        "negative": 488,
+        "zero": 82
+      },
+      "validation_error_count": 0
+    },
+    "2025": {
+      "artifact_sha256": "91058a59d894855377b2f39f40c4e7bdbeef96d12144289dc68215209a1c93cb",
+      "canonical_identity_paired_games": 285,
+      "eligible_games_verified": 0,
+      "net_metrics_validated_games": 285,
+      "reference_matches": [
+        {
+          "game_id": "2025_01_DAL_PHI",
+          "schedule_score_comparison": "matched",
+          "state": "matched",
+          "team": "DAL"
+        },
+        {
+          "game_id": "2025_01_DAL_PHI",
+          "schedule_score_comparison": "matched",
+          "state": "matched",
+          "team": "PHI"
+        }
+      ],
+      "rows_read": 570,
+      "sack_convention": "negative_validated_against_reviewed_reference",
+      "sack_sign_counts": {
+        "negative": 491,
+        "zero": 79
+      },
+      "validation_error_count": 0
+    },
+    "2026": {
+      "artifact_sha256": "941837b79ef4735a625de3394fc07381ab0bfd9a31891920071284d7ab62c590",
+      "canonical_identity_paired_games": 135,
+      "eligible_games_verified": 0,
+      "net_metrics_validated_games": 135,
+      "reference_matches": [
+        {
+          "game_id": "2026_08_CHI_SEA",
+          "schedule_score_comparison": "matched",
+          "state": "matched",
+          "team": "CHI"
+        },
+        {
+          "game_id": "2026_08_CHI_SEA",
+          "schedule_score_comparison": "matched",
+          "state": "matched",
+          "team": "SEA"
+        }
+      ],
+      "rows_read": 270,
+      "sack_convention": "negative_validated_against_reviewed_reference",
+      "sack_sign_counts": {
+        "negative": 225,
+        "zero": 45
+      },
+      "validation_error_count": 0
+    }
+  },
+  "version": 1
+}
