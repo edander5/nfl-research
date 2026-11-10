@@ -146,3 +146,8 @@ See [scope](agent-task-006.md) and [complete frontend guide/inventory](schedule-
 ## Task 007 — guarded manual refresh
 
 The owner approved an unscheduled development refresh workflow after [feasibility research](schedule-auto-update-feasibility.md). Follow the [refresh guide](schedule-refresh.md) for `docker compose --profile refresh run --build --rm refresh` dry-run, reviewing the full saved report, token-bound saved-candidate apply, commit recovery and exact WSL tests. The profile uses separate durable state plus existing archives, no ports or timers, and never replaces the original CSV. No development migration, frontend change or source API contract change. New-source and PostgreSQL integration remain unverified here; unit evidence is distinguished in the guide.
+
+
+## Task 009 — schedule freshness
+
+See [freshness guide](schedule-freshness.md) for exact local/container verification commands, result evidence, environment limitations and complete changed-file inventory. The existing refresh volume is read-only in API; no migration, import or refresh execution is needed to view its existing checkpoint.

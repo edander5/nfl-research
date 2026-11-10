@@ -182,3 +182,8 @@ Next proposed task **for owner approval**, after reviewing this API and completi
 ## Subsequent owner validation and dashboard scope
 
 Before Task 006, the owner reported this API/backend validated with 139 passing tests/two deprecation warnings, committed and merged to main; 842 games remain imported. Those user-reported results supersede the earlier normal-WSL pending gate without retroactively becoming agent-executed checks. [Task 006 dashboard](schedule-dashboard.md) consumes the existing schema unchanged. New frontend test/build/browser evidence is reported separately.
+
+
+## Schedule freshness endpoint
+
+Additive GET `/api/data-status/schedule` returns `{data, meta}` with recorded refresh observations, not game results. It requires no query parameters or database session, uses `Cache-Control: no-store`, and returns HTTP 200 with an explicit metadata availability state when the checkpoint cannot be used. Unsupported query parameters return 422; mutation methods return 405. Existing schedule/game responses are unchanged. See [complete fields, semantics and tests](schedule-freshness.md).

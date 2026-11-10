@@ -189,3 +189,8 @@ Next proposed implementation task **for approval after runner acceptance**: expo
 - `README.md`, `docs/development.md`, `docs/architecture.md`, `docs/implementation-plan.md`, `docs/schedule-ingestion.md`, `docs/schedule-data-contract.md`, this guide: safe usage, boundaries and review/testing evidence.
 
 The existing untracked `docs/schedule-auto-update-feasibility.md` from the research task was read and preserved, not rewritten. No frontend, model, migration, API contract, dependency manifest or original CSV changed. No commit, merge, push or deployment performed. Stop for review.
+
+
+## Read-only dashboard visibility
+
+[Task 009 freshness guide](schedule-freshness.md) documents the sanitized read-only view of `status.json`. The runner and its writer semantics are unchanged. In particular, `last_successful_ingestion_at` includes unchanged applies; it is exposed as successful apply, separately from observed data changes. Only checkpointed attempts are visible, not in-flight/interrupted journals.

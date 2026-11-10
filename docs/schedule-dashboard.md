@@ -171,3 +171,8 @@ Actual verification on 2026-11-09:
 - Coverage includes regular-season spans/gaps, irregular dates, postponed overlap, January season labels, current/next POST rounds, preseason/postseason offseason fallbacks, missing/invalid dates, EST/EDT midnight and DST rollback, source-date fallback, explicit URL preservation, free week navigation, root loading and calendar failures. Synthetic test records are not application fallback data.
 
 No real-browser or running-API acceptance was performed in this task; RTL uses the actual routing/query components with synthetic HTTP fixtures. Backend regression tests were not rerun because backend code/contracts are unchanged. No packages were installed. Normal WSL can repeat the same commands, rebuild the existing frontend container, then inspect `/` and a bookmarked `/schedule/2024/REG/2` at http://127.0.0.1:5173. A brief real-browser/API acceptance check is the proposed next task for owner approval, not an authorization for other features.
+
+
+## Task 009 — refresh history
+
+A small responsive panel shows manual refresh observations independently of schedule loading. It uses browser-local dates (kickoff displays retain Eastern), handles unavailable/error/stale metadata, and reloads only on explicit action after initial load. It does not trigger the runner. See [freshness guide](schedule-freshness.md).

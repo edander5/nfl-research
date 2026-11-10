@@ -1,3 +1,4 @@
+import { parseFreshness } from './freshness';
 import type { GameResponse, Round, ScheduleResponse, SeasonsResponse, SeasonType } from './types';
 export class ApiError extends Error { status: number; constructor(status: number) { super(status === 404 ? 'This game was not found.' : status === 422 ? 'These schedule filters are not supported.' : 'The schedule service is unavailable. Please try again.'); this.status = status; } }
 async function read<T>(path: string, signal?: AbortSignal): Promise<T> {
@@ -7,6 +8,7 @@ async function read<T>(path: string, signal?: AbortSignal): Promise<T> {
   return response.json() as Promise<T>;
 }
 export const api = {
+  freshness: async (signal?: AbortSignal) => parseFreshness(await read<unknown>('/api/data-status/schedule', signal)),
   seasons: (signal?: AbortSignal) => read<SeasonsResponse>('/api/seasons', signal),
   schedule: (season: number, stage: SeasonType, selection: string, signal?: AbortSignal) => {
     const query = new URLSearchParams({ season_type: stage });

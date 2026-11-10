@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router';
 import { describe, expect, it, vi } from 'vitest';
 import { App } from '../App';
 import { api, kickoff, safeUrl } from '../api/client';
-import { detail, game, id, schedule, seasons } from './fixtures';
+import { detail, freshness, game, id, schedule, seasons } from './fixtures';
 function response(data: unknown, status=200) { return new Response(JSON.stringify(data),{status,headers:{'content-type':'application/json'}}); }
 function defaultResponse(url: string) {
   if (url === '/api/seasons') return response(seasons);
@@ -19,7 +19,7 @@ function defaultResponse(url: string) {
   return response(data);
 }
 function mock(handler: (url: string) => Response | Promise<Response> = defaultResponse) {
-  const fetcher = vi.fn((url: string) => handler(String(url)));
+  const fetcher = vi.fn((url: string) => String(url) === '/api/data-status/schedule' ? response(freshness) : handler(String(url)));
   vi.stubGlobal('fetch',fetcher);
   return fetcher;
 }
@@ -81,7 +81,7 @@ describe('current-week home routing', () => {
     open(path);
     expect(await screen.findByRole('heading',{name:title})).toBeInTheDocument();
     await screen.findByText('Synthetic Away');
-    expect(fetcher.mock.calls.map(([url]) => url)).toEqual(['/api/seasons',endpoint]);
+    expect(fetcher.mock.calls.map(([url]) => url).filter(url => url !== '/api/data-status/schedule')).toEqual(['/api/seasons',endpoint]);
   });
   it('opens the current postseason round in the previous calendar-year NFL season', async () => {
     vi.spyOn(Date,'now').mockReturnValue(new Date('2027-02-07T18:00:00Z').getTime());

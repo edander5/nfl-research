@@ -59,3 +59,8 @@ Representative controlled-network **p95** targets: schedule and matchup overview
 ## Task 007 — guarded manual refresh
 
 The [manual refresh runner](schedule-refresh.md) adds one-shot retrieval/validation/comparison and reviewed transactional apply to the existing Python ingestion package. It uses standard-library HTTPS, filesystem locks/atomic archives and a durable local run journal, plus existing SQLAlchemy. The opt-in Compose `refresh` service has outbound access on the default network and isolated development DB access on the internal database network, without ports or recurring work. The existing scheduler architecture remains planned. No source-status API/frontend or database schema changed. Source-only scores remain reported/UNKNOWN and need explicit operator review. Current approval: [Task 007](agent-task-007.md).
+
+
+## Task 009 — operational freshness projection
+
+The API reads the existing runner checkpoint through a bounded, allowlisted repository/service/schema layer. Its existing refresh volume is mounted read-only. The dashboard uses a separate TanStack Query request with explicit reload and no polling. PostgreSQL schema and schedule response contracts are unchanged. See [freshness design and limitations](schedule-freshness.md).

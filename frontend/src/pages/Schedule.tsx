@@ -4,6 +4,7 @@ import { api, roundLabels, schedulePath, validSelection } from '../api/client';
 import type { Round, SeasonType } from '../api/types';
 import { Card, CardContent } from '../components/ui/card';
 import { Empty, Failure, GameCard, Loading, PolicyNotice } from '../components/shared';
+import { FreshnessIndicator } from '../components/FreshnessIndicator';
 import { ScheduleDefault } from './ScheduleDefault';
 
 export function Schedule() {
@@ -33,6 +34,7 @@ export function Schedule() {
     {location.state?.defaultNotice && <p role="status" className="coverage-note">{location.state.defaultNotice}</p>}
     <div className="page-heading"><div><p className="eyebrow">NFL / SCHEDULE EXPLORER</p><h1>League schedule<span>.</span></h1><p className="subtitle">Follow the matchups. Keep the context.</p></div><div className="season-control"><label htmlFor="season">Season</label><select id="season" value={year} onChange={e => move(Number(e.target.value), 'REG')}>{[...seasons.data.data].sort((a,b) => b.season-a.season).map(y => <option key={y.season} value={y.season}>{y.season} season</option>)}</select></div></div>
     {seasons.isError && <Failure stale retry={() => void seasons.refetch()} />}
+    <FreshnessIndicator />
     <div className="summary-grid"><Card><CardContent><span className="metric-label">Season games</span><strong className="metric">{coverage.reduce((sum,c) => sum+c.game_count,0)}</strong><span className="metric-note">Imported matchup records</span></CardContent></Card><Card><CardContent><span className="metric-label">{stage === 'REG' ? 'Regular season' : 'Postseason'}</span><strong className="metric">{current?.game_count ?? '—'}</strong><span className="metric-note">{current?.reported_score_pairs ?? '—'} with reported scores</span></CardContent></Card><Card className="context-card"><CardContent><span className="metric-label">Know what you’re seeing</span><strong>Reported ≠ confirmed final</strong><p>Scores may be present while game status remains UNKNOWN.</p></CardContent></Card></div>
     <section className="schedule-section" aria-label="Weekly schedule"><div className="stage-bar"><div className="stage-tabs" aria-label="Season stage"><button aria-pressed={stage === 'REG'} onClick={() => move(year,'REG')}>Regular season</button><button aria-pressed={stage === 'POST'} disabled={!post?.game_count && stage !== 'POST'} onClick={() => move(year,'POST')}>Postseason{!post?.game_count && <span> · No matchups</span>}</button></div><span className="timezone-note">Kickoffs in Eastern Time</span></div>
     {!post?.game_count && <p className="coverage-note">No postseason matchups are available for {year}. Coverage reflects imported records.</p>}

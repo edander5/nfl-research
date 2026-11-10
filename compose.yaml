@@ -27,6 +27,8 @@ services:
       APP_DB_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
     ports:
       - '127.0.0.1:8000:8000'
+    volumes:
+      - schedule_refresh:/app/refresh-state:ro
     networks: [default, database]
     depends_on:
       db:

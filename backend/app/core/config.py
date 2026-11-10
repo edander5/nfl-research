@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from pydantic import Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from sqlalchemy import URL
@@ -7,6 +9,9 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_prefix="APP_", extra="ignore", hide_input_in_errors=True
     )
+
+    refresh_state_dir: Path = Path("/app/refresh-state")
+    refresh_stale_after_hours: int = Field(default=36, ge=1, le=8760)
 
     db_host: str = Field(min_length=1)
     db_port: int = Field(default=5432, ge=1, le=65535)

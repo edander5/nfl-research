@@ -36,3 +36,8 @@ Visit http://127.0.0.1:5173. Full install/test/build commands, limitations and c
 - Historical *pregame* statistics must exclude games occurring after the selected matchup; do not pretend today's reconstructed stats are contemporary publication-time snapshots.
 - No bet tracking, prediction models, public accounts, or unsupported live features in MVP.
 - Agent works in scoped tasks with owner approval gates. No autonomous deployment.
+
+
+## Schedule data freshness
+
+The dashboard now includes manual refresh history via GET `/api/data-status/schedule`. See [contract, commands and verification](docs/schedule-freshness.md). No background updates are activated.

@@ -1,6 +1,6 @@
 # Vertical-Slice Implementation Roadmap
 
-**Status:** Owner reports foundation, ingestion, API and React dashboard completed/merged. Task 007 implements a guarded manual development refresh runner; real-source and PostgreSQL acceptance remains pending outside this restricted environment. No unattended scheduler, source-finality enrichment, later research feature or deployment is authorized.
+**Status:** Owner reports foundation, ingestion, API, dashboard, guarded manual refresh and current-week defaults implemented/merged. Current approved work is [Task 009 freshness indicator](agent-task-009.md), with runtime acceptance pending. No unattended scheduling or deployment is authorized.
 
 ## Preflight — Research gate (first agent task)
 
@@ -10,7 +10,7 @@
 
 ## Milestone 1 — Complete weekly NFL schedule (first functional vertical slice)
 
-Current approved subset: [Task 007 guarded refresh](agent-task-007.md). See [commands and actual checks](schedule-refresh.md). This task adds a controlled manual update workflow, not a cron job or blanket approval for Milestone 6 operations. The previous dashboard acceptance is owner-reported; original API/schema/source safeguards remain in force.
+Current approved subset: [Task 009](agent-task-009.md), read-only refresh metadata and dashboard indicator. See [contract, limitations and verification](schedule-freshness.md). The owner reports the latest guarded refresh updated 29 records including 14 newly reported scores; those are user-reported prior-task results.
 
 **Outcome:** The user runs the local environment, opens the app, selects 2024/2025/2026 and season stage/week, sees real game information and opens a basic matchup overview.
 

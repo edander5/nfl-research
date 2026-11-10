@@ -12,3 +12,26 @@ export interface ScheduleFilters { season_type: SeasonType; week: number | null;
 export interface ScheduleResponse { data: Game[]; meta: Policy & { season: number; filters: ScheduleFilters; returned_count: number; season_coverage: StageCoverage[] } }
 export interface GameResponse { data: Game; meta: Policy }
 export interface ApiErrorResponse { error: { code: string; message: string; details: { location: (string | number)[]; type: string; message: string }[] } }
+
+export type RefreshOutcome = 'dry_run' | 'applied' | 'unchanged' | 'rejected' | 'review_required' | 'download_failed' | 'validation_failed' | 'failed' | 'not_applied';
+export type RefreshMetadataState = 'available' | 'missing' | 'incomplete' | 'invalid' | 'unreadable';
+export interface FreshnessResponse {
+  data: {
+    metadata_state: RefreshMetadataState;
+    latest_outcome: RefreshOutcome | null;
+    last_attempt_at: string | null;
+    last_successful_check_at: string | null;
+    last_successful_apply_at: string | null;
+    last_data_change_observed_at: string | null;
+    check_age_seconds: number | null;
+    is_stale: boolean | null;
+  };
+  meta: {
+    as_of: string;
+    manual: true;
+    scope: 'guarded_manual_refresh_runner';
+    stale_after_seconds: number;
+    apply_semantics: string;
+    timestamp_semantics: string;
+  };
+}

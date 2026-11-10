@@ -48,6 +48,8 @@
 
 | 59 | Owner approved Task 008 frontend usability only: home defaults to the current available NFL season/week/round from actual API kickoff dates in America/New_York; explicit URL choices are preserved. Implementation uses documented dated-group spans, upcoming/latest offseason selection and disclosed undated fallback rather than opener arithmetic. These are navigation assumptions for review, not changes to statistical eligibility or UNKNOWN/finality. No backend/schema/source/dependency/refresh changes or git publication. See [dashboard policy and tests](schedule-dashboard.md#task-008--current-week-home-default). |
 
+| 60 | Owner approved Task 009 on `feature/schedule-freshness`: expose a sanitized read-only projection of the existing runner checkpoint through GET `/api/data-status/schedule`, with the shared volume mounted read-only in API. Distinguish checks, successful applies (including unchanged reconciliation), and observed changes; timestamps do not establish source publication or game finality. Dashboard loads once with explicit manual reload, local-time timestamps and unavailable/stale/error states. Default check-age warning is 36 hours, an operational display policy rather than a data-completeness promise. No schema/dependency/refresh/scheduler changes or git publication. See [freshness guide](schedule-freshness.md). |
+
 ## Change control
 
 New architectural or scope decisions are **proposals** until explicitly approved. Record each change, date, rationale, downstream docs/tests to update, and author/reviewer. Do not silently substitute providers, accept paid tiers, change rank definitions or increase agent autonomy.
