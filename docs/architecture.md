@@ -109,3 +109,8 @@ The [dedicated scheduler container](scheduled-nfl-refresh.md) reuses the backend
 ## Task 016 — Game Preview
 
 The [game page](game-preview.md) composes existing schedule detail and one all-category league rankings request. Canonical UUIDs select the two displayed teams only after authoritative league ranking. TanStack Query isolates comparison failure/cache/filter state; React Router preserves return navigation. No per-team query, client ranking or new backend endpoint. Current accepted season comparisons explicitly do not claim completed-before-kickoff eligibility.
+
+
+## Task 017 — source-reference game markets
+
+An independent read-only `/api/games/{uuid}/markets` projection reuses current schedule identity/raw-record/artifact storage and existing API permissions. Exact Decimal comparisons are backend-only; frontend displays provisional results with unknown bookmaker/quote freshness. No provider calls, normalized odds storage, migration or ingestion/scheduler changes. [Feasibility, limitations and separately gated future snapshot design](game-betting-markets.md).

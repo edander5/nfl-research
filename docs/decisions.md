@@ -84,3 +84,8 @@ These must be settled in approved task scopes, based on evidence.
 ## Decision 69 — Task 016 Game Preview fallback
 
 Owner approved a matchup comparison using existing data/APIs, with current-season comparison or unavailable labels when historical pregame accuracy cannot be supported. Current accepted revisions and kickoff metadata do not prove completion before a selected kickoff; the existing rankings endpoint has no cutoff contract. Reuse that endpoint once for all four categories, restrict display by canonical team IDs, default to game season/stage and offer explicit supported stage overrides. Clearly label the result as a current accepted comparison within the matchup season, potentially including the matchup/later games. No pregame eligibility/ranking definition, backend, schema or permission changes. See [investigation and tests](game-preview.md).
+
+
+## Decision 70 — Task 017 supported reference slice
+
+Owner authorized source feasibility then the smallest supported market slice, with a stop before new providers/migrations/material ingestion changes. Official nflverse spread convention is home handicap = negative source spread; bookmaker and pregame quote timing are unsupported. Implement only an existing-source reference projection and exact hypothetical score comparisons, always provisional; tied moneylines are undetermined without market rules. Do not relabel revised source rows as closing quotes, infer FINAL, or change intentional season rankings. Current offers and immutable provider quote storage require separate approval. [Evidence and implementation](game-betting-markets.md).

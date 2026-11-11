@@ -126,3 +126,8 @@ The separate [nfldata repository](https://github.com/nflverse/nfldata) did not e
 6. Only with separate owner authorization, perform a bounded free-key odds test and verify markets/books/credit headers and account restrictions.
 
 No provider substitutions, implementations or new decisions are approved by this audit.
+
+
+## Task 017 source recheck — 2026-11-11
+
+[Game market investigation](game-betting-markets.md) verifies official nflverse spread signs and actual original-file market coverage, while retaining unknown quote timing/bookmaker and origin limitations. Those fields are source references, not verified opening/closing or current offers. The hyphenated The Odds API remains a documentation-only free current-odds candidate; authenticated coverage is untested and historical API access is paid. The unhyphenated theoddsapi.com currently advertises free NBA/MLB moneylines, superseding the earlier redirect/NFL pricing observation above for this investigation. Neither is integrated. New providers and ingestion/storage contracts require owner approval.

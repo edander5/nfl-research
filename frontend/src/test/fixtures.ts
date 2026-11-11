@@ -28,3 +28,10 @@ export const emptyRankings: import('../api/research').RankingsResponse = {
     population_semantics: 'Synthetic', ranking_semantics: 'Competition', completeness_semantics: 'Stored schedule only',
   },
 };
+
+export const noMarkets = (data = game()): import('../api/markets').MarketsResponse => ({
+  data: { game: data, references: [], unavailable_reason: 'source_record_unavailable' },
+  meta: { current_offers_available: false, verified_pregame_snapshot_available: false, settlement_verified: false,
+    semantics: 'Synthetic source-reference comparison only', timestamp_semantics: 'Not quote times',
+    tie_policy: 'Unknown tie rules', spread_definition: 'Home spread is negative source spread', price_semantics: 'Reported values' },
+});

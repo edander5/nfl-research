@@ -112,3 +112,8 @@ Current approved slice: [opt-in dedicated daily scheduler for existing dry-run p
 ## Task 016 — Game Preview vertical slice
 
 Approved: extend `/games/:gameId` with four current accepted season comparison categories, ranks/averages/sample coverage and stage controls, plus responsive states/tests. [Scope, eligibility investigation, validation and owner acceptance](game-preview.md). Historical pregame rankings remain unavailable; no backend/schema/permissions/imports or automatic actions.
+
+
+## Task 017 — game market references
+
+Supported vertical slice: [existing nflverse reference values and exact provisional comparisons](game-betting-markets.md) in Game Preview. Current sportsbook offers and verified historical pregame snapshots are not supported by current evidence; new provider/storage contracts are explicitly approval-gated. Existing rankings/ingestion/data/security are unchanged.

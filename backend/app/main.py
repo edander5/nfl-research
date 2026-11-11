@@ -6,6 +6,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from starlette.exceptions import HTTPException
 
 from app.api.errors import database_unavailable, http_error, invalid_request, missing_game, missing_team
+from app.api.markets import router as markets_router
 from app.api.team_rankings import router as team_rankings_router
 from app.api.team_stats import router as team_stats_router
 from app.api.schedule import router as schedule_router
@@ -43,4 +44,5 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(schedule_router)
     app.include_router(team_stats_router)
     app.include_router(team_rankings_router)
+    app.include_router(markets_router)
     return app

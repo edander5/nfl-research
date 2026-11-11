@@ -73,3 +73,8 @@ The [opt-in scheduler](docs/scheduled-nfl-refresh.md) prepares both existing ref
 ## Game Preview — Task 016
 
 The existing `/games/:gameId` page now includes a [four-category team comparison](docs/game-preview.md), using the game season/stage and existing league rankings API. Historical pregame eligibility is unavailable: current accepted season comparisons may include the matchup and later games and are explicitly labeled. No backend or data contracts changed.
+
+
+## Game Betting Markets — Task 017
+
+The Game Preview includes [unverified nflverse source-reference lines and hypothetical/provisional comparisons](docs/game-betting-markets.md). No current sportsbook offers or verified historical pregame/closing quotes are available. New-provider/storage contracts remain approval-gated.

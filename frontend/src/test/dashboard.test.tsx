@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router';
 import { describe, expect, it, vi } from 'vitest';
 import { App } from '../App';
 import { api, kickoff, safeUrl } from '../api/client';
-import { detail, emptyRankings, freshness, game, id, schedule, seasons } from './fixtures';
+import { detail, emptyRankings, noMarkets, freshness, game, id, schedule, seasons } from './fixtures';
 function response(data: unknown, status=200) { return new Response(JSON.stringify(data),{status,headers:{'content-type':'application/json'}}); }
 function defaultResponse(url: string) {
   if (url === '/api/seasons') return response(seasons);
@@ -19,7 +19,7 @@ function defaultResponse(url: string) {
   return response(data);
 }
 function mock(handler: (url: string) => Response | Promise<Response> = defaultResponse) {
-  const fetcher = vi.fn((url: string) => String(url) === '/api/data-status/schedule' ? response(freshness) : String(url).startsWith('/api/team-rankings?') ? response(emptyRankings) : handler(String(url)));
+  const fetcher = vi.fn((url: string) => String(url).endsWith('/markets') ? response(noMarkets()) : String(url) === '/api/data-status/schedule' ? response(freshness) : String(url).startsWith('/api/team-rankings?') ? response(emptyRankings) : handler(String(url)));
   vi.stubGlobal('fetch',fetcher);
   return fetcher;
 }

@@ -172,3 +172,8 @@ The [scheduler runbook](scheduled-nfl-refresh.md) provides local/full isolated t
 ## Task 016 — Game Preview acceptance
 
 The [Game Preview guide](game-preview.md) includes frontend checks, exact WSL Docker commands and manual responsive/live-API acceptance. No migration, permission grant, ingestion or scheduler enablement is needed. Historical pregame rankings remain unavailable.
+
+
+## Task 017 — markets acceptance
+
+[Market reference findings, inventory, WSL tests and browser acceptance](game-betting-markets.md). No migration, permission change, ingestion or provider key is required for the reference slice. Current offers and verified historical quote capture need separate approval.

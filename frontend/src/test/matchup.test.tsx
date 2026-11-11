@@ -5,7 +5,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { App } from '../App';
 import type { Category, RankedTeam, RankingsResponse } from '../api/research';
 import { categories } from '../rankings/state';
-import { detail, freshness, game, id, schedule, seasons } from './fixtures';
+import { detail, noMarkets, freshness, game, id, schedule, seasons } from './fixtures';
 
 // Synthetic response only. These ranks are provided by the mock API, not calculated by the UI.
 function rankings(): RankingsResponse {
@@ -30,6 +30,7 @@ function json(body: unknown, status = 200) { return new Response(JSON.stringify(
 function mock(data = game(), handler: (url: string) => Response | Promise<Response> = () => json(rankings())) {
   const fetcher = vi.fn((path: string) => {
     const url = String(path);
+    if (url.endsWith('/markets')) return json(noMarkets(data));
     if (url.startsWith('/api/team-rankings')) return handler(url);
     if (url === `/api/games/${id}`) return json(detail(data));
     if (url === '/api/seasons') return json(seasons);
