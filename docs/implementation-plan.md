@@ -97,3 +97,8 @@ Current approved Task 012 implements read-only season category rankings and meta
 ## Task 013 — visible rankings research
 
 Current approved frontend slice adds `/rankings` and lightweight `/teams/{uuid}/research` using the existing verified APIs. Owner reports Task 012 merged. [Dashboard contract, changed files and actual validation](team-rankings-dashboard.md) define this review gate. No further backend setup, permissions, imports, historical pregame eligibility or frontend matchup expansion is authorized.
+
+
+## Task 014 — guarded statistics refresh
+
+Current approved scope: [prepare-only acquisition/validation/comparison and private freshness records](team-stats-refresh.md), using existing guards. Run isolated/runtime acceptance before considering separately authorized manual publication or future unattended-new-pair policy. No automatic scheduling/acceptance, frontend, schema/permission changes or real statistics import is authorized.

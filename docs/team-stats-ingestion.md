@@ -199,3 +199,8 @@ Task 010 originally left Compose unchanged. Subsequent security hardening separa
 Runtime migration/constraint/transaction behavior and ORM/schema parity must pass against isolated PostgreSQL in normal WSL. The accepted-state check cannot prove upstream current-season completeness for games with neither stats nor reliable completion evidence; it enforces the admitted snapshot, historical schedule contract, current reported-score coverage and no loss of previously accepted games. Partial-season coverage must stay labeled. Declared provenance, sampled gamebook calibration, original schedule checksum uncertainty and unavailable completion-before-cutoff evidence remain unchanged. New schedule identity corrections can invalidate stats membership; the guarded command stops for review rather than silently remapping accepted history.
 
 Proposed next task **for approval**: isolated PostgreSQL runtime acceptance of this migration/ingester, followed by owner review of a development dry-run. Only after that evidence and separate explicit permission should the first real 705-pair import occur. No rankings or new API/frontend scope is implied.
+
+
+## Task 014 — refresh preparation handoff
+
+The [new manual refresh preparer](team-stats-refresh.md) downloads official full snapshots and reuses this admission/import-plan contract. It cannot apply. A blocker-free report supplies exact archived audit/source/schedule/identity/reference paths; after separate approval use this original ingester, first dry-running and reviewing the current baseline. All original approvals, archive checks, immutable revisions, generated selection history and rollback controls remain unchanged.

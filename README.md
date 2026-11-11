@@ -60,3 +60,7 @@ Owner reports Task 011 merged and verified with 374 passing WSL tests and live r
 ## Team rankings dashboard — Task 013
 
 Owner reports the rankings engine/API merged and verified. Open `/rankings` for the [frontend rankings dashboard and lightweight team game logs](docs/team-rankings-dashboard.md), with URL filters, authoritative ranks, responsive tables and explicit coverage. This task changes no backend/data/permissions. The guide records actual frontend tests/builds and remaining live/browser checks.
+
+## Team statistics refresh — Task 014
+
+The [prepare-only refresh workflow](docs/team-stats-refresh.md) checks all three official weekly team-statistics snapshots, reuses existing admission/canonical safeguards and writes private review/freshness evidence. It uses the existing refresh container and snapshots volume. Publication remains the original guarded importer after separate review/approval; no scheduling, real imports, permissions or schema changes are included.

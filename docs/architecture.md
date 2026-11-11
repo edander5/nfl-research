@@ -94,3 +94,8 @@ Task 012 reuses accepted reciprocal team-statistic projections for a single-stat
 ## Task 013 — rankings frontend
 
 The [rankings dashboard](team-rankings-dashboard.md) uses existing React Router and TanStack Query with typed Task 011/012 clients, semantic sortable tables and shared UI conventions. URL filters preserve season/stage/category/display order; sorting never recomputes API ranks. A lightweight team route shows REG/POST accepted game logs separately in explicit combined mode. No new dependencies, backend, source, infrastructure or completion eligibility.
+
+
+## Task 014 — team-statistics refresh preparation
+
+The [manual preparation runner](team-stats-refresh.md) composes existing official acquisition, pure offline validators, unchanged candidate admission and live importer comparison. It uses the existing restricted refresh container and snapshots volume, with a separate filesystem namespace and shared atomic JSON/locking primitives. Private reports retain review plans; operational metadata distinguishes source checks, valid candidates and existing database imports. No publication path, API/frontend, schema, permissions, source/status or ranking definition changes.
