@@ -1,5 +1,7 @@
 # Team-statistics security hardening and development transition
 
+**Task 011 update:** owner reports migration/role transition and the 705-pair import completed. The [read-only statistics API](team-stats-api.md) adds explicitly approved column-level API reads; earlier statements denying all API statistics access describe the Task 010 policy. Batch evidence/raw records/history and all API writes remain denied. No migration or import is repeated.
+
 Owner-approved scope on `feature/team-stats-ingestion`, following the independent NO-GO review of Task 010. This document supersedes the original ingestion guide's privilege, approval-output and migration instructions. No development migration, role transition, statistics import, correction, rollback or deployment was executed by the agent. No credentials were changed in the owner's `.env`.
 
 ## Changes and trust boundaries

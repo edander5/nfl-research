@@ -82,3 +82,8 @@ Current subset: [Task 010 additive storage and guarded ingestion](team-stats-ing
 - Data behavior and error handling match product/statistical invariants.
 - Applicable automated tests executed with results reported; no fabricated passing claims.
 - Docs and decisions updated, with known risks and user review checkpoint.
+
+
+## Task 011
+
+Current approved Task 011: read-only accepted statistics API and narrowly approved column SELECT grants. Owner reports Task 010 migrated/imported successfully (705 pairs/1,410 rows, 343 WSL tests). No rankings/frontend or new imports authorized. See [Task 011 acceptance and WSL checks](team-stats-api.md).

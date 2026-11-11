@@ -66,3 +66,8 @@ Decision 61 selects **NET team passing yards**, including sacks, for offense and
 ## Team-statistics security hardening
 
 Security hardening adds a required unique `(game_id, generation)` to selection events. Events are emitted by the accepted-pointer AFTER trigger, not supplied by the runtime service. The pointer guard checks the proven chain tip and earlier same-game target acceptance; Python verifies contiguous history independently. Historical pairs/rows/batches/events remain append-only. See [security model and pending runtime acceptance](team-stats-security-hardening.md).
+
+
+## Task 011
+
+Task 011 introduces response schemas only; storage remains at 0002. Current accepted pair pointers select revision rows for both teams; API aggregates derive opponent allowed yards with per-metric non-null denominators. Reported schedule points and stored-evidence verified-final point aggregates are separate. See [API semantics](team-stats-api.md).

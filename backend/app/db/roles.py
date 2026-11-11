@@ -13,6 +13,24 @@ STATS = ('team_stats_batches', 'team_stats_pairs', 'team_game_stat_revisions', '
 TABLES = SCHEDULE + STATS + ('alembic_version',)
 
 
+# Public projections only: never grant table-wide SELECT on these tables.
+API_STATS_COLUMNS = {
+    'team_stats_accepted': ('game_id', 'pair_id', 'generation'),
+    'team_stats_pairs': ('id', 'game_id', 'source_artifact_id', 'definition_version', 'recorded_at'),
+    'team_game_stat_revisions': ('pair_id', 'game_id', 'team_id', 'opponent_team_id', 'side',
+        'gross_passing_yards', 'original_sack_yards', 'net_passing_yards', 'rushing_yards',
+        'source_record_sha256', 'source_line'),
+}
+
+
+def grant_api_stats(connection):
+    """Idempotent explicit grants; no ownership, password or ingestion ACL changes."""
+    if connection.scalar(text('SELECT current_database()')) not in ('nfl_research_dev','nfl_research_test'):
+        raise ValueError('database_guard')
+    for table, columns in API_STATS_COLUMNS.items():
+        connection.exec_driver_sql(f"GRANT SELECT ({', '.join(columns)}) ON public.{table} TO nfl_api")
+
+
 def scram_verifier(password):
     # ASCII secrets avoid Unicode SASLprep ambiguity; plaintext never appears in SQL.
     if (not isinstance(password, str) or len(password) < 24 or password.startswith('REPLACE_')
@@ -86,6 +104,7 @@ def provision(connection, api_password, ingestion_password):
         for table in STATS[:-1]:
             connection.exec_driver_sql(f'GRANT SELECT, INSERT ON public.{table} TO nfl_ingest')
         connection.exec_driver_sql('GRANT UPDATE (pair_id, batch_id, generation) ON public.team_stats_accepted TO nfl_ingest')
+        grant_api_stats(connection)
     # Owner-created future objects must not accidentally become public/executable.
     connection.exec_driver_sql('ALTER DEFAULT PRIVILEGES FOR ROLE nfl_owner IN SCHEMA public REVOKE ALL ON TABLES FROM PUBLIC')
     connection.exec_driver_sql('ALTER DEFAULT PRIVILEGES FOR ROLE nfl_owner IN SCHEMA public REVOKE EXECUTE ON FUNCTIONS FROM PUBLIC')

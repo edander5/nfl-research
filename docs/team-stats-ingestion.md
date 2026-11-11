@@ -1,5 +1,7 @@
 # PostgreSQL team statistics — storage and guarded ingestion
 
+**Task 011 update:** owner reports migration/role transition and the 705-pair import completed. The [read-only statistics API](team-stats-api.md) adds explicitly approved column-level API reads; earlier statements denying all API statistics access describe the Task 010 policy. Batch evidence/raw records/history and all API writes remain denied. No migration or import is repeated.
+
 Owner-approved implementation on `feature/team-stats-ingestion`. The schema/workflow proposal was explained before implementation. This is an additive development-only step following the [offline contract](team-stats-validation.md), [gamebook review](team-stats-gamebook-review.md), [architecture](architecture.md), [data model](data-model.md) and Decision 61's approved NET definition. No unresolved statistical definition was substituted.
 
 **Security hardening:** [role transition, adversarial tests and migration NO-GO gate](team-stats-security-hardening.md) supersede earlier privilege/approval instructions.

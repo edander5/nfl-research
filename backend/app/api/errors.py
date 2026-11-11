@@ -24,8 +24,12 @@ async def missing_game(request: Request, exc: GameNotFound):
     return error(404, 'GAME_NOT_FOUND', 'Game not found')
 
 
+async def missing_team(request: Request, exc):
+    return error(404, 'TEAM_NOT_FOUND', 'Team not found')
+
 async def database_unavailable(request: Request, exc: SQLAlchemyError):
-    return error(503, 'DATABASE_UNAVAILABLE', 'Schedule data is temporarily unavailable')
+    message = ('Team statistics are temporarily unavailable' if '/teams/' in request.url.path or request.url.path.endswith('/team-stats') else 'Schedule data is temporarily unavailable')
+    return error(503, 'DATABASE_UNAVAILABLE', message)
 
 
 async def http_error(request: Request, exc):

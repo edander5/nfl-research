@@ -79,3 +79,8 @@ The [statistics storage/ingestion guide](team-stats-ingestion.md) records the ad
 ## Team-statistics security hardening
 
 Native PostgreSQL roles now separate NOLOGIN schema owner, read-only schedule API and restricted ingestion. Existing bootstrap credentials are confined to an explicit admin Compose override, not routine connections. Acceptance events are trigger-generated and apply binds complete candidate evidence plus a locked baseline. See [security hardening and owner transition](team-stats-security-hardening.md); no new infrastructure or automatic provisioning at API startup.
+
+
+## Task 011
+
+Task 011 adds read-only team logs, per-game paired stats and season aggregates using explicit column projections through accepted pair pointers. Opponent joins derive allowed yards; SQL performs paging/count and per-metric aggregation. The approved nfl_api column grants omit batch evidence/raw records/history and all writes. See [API and grant procedure](team-stats-api.md). No schema, ingestion, frontend or ranking implementation.

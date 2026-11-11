@@ -48,3 +48,7 @@ The dashboard now includes manual refresh history via GET `/api/data-status/sche
 Current approved task: [Task 010](docs/agent-task-010.md), PostgreSQL storage and guarded manual statistics ingestion after the 705-pair offline audit. [Schema, exact WSL commands, tests and review gates](docs/team-stats-ingestion.md). Implementation is written; no development migration or real statistics import has been executed. Existing schedule APIs/dashboard/refresh behavior are unchanged.
 
 Current Task 010 security review follow-up: [hardening implementation, isolated restricted-role tests, explicit existing-volume transition and NO-GO gate](docs/team-stats-security-hardening.md). Normal runtime credentials are now separate from bootstrap administration; do not use the API to run migrations. No development role provisioning/migration/import has been executed.
+
+## Task 011 — accepted team statistics API
+
+Owner reports Task 010 merged, 705 accepted pairs/1,410 rows imported, migration 0002 and restricted roles validated with 343 WSL tests. [Task 011 API, approved column grants, exact owner commands and test results](docs/team-stats-api.md) supersedes the earlier pending-ingestion status above. No real ingestion or development grants are executed by the agent in this task.
