@@ -92,3 +92,8 @@ Current approved Task 011: read-only accepted statistics API and narrowly approv
 ## Task 012
 
 Current approved Task 012 implements read-only season category rankings and metadata with existing grants. Owner reports Task 011 complete/merged (374 WSL tests). Historical pregame rankings, frontend and data/permission/schema changes remain excluded. [Contract, acceptance commands and validation](team-rankings-api.md).
+
+
+## Task 013 — visible rankings research
+
+Current approved frontend slice adds `/rankings` and lightweight `/teams/{uuid}/research` using the existing verified APIs. Owner reports Task 012 merged. [Dashboard contract, changed files and actual validation](team-rankings-dashboard.md) define this review gate. No further backend setup, permissions, imports, historical pregame eligibility or frontend matchup expansion is authorized.

@@ -56,3 +56,7 @@ Owner reports Task 010 merged, 705 accepted pairs/1,410 rows imported, migration
 ## Task 012 — reconstructed season rankings
 
 Owner reports Task 011 merged and verified with 374 passing WSL tests and live read-only endpoints. Current work is the [read-only rankings engine/API](docs/team-rankings-api.md), using existing accepted statistics and grants. No frontend, historical pregame eligibility, schema/permission changes or new ingestion is included.
+
+## Team rankings dashboard — Task 013
+
+Owner reports the rankings engine/API merged and verified. Open `/rankings` for the [frontend rankings dashboard and lightweight team game logs](docs/team-rankings-dashboard.md), with URL filters, authoritative ranks, responsive tables and explicit coverage. This task changes no backend/data/permissions. The guide records actual frontend tests/builds and remaining live/browser checks.

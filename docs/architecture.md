@@ -89,3 +89,8 @@ Task 011 adds read-only team logs, per-game paired stats and season aggregates u
 ## Task 012
 
 Task 012 reuses accepted reciprocal team-statistic projections for a single-statement season league population, schedule coverage and metric aggregation. A small SQL-aggregated team result is competition-ranked with exact Python Fraction comparisons, then filtered by optional team/category. No per-team queries, new permissions/schema or completion inference. See [rankings contract and test gate](team-rankings-api.md).
+
+
+## Task 013 — rankings frontend
+
+The [rankings dashboard](team-rankings-dashboard.md) uses existing React Router and TanStack Query with typed Task 011/012 clients, semantic sortable tables and shared UI conventions. URL filters preserve season/stage/category/display order; sorting never recomputes API ranks. A lightweight team route shows REG/POST accepted game logs separately in explicit combined mode. No new dependencies, backend, source, infrastructure or completion eligibility.
