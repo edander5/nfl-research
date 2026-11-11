@@ -194,3 +194,8 @@ The existing untracked `docs/schedule-auto-update-feasibility.md` from the resea
 ## Read-only dashboard visibility
 
 [Task 009 freshness guide](schedule-freshness.md) documents the sanitized read-only view of `status.json`. The runner and its writer semantics are unchanged. In particular, `last_successful_ingestion_at` includes unchanged applies; it is exposed as successful apply, separately from observed data changes. Only checkpointed attempts are visible, not in-flight/interrupted journals.
+
+
+## Task 015 — separate prepare-only scheduler wrapper
+
+The [opt-in scheduler](scheduled-nfl-refresh.md) can invoke this unchanged dry-run workflow automatically after explicit owner enablement. It retains the default shared locks, sources, validation and private reports, and never invokes apply, approval, import or recovery actions. Original manual procedures remain unchanged. Check the new runbook for timing, status and known concurrency gaps; the service is disabled by default.

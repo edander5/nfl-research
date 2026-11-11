@@ -95,6 +95,42 @@ services:
       db:
         condition: service_healthy
 
+  scheduler:
+    build: ./backend
+    profiles: [scheduler]
+    init: true
+    restart: unless-stopped
+    stop_grace_period: 30s
+    environment:
+      APP_DB_HOST: db
+      APP_DB_PORT: '5432'
+      APP_DB_NAME: ${POSTGRES_DB:?Set POSTGRES_DB in .env}
+      APP_DB_USER: nfl_ingest
+      APP_DB_PASSWORD: ${INGEST_DB_PASSWORD:?Set INGEST_DB_PASSWORD in .env}
+      APP_DB_PURPOSE: runtime
+      SCHEDULER_TIMES: ${SCHEDULER_TIMES:-06:00,18:00}
+      SCHEDULER_TIMEZONE: ${SCHEDULER_TIMEZONE:-America/Phoenix}
+      SCHEDULER_STATS_SCHEDULE: ${SCHEDULER_STATS_SCHEDULE:-/data/raw/games.csv}
+      SCHEDULER_STATS_IDENTITIES: ${SCHEDULER_STATS_IDENTITIES:-/data/raw/team-stats-identities.json}
+      SCHEDULER_STATS_REFERENCES: ${SCHEDULER_STATS_REFERENCES:-/review/docs/team-stats-gamebook-references.json}
+      SCHEDULER_JOB_TIMEOUT_SECONDS: ${SCHEDULER_JOB_TIMEOUT_SECONDS:-1200}
+    command: [python, -m, ingestion.scheduler]
+    volumes:
+      - ./data/raw:/data/raw:ro
+      - ./docs:/review/docs:ro
+      - schedule_snapshots:/app/snapshots
+      - schedule_refresh:/app/refresh-state
+    networks: [default, database]
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python, -m, ingestion.scheduler, --health]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+
   db_test:
     image: postgres:17-bookworm
     command: [postgres, -c, timezone=UTC]

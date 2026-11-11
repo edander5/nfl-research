@@ -99,3 +99,8 @@ The [rankings dashboard](team-rankings-dashboard.md) uses existing React Router 
 ## Task 014 — team-statistics refresh preparation
 
 The [manual preparation runner](team-stats-refresh.md) composes existing official acquisition, pure offline validators, unchanged candidate admission and live importer comparison. It uses the existing restricted refresh container and snapshots volume, with a separate filesystem namespace and shared atomic JSON/locking primitives. Private reports retain review plans; operational metadata distinguishes source checks, valid candidates and existing database imports. No publication path, API/frontend, schema, permissions, source/status or ranking definition changes.
+
+
+## Task 015 — opt-in prepare-only scheduler
+
+The [dedicated scheduler container](scheduled-nfl-refresh.md) reuses the backend image, runtime ingestion role, existing networks/volumes and original dry-run commands. Standard-library daily ZoneInfo scheduling plus persistent claims avoids cron/queue dependencies, startup replay and duplicate work. Two independent bounded workers preserve original per-pipeline locks and database guards. No automatic acceptance or notifications; operator status reads sanitized original checkpoint observations. Default services still exclude the scheduler.

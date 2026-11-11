@@ -64,3 +64,7 @@ Owner reports the rankings engine/API merged and verified. Open `/rankings` for 
 ## Team statistics refresh — Task 014
 
 The [prepare-only refresh workflow](docs/team-stats-refresh.md) checks all three official weekly team-statistics snapshots, reuses existing admission/canonical safeguards and writes private review/freshness evidence. It uses the existing refresh container and snapshots volume. Publication remains the original guarded importer after separate review/approval; no scheduling, real imports, permissions or schema changes are included.
+
+## Scheduled prepare-only refresh — Task 015
+
+The [opt-in scheduler](docs/scheduled-nfl-refresh.md) prepares both existing refresh workflows at configurable daily local times (default 06:00/18:00 America/Phoenix). It uses existing restricted credentials and volumes, persists private reports and never applies changes or provides approval tokens. The `scheduler` profile remains disabled until explicitly enabled by the owner after runtime review.

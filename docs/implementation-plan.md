@@ -102,3 +102,8 @@ Current approved frontend slice adds `/rankings` and lightweight `/teams/{uuid}/
 ## Task 014 — guarded statistics refresh
 
 Current approved scope: [prepare-only acquisition/validation/comparison and private freshness records](team-stats-refresh.md), using existing guards. Run isolated/runtime acceptance before considering separately authorized manual publication or future unattended-new-pair policy. No automatic scheduling/acceptance, frontend, schema/permission changes or real statistics import is authorized.
+
+
+## Task 015 — scheduled preparation
+
+Current approved slice: [opt-in dedicated daily scheduler for existing dry-run pipelines](scheduled-nfl-refresh.md), configurable 06:00/18:00 America/Phoenix, persisted private outcomes and no acceptance operations. Owner reports manual real-data pipelines working. Isolated/runtime/clock validation and owner review precede enablement. No source/statistical contract, permission/schema/data/frontend change or automatic publication is authorized.
