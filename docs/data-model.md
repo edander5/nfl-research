@@ -1,6 +1,6 @@
 # Data Model — Schedule Foundation and Future Conceptual Records
 
-**Current schedule implementation:** Task 002 adds `teams`, `team_aliases`, `source_artifacts` and `games` in [the initial migration](../backend/alembic/versions/0001_schedule.py) and [SQLAlchemy models](../backend/app/models/schedule.py). See [development guide](development.md) for fields, constraints, identity/provenance design and unverified runtime checks. Other entities below remain conceptual; no migrations for player/stat/odds/ingestion-history features exist.
+**Current schedule implementation:** Task 002 adds `teams`, `team_aliases`, `source_artifacts` and `games` in [the initial migration](../backend/alembic/versions/0001_schedule.py) and [SQLAlchemy models](../backend/app/models/schedule.py). See [development guide](development.md) for fields, constraints, identity/provenance design and unverified runtime checks. Task 010 adds the five [team-statistics tables](team-stats-ingestion.md) in migration `0002_team_stats`; runtime acceptance is pending. Player/odds and broader entities below remain conceptual.
 
 ## Core entities
 
@@ -22,7 +22,7 @@
 | odds_request_usage | provider, request key, request cost, used/remaining credits, request time | Hard cap, deduplication, cooldown |
 | odds_observations (conditional) | game, player, market, sportsbook, value, observed time, last checked time | Only if storage is permitted by provider terms; never imply live |
 
-**Note:** The table above remains conceptual. Only the schedule subset listed at the top has a written physical migration under the owner's Task 002 authorization. No migration was executed here; PostgreSQL runtime validation is still required.
+**Note:** The table above remains conceptual. The schedule subset has migration `0001_schedule`; the Task 010 statistics pair/revision design below has additive migration `0002_team_stats`. Other conceptual entities have no physical migration. The new migration was not executed here; PostgreSQL runtime validation is still required.
 
 **Approved schedule limitation (Decision 53):** retain explicit UNKNOWN status when source finality is unsupported. Source-reported scores are not confirmed-final scores. Do not invent in-progress/postponed states or infer finality solely from kickoff. Local validation also found eight colliding `old_game_id` values in 2026; preserve them as nonunique source attributes or quarantine ambiguous alias mappings. Provider `game_id` and canonical identities remain distinct; see [validation report](schedule-validation-report.md). These are contract constraints, not migrations.
 
@@ -55,4 +55,14 @@ These are **validation gates**, not permission to invent defaults.
 
 ## Approved team passing definition — offline validation follow-up
 
-Decision 61 selects **NET team passing yards**, including sacks, for offense and opponent-derived defense. Preserve gross passing and original signed sack values. Validate each artifact convention against reviewed reference totals before adding a signed negative adjustment or subtracting a proven positive loss; never use absolute values to repair ambiguous data. See [offline validator](team-stats-validation.md). Proposed statistics tables remain unimplemented; this approval authorizes no schema migration, import or historical eligibility inference.
+Decision 61 selects **NET team passing yards**, including sacks, for offense and opponent-derived defense. Preserve gross passing and original signed sack values. Validate each artifact convention against reviewed reference totals before adding a signed negative adjustment or subtracting a proven positive loss; never use absolute values to repair ambiguous data. See [offline validator](team-stats-validation.md). Decision 61 originally authorized offline validation only. Decision 62 and Task 010 below separately authorize the additive storage implementation; no historical eligibility inference is authorized.
+
+
+## Task 010 physical team-statistics storage
+
+[Schema and rationale](team-stats-ingestion.md) document `team_stats_batches`, `team_stats_pairs`, `team_game_stat_revisions`, `team_stats_accepted` and `team_stats_selection_events`. The game-pair pointer accepts two reciprocal, complete team revisions together. Gross, original signed sacks, NET and rushing remain versioned; allowed yards are derived from the accepted opponent. Shared artifact schema, schedule scores/statuses and historical completion eligibility are unchanged. The initial conceptual table above is superseded by this physical pair/revision design for statistics only. No development migration or real import was executed.
+
+
+## Team-statistics security hardening
+
+Security hardening adds a required unique `(game_id, generation)` to selection events. Events are emitted by the accepted-pointer AFTER trigger, not supplied by the runtime service. The pointer guard checks the proven chain tip and earlier same-game target acceptance; Python verifies contiguous history independently. Historical pairs/rows/batches/events remain append-only. See [security model and pending runtime acceptance](team-stats-security-hardening.md).

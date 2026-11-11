@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Literal
 
 from pydantic import Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -12,6 +13,8 @@ class Settings(BaseSettings):
 
     refresh_state_dir: Path = Path("/app/refresh-state")
     refresh_stale_after_hours: int = Field(default=36, ge=1, le=8760)
+
+    db_purpose: Literal["runtime", "migration"] = "runtime"
 
     db_host: str = Field(min_length=1)
     db_port: int = Field(default=5432, ge=1, le=65535)

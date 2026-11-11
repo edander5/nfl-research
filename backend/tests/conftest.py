@@ -6,9 +6,12 @@ from types import SimpleNamespace
 from uuid import uuid4
 
 import pytest
+from pydantic import SecretStr
 from alembic import command
 from alembic.config import Config
+from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
+from app.db.roles import provision
 
 from app.core.config import Settings
 from app.db.session import make_engine
@@ -22,13 +25,17 @@ def pg_engine():
     settings = Settings()
     if settings.db_name != "nfl_research_test":
         pytest.fail("Refusing database tests outside nfl_research_test")
-    engine = make_engine(settings)
+    engine = create_engine(settings.database_url, hide_parameters=True)
     cfg = Config(str(Path(__file__).resolve().parents[1] / "alembic.ini"))
     try:
         # Additive upgrade only; no drop/create/reset or CSV load.
         with engine.begin() as connection:
+            provision(connection, 'SYNTHETIC_API_PASSWORD_123456789', 'SYNTHETIC_INGEST_PASSWORD_123456789')
+            connection.exec_driver_sql('SET LOCAL ROLE nfl_owner')
             cfg.attributes["connection"] = connection
             command.upgrade(cfg, "head")
+            connection.exec_driver_sql('RESET ROLE')
+            provision(connection, 'SYNTHETIC_API_PASSWORD_123456789', 'SYNTHETIC_INGEST_PASSWORD_123456789')
         yield engine
     finally:
         engine.dispose()
@@ -91,3 +98,23 @@ def api_game():
         status='UNKNOWN', final_evidence_url=None, final_verified_at=None,
         neutral_site=None, overtime=None, updated_at=now, source_artifact=artifact,
         source_record_sha256='c'*64, source_line=2)
+
+
+@pytest.fixture
+def restricted_db_session(pg_engine):
+    """Actual login as restricted ingest user; all synthetic DML rolls back."""
+    base = Settings()
+    settings = base.model_copy(update=dict(db_user='nfl_ingest',
+        db_password=SecretStr('SYNTHETIC_INGEST_PASSWORD_123456789'), db_purpose='runtime'))
+    engine = make_engine(settings)
+    try:
+        with engine.connect() as connection:
+            transaction = connection.begin()
+            with Session(bind=connection, join_transaction_mode='create_savepoint') as session:
+                try:
+                    yield session
+                finally:
+                    session.close()
+                    transaction.rollback()
+    finally:
+        engine.dispose()

@@ -1,0 +1,9 @@
+# Owner-invoked override only. Never use this override to run the API or routine ingestion.
+services:
+  ingestion:
+    environment:
+      APP_DB_USER: ${POSTGRES_USER:?Set existing bootstrap admin}
+      APP_DB_PASSWORD: ${POSTGRES_PASSWORD:?Set existing bootstrap admin password}
+      APP_DB_PURPOSE: migration
+      ROLE_API_PASSWORD: ${API_DB_PASSWORD:?Set API_DB_PASSWORD}
+      ROLE_INGEST_PASSWORD: ${INGEST_DB_PASSWORD:?Set INGEST_DB_PASSWORD}

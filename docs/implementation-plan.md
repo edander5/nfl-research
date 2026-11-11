@@ -1,6 +1,6 @@
 # Vertical-Slice Implementation Roadmap
 
-**Status:** Owner reports schedule ingestion/API/dashboard/manual refresh/current-week/freshness implemented and validated. Current approved work is the [offline team-statistics validator and audit](team-stats-validation.md). No statistics database ingestion, ranking publication, unattended scheduling or deployment is authorized.
+**Status:** Owner reports Milestone 1 and offline team-statistics/reference validation complete. Current approved work is [Task 010 PostgreSQL statistics storage and guarded ingestion](agent-task-010.md). Implementation is written; isolated PostgreSQL runtime acceptance and separately approved development migration/import remain pending. No rankings, unattended scheduling or deployment is authorized.
 
 ## Preflight — Research gate (first agent task)
 
@@ -10,7 +10,7 @@
 
 ## Milestone 1 — Complete weekly NFL schedule (first functional vertical slice)
 
-Current approved subset: [Task 009](agent-task-009.md), read-only refresh metadata and dashboard indicator. See [contract, limitations and verification](schedule-freshness.md). The owner reports the latest guarded refresh updated 29 records including 14 newly reported scores; those are user-reported prior-task results.
+Last completed subset (owner-reported): [Task 009](agent-task-009.md), read-only refresh metadata and dashboard indicator. See [contract, limitations and verification](schedule-freshness.md). The owner reports the latest guarded refresh updated 29 records including 14 newly reported scores; those are user-reported prior-task results.
 
 **Outcome:** The user runs the local environment, opens the app, selects 2024/2025/2026 and season stage/week, sees real game information and opens a basic matchup overview.
 
@@ -30,7 +30,7 @@ Decision 53 permits explicit UNKNOWN status and clearly labeled reported scores 
 
 ## Milestone 2 — Team statistics, rankings, matchup context
 
-Current subset: offline source/identity audit only; NET team passing is approved with artifact-specific sack-sign verification. See [results and remaining gates](team-stats-validation.md). Schema and rankings remain gated.
+Current subset: [Task 010 additive storage and guarded ingestion](team-stats-ingestion.md), based on the successful 705-pair real audit and independently reviewed negative sack adjustment. Schema is implemented but not applied in development; ingestion and rankings publication remain separate approval/runtime gates.
 
 - Verify source semantics for passing/rushing yards and *yards allowed* at the game level.
 - Add team game stats, canonical relationships and pregame-cutoff calculation endpoints.

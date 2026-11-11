@@ -43,13 +43,14 @@ Replace the password placeholder in `.env` locally before continuing. Keep `.env
 docker compose config --quiet
 docker compose build api
 docker compose up -d db
-docker compose run --rm api alembic upgrade head
+# Migrations now require the explicit owner workflow; see team-stats-security-hardening.md.
+# Never migrate using the restricted API credentials.
 docker compose up -d api
 curl --fail http://127.0.0.1:8000/api/health
 curl --fail http://127.0.0.1:8000/api/ready
 ```
 
-`/api/health` returns `{"status":"ok"}` without a database query. `/api/ready` checks connectivity and migration revision `0001_schedule`; it returns 503 with a generic response if unavailable/unmigrated. API startup never creates tables or runs migrations. The first migration is additive and contains no seed records. Run it only on this approved development database; never point these commands at production or an unrelated database.
+`/api/health` returns `{"status":"ok"}` without a database query. `/api/ready` checks connectivity and known migration revisions `0001_schedule`/`0002_team_stats`; it returns 503 with a generic response if unavailable/unmigrated. API startup never creates tables or runs migrations. The first migration is additive and contains no seed records. Run it only on this approved development database; never point these commands at production or an unrelated database.
 
 PostgreSQL has **no published host port**. The API publishes only `127.0.0.1:8000`. Database and test networks are internal. This is a local developer setup; the approved Tailscale/Caddy private deployment remains a future task. `postgres_dev` retains development data. To pause without deleting it:
 
@@ -151,3 +152,13 @@ The owner approved an unscheduled development refresh workflow after [feasibilit
 ## Task 009 — schedule freshness
 
 See [freshness guide](schedule-freshness.md) for exact local/container verification commands, result evidence, environment limitations and complete changed-file inventory. The existing refresh volume is read-only in API; no migration, import or refresh execution is needed to view its existing checkpoint.
+
+
+## Task 010 — PostgreSQL team statistics
+
+See [schema, exact test/migration/dry-run/review/apply/rollback commands and results](team-stats-ingestion.md). No new Compose service or dependencies; use the existing ingestion profile and durable snapshots volume. The additive migration and real development import have not been executed; normal-WSL isolated PostgreSQL tests must pass first. No schedule or API contract changed.
+
+
+## Team-statistics security hardening — current operational procedure
+
+The [hardening runbook](team-stats-security-hardening.md) supersedes earlier bootstrap-credential runtime/migration commands. Keep the existing database volume and bootstrap variables intact; configure separate private API/ingestion passwords, pass isolated restricted-role tests, and obtain approval before running the explicit admin role transition or migration. Base Compose uses `nfl_api`/`nfl_ingest`; only `compose.admin.yaml` authorizes bootstrap provisioning and owner-role Alembic. The agent executed neither. Do not run the API as database owner/superuser. No database/ports/services were added. Earlier recovery and test reports above are historical.

@@ -43,3 +43,13 @@ def test_readiness_checks_migration_revision():
         assert client.get("/api/ready").status_code == 503
         session.execute.return_value.scalar_one.return_value = "0001_schedule"
         assert client.get("/api/ready").json() == {"status": "ready"}
+
+
+def test_readiness_accepts_additive_team_stats_revision():
+    from app.api.health import ready
+    from fastapi import Response
+    session = Mock()
+    session.execute.return_value.scalar_one.return_value = "0002_team_stats"
+    response = Response()
+    assert ready(response, session) == {"status": "ready"}
+    assert response.status_code == 200

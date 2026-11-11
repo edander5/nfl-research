@@ -19,7 +19,7 @@ def ready(response: Response, session: Session = Depends(get_session)) -> dict[s
     try:
         session.execute(text("SELECT 1"))
         revision = session.execute(text("SELECT version_num FROM alembic_version")).scalar_one()
-        if revision != "0001_schedule":
+        if revision not in ("0001_schedule", "0002_team_stats"):
             response.status_code = 503
             return {"status": "unavailable"}
     except SQLAlchemyError:

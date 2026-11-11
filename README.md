@@ -19,7 +19,7 @@ The first agent task is **source feasibility**, not application development. Sou
 
 That first research task and subsequent CSV validation, [foundation/schema](docs/agent-task-002.md), [environment validation](docs/agent-task-003.md) and [schedule ingestion](docs/agent-task-004.md) are complete. The original CSV remains unchanged. The owner reports successful development import and normal-WSL tests; historical agent environment failures remain recorded in the task reports.
 
-The guarded refresh scope is recorded in [Task 007](docs/agent-task-007.md). Current approved work is [Task 008: frontend current-week home default](docs/agent-task-008.md), using actual Eastern schedule dates and preserving explicit URL choices. The [refresh guide](docs/schedule-refresh.md) documents dry-run, snapshot-specific review/apply, hard blockers and exact WSL verification commands. Source authentication/checksum and unsupported finality limitations remain governed by the [schedule data contract](docs/schedule-data-contract.md). No unattended updates, new statistics features or deployment are authorized.
+The guarded refresh scope is recorded in [Task 007](docs/agent-task-007.md). The owner reports the [current-week default](docs/agent-task-008.md) and freshness indicator complete. Current approved work is [Task 010 guarded statistics storage](docs/agent-task-010.md); development migration/import remain separately gated. The [refresh guide](docs/schedule-refresh.md) documents dry-run, snapshot-specific review/apply, hard blockers and exact WSL verification commands. Source authentication/checksum and unsupported finality limitations remain governed by the [schedule data contract](docs/schedule-data-contract.md). No unattended updates, ranking publication, unrelated statistics features or deployment are authorized.
 
 Development startup after completing the frontend checks in the guide:
 
@@ -41,3 +41,10 @@ Visit http://127.0.0.1:5173. Full install/test/build commands, limitations and c
 ## Schedule data freshness
 
 The dashboard now includes manual refresh history via GET `/api/data-status/schedule`. See [contract, commands and verification](docs/schedule-freshness.md). No background updates are activated.
+
+
+## Guarded team-statistics storage
+
+Current approved task: [Task 010](docs/agent-task-010.md), PostgreSQL storage and guarded manual statistics ingestion after the 705-pair offline audit. [Schema, exact WSL commands, tests and review gates](docs/team-stats-ingestion.md). Implementation is written; no development migration or real statistics import has been executed. Existing schedule APIs/dashboard/refresh behavior are unchanged.
+
+Current Task 010 security review follow-up: [hardening implementation, isolated restricted-role tests, explicit existing-volume transition and NO-GO gate](docs/team-stats-security-hardening.md). Normal runtime credentials are now separate from bootstrap administration; do not use the API to run migrations. No development role provisioning/migration/import has been executed.

@@ -69,3 +69,13 @@ The API reads the existing runner checkpoint through a bounded, allowlisted repo
 ## Offline team-statistics audit
 
 The [team-statistics validator](team-stats-validation.md) is a standard-library-only CLI under `backend/ingestion/team_stats/`. It captures official release bytes and produces local reports, with no application settings, SQLAlchemy session, PostgreSQL connection, API or scheduler. Optional canonical UUID exports are read-only input files. It reuses only the pure schedule validation contract; existing schedule ingestion/refresh services are unchanged.
+
+
+## Task 010 — guarded statistics storage
+
+The [statistics storage/ingestion guide](team-stats-ingestion.md) records the additive five-table schema and manually invoked transaction adapter. The offline CLI remains unchanged and offline. A separate `ingestion.team_stats.ingest` command uses the existing ingestion container, snapshot volume and development database; it holds the shared schedule advisory lock while comparing live canonical identities and publishing complete immutable pairs. Dry-run is default, every changing apply requires a baseline-bound review token, and rollback moves accepted pointers with append-only history. No new service, volume, scheduler, API, frontend or completion inference.
+
+
+## Team-statistics security hardening
+
+Native PostgreSQL roles now separate NOLOGIN schema owner, read-only schedule API and restricted ingestion. Existing bootstrap credentials are confined to an explicit admin Compose override, not routine connections. Acceptance events are trigger-generated and apply binds complete candidate evidence plus a locked baseline. See [security hardening and owner transition](team-stats-security-hardening.md); no new infrastructure or automatic provisioning at API startup.
