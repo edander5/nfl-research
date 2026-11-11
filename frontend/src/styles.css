@@ -69,3 +69,16 @@
 @media(max-width:760px) { .workspace-nav { flex-direction:row; gap:5px; }.workspace-nav .sidebar-link { display:flex; gap:5px; padding:7px; }.workspace-nav .nav-text { display:inline!important; font-size:10px; }.workspace-nav .sidebar-link>span:first-child { font-size:14px; }.research-filters { gap:8px; }.research-table { min-width:640px; }.ranking-coverage { padding:16px; gap:12px; }.category-nav a { padding:16px; }.category-nav { gap:8px; }.table-toolbar { align-items:flex-start; }.research-pagination { justify-content:space-between; } }
 @media(max-width:480px) { .page-heading:has(.research-filters) { flex-direction:column; }.category-nav strong { font-size:12px; }.category-nav small { font-size:9px; }.workspace-nav .sidebar-link { padding:6px 4px; }.workspace-nav .nav-text { font-size:9px; }.brand { font-size:12px; gap:7px; } }
 .workspace-nav .sidebar-link .nav-text { margin:0; color:inherit; }
+.matchup-comparison { margin:32px 0; }
+.comparison-warning { margin:20px 0; padding:18px 20px; border-left:3px solid #b78b40; background:#fff6e6; color:#6c5129; font-size:13px; }
+.comparison-warning p { line-height:1.7; margin:8px 0 0; }
+.comparison-table { width:100%; table-layout:fixed; min-width:0; }
+.comparison-table th:first-child { width:36%; }
+.comparison-table th,.comparison-table td { white-space:normal; overflow-wrap:anywhere; vertical-align:top; }
+.comparison-table thead a { color:inherit; text-decoration:underline; text-underline-offset:4px; }
+.comparison-table td > span,.comparison-table td > small { display:block; margin-top:8px; }
+.comparison-rank { display:block; font-size:25px; color:#435b36; }
+.comparison-average { font-weight:600; font-size:17px; font-variant-numeric:tabular-nums; }
+.comparison-average small { font-weight:400; font-size:10px; }
+.comparison-unranked { font-size:12px; }
+@media(max-width:760px) { .matchup-comparison .section-heading { align-items:flex-start; flex-direction:column; gap:16px; }.comparison-table { min-width:0; }.comparison-table th,.comparison-table td { padding:14px 8px; font-size:11px; }.comparison-table .cell-note { font-size:9px; }.comparison-rank { font-size:21px; }.comparison-average { font-size:14px; }.comparison-warning { padding:16px; } }

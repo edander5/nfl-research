@@ -104,3 +104,8 @@ The [manual preparation runner](team-stats-refresh.md) composes existing officia
 ## Task 015 — opt-in prepare-only scheduler
 
 The [dedicated scheduler container](scheduled-nfl-refresh.md) reuses the backend image, runtime ingestion role, existing networks/volumes and original dry-run commands. Standard-library daily ZoneInfo scheduling plus persistent claims avoids cron/queue dependencies, startup replay and duplicate work. Two independent bounded workers preserve original per-pipeline locks and database guards. No automatic acceptance or notifications; operator status reads sanitized original checkpoint observations. Default services still exclude the scheduler.
+
+
+## Task 016 — Game Preview
+
+The [game page](game-preview.md) composes existing schedule detail and one all-category league rankings request. Canonical UUIDs select the two displayed teams only after authoritative league ranking. TanStack Query isolates comparison failure/cache/filter state; React Router preserves return navigation. No per-team query, client ranking or new backend endpoint. Current accepted season comparisons explicitly do not claim completed-before-kickoff eligibility.

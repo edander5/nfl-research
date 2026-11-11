@@ -167,3 +167,8 @@ The [hardening runbook](team-stats-security-hardening.md) supersedes earlier boo
 ## Task 015 — scheduler development and review gate
 
 The [scheduler runbook](scheduled-nfl-refresh.md) provides local/full isolated tests, safe one-shot runtime verification, enable/disable/status commands and concurrency/restart limitations. The service is profiled off by default and uses the same backend build plus existing private volumes and runtime credentials. Do not start recurrence before owner approval; no migrations, grants or imports are needed. Docker health covers the clock loop, not data success.
+
+
+## Task 016 — Game Preview acceptance
+
+The [Game Preview guide](game-preview.md) includes frontend checks, exact WSL Docker commands and manual responsive/live-API acceptance. No migration, permission grant, ingestion or scheduler enablement is needed. Historical pregame rankings remain unavailable.

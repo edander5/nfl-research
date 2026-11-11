@@ -48,6 +48,8 @@ async function get<T>(path: string, signal?: AbortSignal): Promise<T> {
   return response.json() as Promise<T>;
 }
 export const research = {
+  comparison: (season: number, stage: RankingStage, signal?: AbortSignal) =>
+    get<RankingsResponse>(`/api/team-rankings?${new URLSearchParams({ season: String(season), season_type: stage })}`, signal),
   rankings: (season: number, stage: RankingStage, category: Category, signal?: AbortSignal) =>
     get<RankingsResponse>(`/api/team-rankings?${new URLSearchParams({ season: String(season), season_type: stage, category })}`, signal),
   games: (id: string, season: number, stage: SeasonType, offset: number, signal?: AbortSignal) =>

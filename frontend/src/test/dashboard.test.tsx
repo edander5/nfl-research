@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router';
 import { describe, expect, it, vi } from 'vitest';
 import { App } from '../App';
 import { api, kickoff, safeUrl } from '../api/client';
-import { detail, freshness, game, id, schedule, seasons } from './fixtures';
+import { detail, emptyRankings, freshness, game, id, schedule, seasons } from './fixtures';
 function response(data: unknown, status=200) { return new Response(JSON.stringify(data),{status,headers:{'content-type':'application/json'}}); }
 function defaultResponse(url: string) {
   if (url === '/api/seasons') return response(seasons);
@@ -19,7 +19,7 @@ function defaultResponse(url: string) {
   return response(data);
 }
 function mock(handler: (url: string) => Response | Promise<Response> = defaultResponse) {
-  const fetcher = vi.fn((url: string) => String(url) === '/api/data-status/schedule' ? response(freshness) : handler(String(url)));
+  const fetcher = vi.fn((url: string) => String(url) === '/api/data-status/schedule' ? response(freshness) : String(url).startsWith('/api/team-rankings?') ? response(emptyRankings) : handler(String(url)));
   vi.stubGlobal('fetch',fetcher);
   return fetcher;
 }
@@ -40,8 +40,8 @@ describe('weekly schedule', () => {
   it('does not request invalid filters', async () => {const fetcher=mock();open('/schedule/2026/REG/99');expect(await screen.findByRole('heading',{name:'Schedule selection unavailable'})).toBeInTheDocument();expect(fetcher.mock.calls).toHaveLength(1);});
 });
 describe('matchup navigation', () => {
-  it('opens a canonical game and returns to the selected week', async () => {mock();open('/schedule/2026/REG/2');await screen.findByText('Synthetic Away');fireEvent.click(screen.getByRole('link',{name:/view matchup/}));expect(await screen.findByRole('heading',{name:/Matchup overview/})).toBeInTheDocument();expect(screen.getByRole('link',{name:'← Back to schedule'})).toHaveAttribute('href','/schedule/2026/REG/2');fireEvent.click(screen.getByRole('link',{name:'← Back to schedule'}));expect(await screen.findByRole('heading',{name:'Week 2'})).toBeInTheDocument();});
-  it('supports direct detail links, null scores and unknown kickoff', async () => {mock(() => response(detail(game({reported_home_score:null,reported_away_score:null,scheduled_kickoff_utc:null,score_finality:'NOT_REPORTED'}))));open(`/games/${id}`);expect(await screen.findByRole('heading',{name:/Matchup overview/})).toBeInTheDocument();expect(screen.getByText('Scores not reported')).toBeInTheDocument();expect(screen.getAllByText('Kickoff not announced').length).toBeGreaterThan(0);expect(screen.getByText('Declared · Not independently authenticated')).toBeInTheDocument();});
+  it('opens a canonical game and returns to the selected week', async () => {mock();open('/schedule/2026/REG/2');await screen.findByText('Synthetic Away');fireEvent.click(screen.getByRole('link',{name:/view matchup/}));expect(await screen.findByRole('heading',{name:/Game preview/})).toBeInTheDocument();expect(screen.getByRole('link',{name:'← Back to schedule'})).toHaveAttribute('href','/schedule/2026/REG/2');fireEvent.click(screen.getByRole('link',{name:'← Back to schedule'}));expect(await screen.findByRole('heading',{name:'Week 2'})).toBeInTheDocument();});
+  it('supports direct detail links, null scores and unknown kickoff', async () => {mock(() => response(detail(game({reported_home_score:null,reported_away_score:null,scheduled_kickoff_utc:null,score_finality:'NOT_REPORTED'}))));open(`/games/${id}`);expect(await screen.findByRole('heading',{name:/Game preview/})).toBeInTheDocument();expect(screen.getByText('Scores not reported')).toBeInTheDocument();expect(screen.getAllByText('Kickoff not announced').length).toBeGreaterThan(0);expect(screen.getByText('Declared · Not independently authenticated')).toBeInTheDocument();});
   it('does not trust external return destinations', async () => {mock();open(`/games/${id}?returnTo=https://example.invalid`);expect(await screen.findByRole('link',{name:'← Back to schedule'})).toHaveAttribute('href','/schedule/2026/REG/1');});
   it('shows stored FINAL only with explicit evidence', async () => {mock(() => response(detail(game({status:'FINAL',score_finality:'CONFIRMED_FINAL',final_evidence:{url:'https://example.invalid/final',verified_at:'2026-11-07T00:00:00Z'}}))));open(`/games/${id}`);expect(await screen.findByText('FINAL · Evidence recorded')).toBeInTheDocument();expect(screen.getByText('Confirmed final scores')).toBeInTheDocument();expect(screen.getByRole('link',{name:/Stored final evidence/})).toHaveAttribute('href','https://example.invalid/final');});
   it('handles game not found', async () => {mock(() => response({},404));open(`/games/${id}`);expect(await screen.findByRole('heading',{name:'Matchup not found'})).toBeInTheDocument();});

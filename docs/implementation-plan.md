@@ -107,3 +107,8 @@ Current approved scope: [prepare-only acquisition/validation/comparison and priv
 ## Task 015 — scheduled preparation
 
 Current approved slice: [opt-in dedicated daily scheduler for existing dry-run pipelines](scheduled-nfl-refresh.md), configurable 06:00/18:00 America/Phoenix, persisted private outcomes and no acceptance operations. Owner reports manual real-data pipelines working. Isolated/runtime/clock validation and owner review precede enablement. No source/statistical contract, permission/schema/data/frontend change or automatic publication is authorized.
+
+
+## Task 016 — Game Preview vertical slice
+
+Approved: extend `/games/:gameId` with four current accepted season comparison categories, ranks/averages/sample coverage and stage controls, plus responsive states/tests. [Scope, eligibility investigation, validation and owner acceptance](game-preview.md). Historical pregame rankings remain unavailable; no backend/schema/permissions/imports or automatic actions.

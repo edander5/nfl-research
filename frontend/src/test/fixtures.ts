@@ -15,3 +15,16 @@ export const freshness: FreshnessResponse = {
     apply_semantics:'Successful apply includes no-change reconciliation; data-change time is separate.',
     timestamp_semantics:'Recorded runner observations, not source publication or game completion times. No game status is inferred.' },
 };
+
+// Empty, contract-shaped league response for schedule-only regression tests.
+export const emptyRankings: import('../api/research').RankingsResponse = {
+  data: [], meta: {
+    filters: { season: 2026, season_type: 'REG', category: null, team_id: null },
+    definition_version: 'net_pass_negative_sacks_v1', statistics_semantics: 'Synthetic NET',
+    score_semantics: 'Unverified', aggregate_semantics: 'Reconstructed', origin_semantics: 'Declared',
+    league_team_count: 0, scheduled_games: 0, accepted_games: 0, missing_statistics_games: 0,
+    unknown_status_accepted_games: 0, unverified_origin_team_games: 0, coverage_complete_for_stored_schedule: false,
+    missing_metric_team_games: { passing_offense: 0, rushing_offense: 0, passing_defense: 0, rushing_defense: 0 },
+    population_semantics: 'Synthetic', ranking_semantics: 'Competition', completeness_semantics: 'Stored schedule only',
+  },
+};

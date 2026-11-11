@@ -79,3 +79,8 @@ New architectural or scope decisions are **proposals** until explicitly approved
 - Deployment-specific HTTPS/Tailscale setup and separate backup storage medium.
 
 These must be settled in approved task scopes, based on evidence.
+
+
+## Decision 69 — Task 016 Game Preview fallback
+
+Owner approved a matchup comparison using existing data/APIs, with current-season comparison or unavailable labels when historical pregame accuracy cannot be supported. Current accepted revisions and kickoff metadata do not prove completion before a selected kickoff; the existing rankings endpoint has no cutoff contract. Reuse that endpoint once for all four categories, restrict display by canonical team IDs, default to game season/stage and offer explicit supported stage overrides. Clearly label the result as a current accepted comparison within the matchup season, potentially including the matchup/later games. No pregame eligibility/ranking definition, backend, schema or permission changes. See [investigation and tests](game-preview.md).

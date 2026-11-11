@@ -68,3 +68,8 @@ The [prepare-only refresh workflow](docs/team-stats-refresh.md) checks all three
 ## Scheduled prepare-only refresh — Task 015
 
 The [opt-in scheduler](docs/scheduled-nfl-refresh.md) prepares both existing refresh workflows at configurable daily local times (default 06:00/18:00 America/Phoenix). It uses existing restricted credentials and volumes, persists private reports and never applies changes or provides approval tokens. The `scheduler` profile remains disabled until explicitly enabled by the owner after runtime review.
+
+
+## Game Preview — Task 016
+
+The existing `/games/:gameId` page now includes a [four-category team comparison](docs/game-preview.md), using the game season/stage and existing league rankings API. Historical pregame eligibility is unavailable: current accepted season comparisons may include the matchup and later games and are explicitly labeled. No backend or data contracts changed.
