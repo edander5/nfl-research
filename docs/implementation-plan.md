@@ -87,3 +87,8 @@ Current subset: [Task 010 additive storage and guarded ingestion](team-stats-ing
 ## Task 011
 
 Current approved Task 011: read-only accepted statistics API and narrowly approved column SELECT grants. Owner reports Task 010 migrated/imported successfully (705 pairs/1,410 rows, 343 WSL tests). No rankings/frontend or new imports authorized. See [Task 011 acceptance and WSL checks](team-stats-api.md).
+
+
+## Task 012
+
+Current approved Task 012 implements read-only season category rankings and metadata with existing grants. Owner reports Task 011 complete/merged (374 WSL tests). Historical pregame rankings, frontend and data/permission/schema changes remain excluded. [Contract, acceptance commands and validation](team-rankings-api.md).

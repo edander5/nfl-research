@@ -28,7 +28,7 @@ async def missing_team(request: Request, exc):
     return error(404, 'TEAM_NOT_FOUND', 'Team not found')
 
 async def database_unavailable(request: Request, exc: SQLAlchemyError):
-    message = ('Team statistics are temporarily unavailable' if '/teams/' in request.url.path or request.url.path.endswith('/team-stats') else 'Schedule data is temporarily unavailable')
+    message = ('Team statistics are temporarily unavailable' if '/teams/' in request.url.path or request.url.path.endswith('/team-stats') or request.url.path == '/api/team-rankings' else 'Schedule data is temporarily unavailable')
     return error(503, 'DATABASE_UNAVAILABLE', message)
 
 

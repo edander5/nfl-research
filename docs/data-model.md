@@ -71,3 +71,8 @@ Security hardening adds a required unique `(game_id, generation)` to selection e
 ## Task 011
 
 Task 011 introduces response schemas only; storage remains at 0002. Current accepted pair pointers select revision rows for both teams; API aggregates derive opponent allowed yards with per-metric non-null denominators. Reported schedule points and stored-evidence verified-final point aggregates are separate. See [API semantics](team-stats-api.md).
+
+
+## Task 012
+
+Task 012 adds no storage. NET passing/rushing totals and per-metric non-null counts derive from current accepted pairs; defense joins the opponent in that pair. All season schedule teams remain visible, including null-ranked zero-game teams. The reconstructed season ranking contract does not establish historical pregame eligibility. See [methodology](team-rankings-api.md).

@@ -52,3 +52,7 @@ Current Task 010 security review follow-up: [hardening implementation, isolated 
 ## Task 011 — accepted team statistics API
 
 Owner reports Task 010 merged, 705 accepted pairs/1,410 rows imported, migration 0002 and restricted roles validated with 343 WSL tests. [Task 011 API, approved column grants, exact owner commands and test results](docs/team-stats-api.md) supersedes the earlier pending-ingestion status above. No real ingestion or development grants are executed by the agent in this task.
+
+## Task 012 — reconstructed season rankings
+
+Owner reports Task 011 merged and verified with 374 passing WSL tests and live read-only endpoints. Current work is the [read-only rankings engine/API](docs/team-rankings-api.md), using existing accepted statistics and grants. No frontend, historical pregame eligibility, schema/permission changes or new ingestion is included.

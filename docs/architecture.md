@@ -84,3 +84,8 @@ Native PostgreSQL roles now separate NOLOGIN schema owner, read-only schedule AP
 ## Task 011
 
 Task 011 adds read-only team logs, per-game paired stats and season aggregates using explicit column projections through accepted pair pointers. Opponent joins derive allowed yards; SQL performs paging/count and per-metric aggregation. The approved nfl_api column grants omit batch evidence/raw records/history and all writes. See [API and grant procedure](team-stats-api.md). No schema, ingestion, frontend or ranking implementation.
+
+
+## Task 012
+
+Task 012 reuses accepted reciprocal team-statistic projections for a single-statement season league population, schedule coverage and metric aggregation. A small SQL-aggregated team result is competition-ranked with exact Python Fraction comparisons, then filtered by optional team/category. No per-team queries, new permissions/schema or completion inference. See [rankings contract and test gate](team-rankings-api.md).
