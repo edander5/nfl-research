@@ -5,7 +5,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { App } from '../App';
 import type { Category, RankedTeam, RankingsResponse } from '../api/research';
 import { categories } from '../rankings/state';
-import { detail, noMarkets, freshness, game, id, schedule, seasons } from './fixtures';
+import { detail, noMarkets, noTeamLogs, freshness, game, id, schedule, seasons } from './fixtures';
 
 // Synthetic response only. These ranks are provided by the mock API, not calculated by the UI.
 function rankings(): RankingsResponse {
@@ -30,6 +30,7 @@ function json(body: unknown, status = 200) { return new Response(JSON.stringify(
 function mock(data = game(), handler: (url: string) => Response | Promise<Response> = () => json(rankings())) {
   const fetcher = vi.fn((path: string) => {
     const url = String(path);
+    if (url.startsWith('/api/teams/')) return json(noTeamLogs);
     if (url.endsWith('/markets')) return json(noMarkets(data));
     if (url.startsWith('/api/team-rankings')) return handler(url);
     if (url === `/api/games/${id}`) return json(detail(data));
@@ -142,12 +143,12 @@ describe('Game Preview season comparison', () => {
   it('keeps the game visible while comparison loads', async () => {
     mock(game(), () => new Promise<Response>(() => {})); open();
     expect(await screen.findByText('Loading matchup comparison…')).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Synthetic Away' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Synthetic Away', level: 2 })).toBeInTheDocument();
   });
   it('isolates comparison errors and supports retry', async () => {
     let fail = true; mock(game(), () => fail ? json({}, 503) : json(rankings())); open();
     expect(await screen.findByRole('alert')).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Synthetic Home' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Synthetic Home', level: 2 })).toBeInTheDocument();
     fail = false; fireEvent.click(screen.getByRole('button', { name: 'Try again' })); await screen.findByRole('table');
   });
   it('retains prior comparison on failed refresh', async () => {

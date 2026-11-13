@@ -35,3 +35,9 @@ export const noMarkets = (data = game()): import('../api/markets').MarketsRespon
     semantics: 'Synthetic source-reference comparison only', timestamp_semantics: 'Not quote times',
     tie_policy: 'Unknown tie rules', spread_definition: 'Home spread is negative source spread', price_semantics: 'Reported values' },
 });
+
+export const noTeamLogs: import('../api/research').TeamGamesResponse = {
+  data: [], meta: { season: 2026, season_type: 'REG', week: null, limit: 20, offset: 0, total_count: 0, returned_count: 0,
+    definition_version: 'net_pass_negative_sacks_v1', statistics_semantics: 'Synthetic accepted NET statistics',
+    score_semantics: 'Reported only', aggregate_semantics: 'Not pregame', origin_semantics: 'Declared' },
+};

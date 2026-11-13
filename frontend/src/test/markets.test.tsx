@@ -6,7 +6,7 @@ import { App } from '../App';
 import { BettingMarkets } from '../components/BettingMarkets';
 import { markets } from '../api/markets';
 import type { MarketsResponse } from '../api/markets';
-import { detail, emptyRankings, game, id, noMarkets } from './fixtures';
+import { detail, emptyRankings, game, id, noMarkets, noTeamLogs } from './fixtures';
 
 function fixture(): MarketsResponse {
   const data = noMarkets(); data.data.unavailable_reason = null;
@@ -25,7 +25,7 @@ function fixture(): MarketsResponse {
 }
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
 function open(handler: () => Promise<Response> | Response = () => json(fixture()), full = false) {
-  const fn = vi.fn((url: string) => url.endsWith('/markets') ? handler() : json(url.startsWith('/api/team-rankings') ? emptyRankings : detail()));
+  const fn = vi.fn((url: string) => url.startsWith('/api/teams/') ? json(noTeamLogs) : url.endsWith('/markets') ? handler() : json(url.startsWith('/api/team-rankings') ? emptyRankings : detail()));
   vi.stubGlobal('fetch', fn);
   const client = new QueryClient({ defaultOptions: { queries: { retry: false, gcTime: 0 } } });
   render(<QueryClientProvider client={client}><MemoryRouter initialEntries={[`/games/${id}`]}>{full ? <App /> : <BettingMarkets gameId={id} />}</MemoryRouter></QueryClientProvider>);

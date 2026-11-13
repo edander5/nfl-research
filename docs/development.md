@@ -177,3 +177,8 @@ The [Game Preview guide](game-preview.md) includes frontend checks, exact WSL Do
 ## Task 017 — markets acceptance
 
 [Market reference findings, inventory, WSL tests and browser acceptance](game-betting-markets.md). No migration, permission change, ingestion or provider key is required for the reference slice. Current offers and verified historical quote capture need separate approval.
+
+
+## Task 019 — compact Game Preview logs
+
+[Team Game Logs layout, baseline clarification, tests and browser acceptance](game-preview-team-logs.md). This frontend-only section uses existing statistics/market APIs and approved team-code badge fallbacks. No backend, permission, ingestion or migration step is required.

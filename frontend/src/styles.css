@@ -85,3 +85,37 @@
 
 .betting-markets { margin:32px 0; }.market-reference { margin:20px 0; padding:18px; border:1px solid #d6ddd1; border-radius:8px; background:white; }.market-reference .status-chip { margin-left:12px; }.markets-table { min-width:520px; }.market-reference .policy p { overflow-wrap:anywhere; }
 @media(max-width:760px) { .market-reference { padding:12px; }.market-reference .status-chip { display:inline-block; margin:10px 0; } }
+
+/* Game Preview logs: scoped styles preserve the existing matchup and research tables. */
+.preview-team-logs { margin:32px 0; min-width:0; }
+.preview-log-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,510px),1fr)); gap:18px; align-items:start; }
+.preview-log-card { min-width:0; border:1px solid #dce2d8; border-radius:10px; background:#fff; overflow:hidden; }
+.preview-log-header { display:flex; align-items:center; gap:12px; padding:18px 16px; border-bottom:1px solid #e7ebe4; }
+.log-team-badge { display:grid; place-items:center; flex-shrink:0; width:44px; height:44px; border-radius:10px; background:#edf2e7; color:#294e3a; border:1px solid #dce5d2; font-size:13px; font-weight:750; letter-spacing:-.03em; }
+.preview-log-header h3 { margin:4px 0; font-size:16px; line-height:1.2; letter-spacing:-.02em; }
+.preview-log-header p { margin:0; color:#75816e; font-size:10px; }
+.preview-log-header div > span { font-size:8px; color:#78816f; letter-spacing:.13em; }
+.log-side-label { margin-left:auto; font-size:9px; color:#78816f; }
+.log-policy { font-size:11px; color:#69745f; line-height:1.7; margin:0 0 16px; }
+.preview-log-scroll { width:100%; max-width:100%; overflow-x:auto; overscroll-behavior-x:contain; }
+.preview-log-table { width:100%; min-width:480px; border-collapse:collapse; font-size:11px; font-variant-numeric:tabular-nums; }
+.preview-log-table th,.preview-log-table td { padding:12px 9px; text-align:right; border-bottom:1px solid #edf0e9; white-space:nowrap; }
+.preview-log-table thead th { font-size:9px; color:#78816e; font-weight:650; letter-spacing:.06em; background:#f8faf6; }
+.preview-log-table th:first-child { text-align:center; width:35px; }
+.preview-log-table th:nth-child(2),.preview-log-table td:nth-child(2) { text-align:left; }
+.preview-log-table tbody tr { cursor:pointer; transition:background .12s; }
+.preview-log-table tbody tr:hover,.preview-log-table tbody tr:focus-within { background:#f4f7ef; }
+.preview-log-table tbody .log-current-game { box-shadow:inset 3px 0 #91a16d; }
+.preview-log-table tbody th a { display:inline-block; padding:4px; color:#657553; }
+.log-opponent { color:#6c7963; }.log-opponent strong { color:#344c3c; font-weight:650; }
+.log-score { font-weight:650; }.log-finality { display:block; margin-top:4px; color:#7b8273; font-size:8px; }
+.log-result { display:inline-flex; align-items:center; gap:5px; font-size:11px; }
+.log-result small { border-radius:4px; padding:3px 4px; font-size:9px; font-weight:650; }
+.log-result-win small { color:#286047; background:#eaf4ed; }
+.log-result-loss small { color:#9c4141; background:#faeeee; }
+.log-result-push small,.log-result-undetermined small { color:#737866; background:#f0f1ec; }
+.log-unavailable { color:#90968a; }.log-market-retry { display:block; margin:4px 0 0 auto; background:none; border:0; padding:0; font-size:8px; color:#7b5537; text-decoration:underline; }
+.preview-log-footer { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:12px 16px; color:#7a8470; font-size:10px; }
+.preview-log-footer nav { display:flex; align-items:center; gap:10px; }.preview-log-footer button { border:1px solid #dce2d6; border-radius:4px; padding:3px 7px; color:#46593c; background:#fff; }
+.log-state { padding:20px 16px; color:#74806a; font-size:12px; }.log-sources { font-size:10px; color:#74806a; padding:0 16px 14px; }.log-sources summary { cursor:pointer; }.log-sources p { line-height:1.7; }
+@media(max-width:760px) { .preview-log-grid { grid-template-columns:minmax(0,1fr); }.preview-log-header { padding:14px; }.preview-log-table th,.preview-log-table td { padding:11px 8px; }.preview-log-header h3 { font-size:15px; } }
