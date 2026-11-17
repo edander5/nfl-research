@@ -2,14 +2,25 @@
 
 This file governs any AI coding agent working in this repository. Read `README.md`, `docs/product-requirements.md`, `docs/architecture.md`, `docs/decisions.md`, and the currently approved task before action.
 
-## Current owner-approved frontend task
+## Task 022 — current audit scope
 
-The owner subsequently approved Schedule and Game Preview UI adjustments: move refresh
-history below the schedule, compare offense against opposing defense with rank colors,
-and embed compact reference markets below the game-summary scores with secondary grading
-details. This frontend-only authorization supersedes Task 021's frontend exclusion for
-this task. Preserve game logs, APIs, statistical/betting calculations and data safety.
-See `docs/schedule-preview-ui.md` for scope and validation. No git publication or deployment.
+The owner approved a documentation-only repository audit, independent data-source
+research and phased NFL research roadmap. See
+`docs/research/task-022-expansion-audit.md`. No application code, database access
+or changes, migrations, imports, dependency installation, Compose changes,
+additional REA investigation or git publication is authorized by Task 022.
+Roadmap tasks are proposals requiring separate approval. Earlier implementation
+scope below is historical context, not authorization to resume it during this audit.
+
+## Previously approved frontend scope
+
+The owner subsequently approved frontend-only dark mode: a main-navigation
+Light / Dark / System preference, system default, localStorage persistence,
+first-paint theme application and consistent styling across existing pages.
+This supersedes Task 021's frontend exclusion for this task. Preserve layout,
+data, calculations and functionality; no new library, backend, database,
+ingestion or publication changes. See `docs/dark-mode.md` for implementation
+and validation. Earlier Schedule/Game Preview UI work remains intact.
 
 ## Hard rules
 

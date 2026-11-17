@@ -113,3 +113,32 @@ remain unverified nflverse references, never live offers. Rationale: prioritize
 games and make opposing strengths and source values easier to scan without
 changing APIs or calculations. Game logs remain unchanged. No backend, ingestion,
 schema, dependencies or deployment changes. See [validation](schedule-preview-ui.md).
+
+
+## Decision 74 — Frontend theme preference
+
+Owner approved Light / Dark / System theming without a new dependency. Default
+to System, persist explicit choices in browser localStorage and follow OS changes
+only while System is selected. Use the shadcn `.dark` convention, Tailwind v4
+variant/tokens and shared CSS variables alongside existing custom styles. A small
+blocking public head script applies the preference before styles/React for first
+paint; React handles subsequent interaction and cross-tab synchronization. Storage
+failures fall back safely to system defaults and leave session controls usable.
+Rationale: consistent readable pages and no initial wrong-theme flash, with no
+API/data/calculation changes. See [implementation and validation](dark-mode.md).
+
+## Decision 75 — Task 022 audit authorization and proposal boundary
+
+2026-11-17: owner approved a documentation-only implementation audit, independent
+data-source feasibility review and phased expansion roadmap, prioritizing existing
+game research before player foundation/research/discovery and advanced context.
+Use the existing Buckets to Bucks report as feature evidence only; no copied code,
+private endpoints or captured production data, and no new REA investigation without
+approval. No application/database/ingestion/dependency/Compose or publication changes
+are authorized. Rationale: establish actual reusable capabilities and source/semantic
+gates before adding features. [Audit](research/task-022-expansion-audit.md),
+[sources](research/task-022-data-sources.md), [roadmap](research/task-022-roadmap.md)
+and [REA backlog](research/task-022-rea-followups.md) distinguish verified evidence
+from proposals. Task 023 and later items, including window/denominator policies,
+remain proposals for separate owner approval; this entry approves no new provider,
+statistical definition, schema or implementation task.

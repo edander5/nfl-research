@@ -1,5 +1,12 @@
 # Technical Architecture
 
+2026-11-17 audit: [Task 022](research/task-022-expansion-audit.md) distinguishes
+implemented routes/models/components from target architecture below. In particular,
+player domains, Recharts and TanStack Table remain unimplemented; the current
+frontend uses native tables. [Integration proposals](research/task-022-roadmap.md)
+preserve this stack and require separate approval. Historical status paragraphs
+below are superseded by later task appendices and the dated inventory.
+
 Task 020 adds an [interactive update CLI](interactive-nfl-update.md): a Bash readiness/Compose launcher and Python orchestrator in the existing scheduler image. It reuses fixed prepare-only scheduler components, the original guarded importer APIs/CLI, archived handoffs and read-only repositories. Original locks remain in force; separate default-no interactive confirmations are required (Task 021 guided presentation). Private operational journals block retries after uncertain applies. No new service, dependency, schema, permission, source or finality contract.
 
 ## System decomposition

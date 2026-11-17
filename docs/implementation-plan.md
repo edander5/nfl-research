@@ -1,5 +1,10 @@
 # Vertical-Slice Implementation Roadmap
 
+Latest planning reference (2026-11-17): [Task 022 phased expansion tasks](research/task-022-roadmap.md)
+and [verified current inventory](research/task-022-expansion-audit.md). The milestone
+history below is retained; its earlier “current” labels are chronological. The new
+roadmap is proposed, not blanket implementation approval.
+
 **Status:** Owner reports Milestone 1 and offline team-statistics/reference validation complete. Current approved work is [Task 010 PostgreSQL statistics storage and guarded ingestion](agent-task-010.md). Implementation is written; isolated PostgreSQL runtime acceptance and separately approved development migration/import remain pending. No rankings, unattended scheduling or deployment is authorized.
 
 ## Preflight — Research gate (first agent task)

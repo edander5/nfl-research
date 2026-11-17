@@ -1,5 +1,11 @@
 # NFL Betting Research
 
+Latest planning work: [Task 022 verified implementation audit](docs/research/task-022-expansion-audit.md),
+[independent source feasibility](docs/research/task-022-data-sources.md) and
+[proposed phased roadmap](docs/research/task-022-roadmap.md). This is documentation
+only; future implementation tasks require approval. Older status notes below are
+chronological and do not establish current database or deployment state.
+
 Task 020 adds `./scripts/update-nfl-data.sh`: guided plain-text schedule/statistics review, separate default-no import prompts and read-only verification (Task 021). Use `--status` for inspection without downloads/imports. See [setup, WSL validation and troubleshooting](docs/interactive-nfl-update.md).
 
 **Status:** Owner reports foundation, ingestion, read-only API and dashboard completed/merged, with 842 imported games and the prior 139-test backend suite validated. The approved [guarded manual refresh runner](docs/schedule-refresh.md) is implemented; fresh-source and new PostgreSQL runtime checks remain blocked in this agent environment. No unattended scheduler is active.
@@ -80,3 +86,10 @@ The existing `/games/:gameId` page now includes a [four-category team comparison
 ## Game Betting Markets — Task 017
 
 The Game Preview includes [unverified nflverse source-reference lines and hypothetical/provisional comparisons](docs/game-betting-markets.md). No current sportsbook offers or verified historical pregame/closing quotes are available. New-provider/storage contracts remain approval-gated.
+
+
+## Appearance
+
+Choose Light, Dark or System in the workspace navigation. System is the first-visit
+default; your preference is saved in this browser. See [theme behavior and local
+verification](docs/dark-mode.md).

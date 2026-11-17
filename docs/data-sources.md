@@ -1,5 +1,10 @@
 # NFL data-source feasibility audit
 
+Latest expansion review (2026-11-17): [Task 022 independent source matrix](research/task-022-data-sources.md).
+It records current official player-stat schemas/listings and sportsbook retention
+terms, distinguishing documentation evidence from unverified actual coverage.
+The dated evidence below is retained; no provider or ingestion change is approved.
+
 **Audit date: 2026-11-05. Task 001: research and documentation only.** Supersedes the preliminary reconnaissance. No approved architecture or statistical definition has changed. See [feasibility-results.md](feasibility-results.md) for recommendations.
 
 **Schedule-only follow-up:** the owner subsequently approved Schedule Contract Closure research. [Schedule Data Contract](schedule-data-contract.md) records the newer findings and supersedes the schedule-specific evidence gaps below where explicitly updated. An official `schedules` release with CSV/Parquet/RDS assets is now metadata-verified, as is nflreadpy's release download path. Full local downloads still fail; completeness, status/finality and applicable upstream rights remain unresolved. Other dataset findings were not revisited.
