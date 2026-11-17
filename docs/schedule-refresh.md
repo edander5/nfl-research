@@ -1,5 +1,7 @@
 # Guarded development schedule refresh — Task 007
 
+Task 020 provides [one-command interactive review/apply](interactive-nfl-update.md) using this original saved-candidate/approval contract. Standalone commands below remain available; the new CLI keeps tokens out of terminal output.
+
 ## Scope and guarantees
 
 Approved scope: [Task 007](agent-task-007.md), informed by the [feasibility report](schedule-auto-update-feasibility.md). Work is on `feature/schedule-auto-updates`. This is a **manual, one-shot CLI**, not an unattended updater. No timers, worker service loops, API triggers, frontend changes, database schema or migrations were added. No dependency installation is required beyond the existing backend requirements.

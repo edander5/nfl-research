@@ -68,7 +68,7 @@ describe('current-week home routing', () => {
     });
     open('/');
     expect(await screen.findByRole('heading',{name:'Week 9'})).toBeInTheDocument();
-    expect(fetcher.mock.calls.some(([url]) => url.endsWith('season_type=REG&week=9'))).toBe(true);
+    await waitFor(() => expect(fetcher.mock.calls.some(([url]) => url.endsWith('season_type=REG&week=9'))).toBe(true));
     fireEvent.click(screen.getByRole('link',{name:'W1'}));
     expect(await screen.findByRole('heading',{name:'Week 1'})).toBeInTheDocument();
   });
@@ -111,4 +111,15 @@ describe('current-week home routing', () => {
     expect(await screen.findByRole('alert')).toBeInTheDocument();
     expect(screen.queryByRole('heading',{name:'Week 1'})).not.toBeInTheDocument();
   });
+});
+
+
+it('keeps refresh history after the weekly schedule and game listings', async () => {
+  mock(); open();
+  const gameLink = await screen.findByRole('link', { name: /view matchup/ });
+  const scheduleSection = screen.getByRole('region', { name: 'Weekly schedule' });
+  const history = screen.getByRole('region', { name: 'Schedule data freshness' });
+  expect(scheduleSection.compareDocumentPosition(history) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  expect(gameLink.compareDocumentPosition(history) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  expect(screen.getByRole('heading', { name: 'Schedule refresh history' })).toBeInTheDocument();
 });

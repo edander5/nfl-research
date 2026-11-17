@@ -100,3 +100,13 @@ In a browser at `http://127.0.0.1:5173`, select a week and click a real game. Co
 ## Remaining review gate
 
 GO for owner review of this frontend implementation, subject to WSL/live-browser acceptance. Historical pregame rankings remain unavailable. No runtime source freshness is inferred from browser fetching. Unresolved source authentication/checksum and query-performance limitations remain inherited contracts. Next proposed task is focused live Game Preview acceptance (responsive layout, real identity/API comparison and measured rankings-request latency), not additional data ingestion or historical pregame eligibility implementation. Stop for review before further work, commits, merges, pushes or deployment.
+
+
+## Owner-approved UI follow-up
+
+The comparison now pairs away passing/rushing offense with home passing/rushing
+defense, then home passing/rushing offense with away passing/rushing defense.
+API ranks, averages and sample sizes are unchanged. Rank numbers 1–5 are green,
+6–27 gray and 28–32 red; missing rankings receive no strength/weakness color.
+Markets appear inside the game summary below scores; Team Game Logs are unchanged.
+See [scope and acceptance](schedule-preview-ui.md).

@@ -89,3 +89,27 @@ Owner approved a matchup comparison using existing data/APIs, with current-seaso
 ## Decision 70 — Task 017 supported reference slice
 
 Owner authorized source feasibility then the smallest supported market slice, with a stop before new providers/migrations/material ingestion changes. Official nflverse spread convention is home handicap = negative source spread; bookmaker and pregame quote timing are unsupported. Implement only an existing-source reference projection and exact hypothetical score comparisons, always provisional; tied moneylines are undetermined without market rules. Do not relabel revised source rows as closing quotes, infer FINAL, or change intentional season rankings. Current offers and immutable provider quote storage require separate approval. [Evidence and implementation](game-betting-markets.md).
+
+
+## Decision 71 — Task 020 interactive operator workflow
+
+Owner approved a single manual Bash/Python CLI wrapping existing prepare-only schedule/statistics workflows, independently reviewed guarded imports and read-only verification. Reuse callable schedule APIs and the original statistics CLI with stdin approval rather than duplicating validation/publication logic. The Task 020 instruction explicitly authorizes internal token handling after separate pipeline-specific interactive approval, superseding earlier runbook instructions against automated extraction only for this reviewed interactive workflow. Default/Enter/status/skip never imports; changed baselines invalidate review, hard blockers remain mandatory, and uncertain outcomes stop without retries. Use existing restricted credentials, Compose image/mounts and original scheduler/process/transaction locks. No administrator overrides, automatic updates, new services/dependencies/sources, schema/permission/finality changes or git publication. Rationale: remove repetitive path/token/Docker handling while retaining the original safety boundary. See [implementation and acceptance](interactive-nfl-update.md).
+
+
+## Decision 72 — Task 021 guided updater presentation
+
+Owner approved replacing Task 020's JSON/menu/typed-phrase interaction with readable summaries and guided schedule-then-statistics review. Both pipelines use `Approve import? [y/N]` after their own labeled review. Only explicit y/yes at each pipeline's default-no import prompt authorizes the original guarded apply; Enter can show details but never import. Preserve candidate/baseline revalidation, private internal tokens and stdin transport, read-only accepted-state verification, original journals/locks and indeterminate stops. The existing --status JSON interface remains compatible. Counts are validated game-change counts; source-only/EPA corrections stay distinguishable from stored yardage corrections. Website availability messages require a successful apply plus verification; skipped/failed/unverified pipelines produce an incomplete/partial result. This is presentation/orchestration only, with no importer contracts, scheduler behavior, schema, permissions, frontend, dependencies or deployment changes. See [operator flow and tests](interactive-nfl-update.md).
+
+
+## Decision 73 — Schedule and Game Preview presentation
+
+Owner approved frontend-only layout changes: refresh history follows the schedule;
+four comparisons pair each passing/rushing offense with the opposing defense;
+API ranks 1–5/6–27/28–32 use green/gray/red respectively. Existing offensive and
+defensive definitions, averages and sample sizes are preserved. Markets move below
+the summary scores as compact team rows with spread, moneyline and game total
+columns; grading/provenance remain inspectable in a secondary disclosure. These
+remain unverified nflverse references, never live offers. Rationale: prioritize
+games and make opposing strengths and source values easier to scan without
+changing APIs or calculations. Game logs remain unchanged. No backend, ingestion,
+schema, dependencies or deployment changes. See [validation](schedule-preview-ui.md).

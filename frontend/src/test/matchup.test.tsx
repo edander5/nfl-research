@@ -55,13 +55,20 @@ describe('Game Preview season comparison', () => {
     expect(rows).toHaveLength(4);
     rows.forEach((row, index) => {
       const cells = within(row).getAllByRole('cell');
-      expect(cells[0]).toHaveTextContent(`#${index + 1}`);
-      expect(cells[1]).toHaveTextContent(`#${index + 4}`);
+      expect(cells[0]).toHaveTextContent(`#${[1, 2, 4, 5][index]}`);
+      expect(cells[1]).toHaveTextContent(`#${[6, 7, 3, 4][index]}`);
+      expect(cells[0]).toHaveTextContent(['Passing Offense', 'Rushing Offense', 'Passing Offense', 'Rushing Offense'][index]);
+      expect(cells[1]).toHaveTextContent(['Passing Defense', 'Rushing Defense', 'Passing Defense', 'Rushing Defense'][index]);
+      expect(cells[0]).toHaveTextContent(['Synthetic Away', 'Synthetic Away', 'Synthetic Home', 'Synthetic Home'][index]);
+      expect(cells[1]).toHaveTextContent(['Synthetic Home', 'Synthetic Home', 'Synthetic Away', 'Synthetic Away'][index]);
+      expect(cells[0]).toHaveTextContent(['234.6', '235.6', '123.5', '124.5'][index]);
+      expect(cells[1]).toHaveTextContent(['125.5', '126.5', '236.6', '237.6'][index]);
+      cells.forEach(cell => expect(cell).toHaveTextContent('2 contributing games'));
     });
     expect(screen.getByText('234.6')).toBeInTheDocument();
-    expect(within(table()).getAllByText('Highest average ranks #1')).toHaveLength(2);
-    expect(within(table()).getAllByText('Lowest average allowed ranks #1')).toHaveLength(2);
-    expect(screen.getByRole('columnheader', { name: /Synthetic Away.*BBB/ })).toBeInTheDocument();
+    expect(within(table()).getAllByText('Highest average ranks #1')).toHaveLength(4);
+    expect(within(table()).getAllByText('Lowest average allowed ranks #1')).toHaveLength(4);
+    expect(screen.getByRole('columnheader', { name: 'Opposing defense' })).toBeInTheDocument();
     expect(fetcher.mock.calls.filter(([url]) => url.startsWith('/api/team-rankings')).map(([url]) => url))
       .toEqual(['/api/team-rankings?season=2026&season_type=REG']);
   });
@@ -72,7 +79,7 @@ describe('Game Preview season comparison', () => {
     expect(screen.getByText('Reported scores · Finality unverified')).toBeInTheDocument();
     expect(screen.getByText('UNKNOWN · Finality unverified')).toBeInTheDocument();
     expect(screen.queryByText('Confirmed final scores')).not.toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Synthetic Away \(BBB\)/ })).toHaveAttribute('href', '/teams/synthetic-away/research?season=2024&season_type=REG');
+    expect(screen.getAllByRole('link', { name: /Synthetic Away \(BBB\)/ })[0]).toHaveAttribute('href', '/teams/synthetic-away/research?season=2024&season_type=REG');
   });
   it('defaults postseason to POST and preserves returnTo when explicitly combining stages', async () => {
     const fetcher = mock(game({ season: 2025, season_type: 'POST', week: 19, game_type: 'WC' }));
@@ -101,6 +108,7 @@ describe('Game Preview season comparison', () => {
     const data = rankings();
     data.data[0].teams[0] = { ...data.data[0].teams[0], rank: null, eligible: false, average: null, total_yards: null, games_with_values: 0 };
     data.data[1].teams.forEach(row => { row.rank = 2; row.average = 0; });
+    data.data[3].teams[0].rank = 2; data.data[3].teams[0].average = 0;
     data.data[2].teams[0].average = -3;
     mock(game({ reported_home_score: null, reported_away_score: null, score_finality: 'NOT_REPORTED', scheduled_kickoff_utc: null }), () => json(data));
     open(); await screen.findByRole('table');
@@ -162,5 +170,24 @@ describe('Game Preview season comparison', () => {
     await screen.findByRole('table'); expect(screen.getByLabelText('Location')).toHaveTextContent(`/games/${id}`);
     fireEvent.click(screen.getByRole('link', { name: '← Back to schedule' }));
     expect(await screen.findByRole('heading', { name: 'Week 1' })).toBeInTheDocument();
+  });
+});
+
+
+it.each([[1, 'rank-good'], [5, 'rank-good'], [6, 'rank-neutral'], [27, 'rank-neutral'], [28, 'rank-poor'], [32, 'rank-poor']])('colors API rank %s as %s', async (rank, color) => {
+  const data = rankings();
+  data.data.forEach(category => category.teams.forEach(row => { row.rank = rank as number; }));
+  mock(game(), () => json(data)); open(); await screen.findByRole('table');
+  const ranks = within(table()).getAllByText(`#${rank}`);
+  expect(ranks).toHaveLength(8);
+  ranks.forEach(node => expect(node).toHaveClass(color as string));
+});
+
+it('does not color missing ranks as strong or weak', async () => {
+  const data = rankings();
+  data.data.forEach(category => category.teams.forEach(row => { row.rank = null; }));
+  mock(game(), () => json(data)); open(); await screen.findByRole('table');
+  within(table()).getAllByText('Unranked').forEach(node => {
+    expect(node).not.toHaveClass('rank-good'); expect(node).not.toHaveClass('rank-poor');
   });
 });

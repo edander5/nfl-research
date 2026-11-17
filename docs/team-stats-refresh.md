@@ -1,5 +1,7 @@
 # Task 014 — guarded NFL team-statistics refresh preparation
 
+Task 020 provides [one-command interactive review/apply](interactive-nfl-update.md), consuming this archived handoff through the original ingestion dry-run and separately confirmed stdin approval. This preparer still cannot apply.
+
 Approved branch: `feature/team-stats-refresh`. This task implements a reusable **prepare-only**, manually invoked workflow. It discovers official source bytes, validates them, reconciles against canonical PostgreSQL identities/accepted history, and creates an immutable private review report. It cannot apply updates, accept corrections, roll back selections, change schedules or activate jobs. The existing guarded importer remains the sole publication path after separate owner approval.
 
 Owner baseline: 705 accepted pairs / 1,410 team records, existing read-only statistics/rankings APIs, rankings frontend, restricted roles and revision 0002. Those are owner-reported context. No development database or source files were modified by the agent.

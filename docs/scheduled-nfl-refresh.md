@@ -1,5 +1,7 @@
 # Task 015 — scheduled NFL refresh, prepare-only
 
+Task 020 adds [an interactive update CLI](interactive-nfl-update.md). Coordinate stopping an enabled recurring scheduler before using it. The CLI holds this scheduler's singleton lock and reuses its fixed preparation components; it never enables recurrence.
+
 Approved implementation on `feature/scheduled-nfl-refresh`. Owner reports both existing guarded refresh pipelines working against real data, including the Bills–Vikings statistics and reported score. Task 015 adds an **opt-in scheduler**, not automatic publication. No real scheduler, refresh, import, migration, grant or deployment was executed by the agent during this task.
 
 ## What runs

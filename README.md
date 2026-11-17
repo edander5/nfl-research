@@ -1,5 +1,7 @@
 # NFL Betting Research
 
+Task 020 adds `./scripts/update-nfl-data.sh`: guided plain-text schedule/statistics review, separate default-no import prompts and read-only verification (Task 021). Use `--status` for inspection without downloads/imports. See [setup, WSL validation and troubleshooting](docs/interactive-nfl-update.md).
+
 **Status:** Owner reports foundation, ingestion, read-only API and dashboard completed/merged, with 842 imported games and the prior 139-test backend suite validated. The approved [guarded manual refresh runner](docs/schedule-refresh.md) is implemented; fresh-source and new PostgreSQL runtime checks remain blocked in this agent environment. No unattended scheduler is active.
 
 A private, self-hosted, NFL statistics and player-prop research web app. The first working vertical slice is a 2024–2026 weekly NFL schedule, backed by real imported data in PostgreSQL and served by FastAPI to React.

@@ -1,5 +1,7 @@
 # Technical Architecture
 
+Task 020 adds an [interactive update CLI](interactive-nfl-update.md): a Bash readiness/Compose launcher and Python orchestrator in the existing scheduler image. It reuses fixed prepare-only scheduler components, the original guarded importer APIs/CLI, archived handoffs and read-only repositories. Original locks remain in force; separate default-no interactive confirmations are required (Task 021 guided presentation). Private operational journals block retries after uncertain applies. No new service, dependency, schema, permission, source or finality contract.
+
 ## System decomposition
 
 **Current implementation:** development PostgreSQL/FastAPI foundation, schedule ingestion and [read-only API](schedule-api.md), owner-reported validated with 139 tests and 842 games. [Task 006](agent-task-006.md) adds the React schedule/matchup frontend and a loopback-only Vite Compose service, proxying `/api` through the existing default network without API/CORS changes. [Dashboard guide](schedule-dashboard.md) records pending frontend dependency/build/browser checks. Scheduler/Caddy/Tailscale deployment remains a target, not an initialized service.

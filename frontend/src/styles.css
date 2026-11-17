@@ -119,3 +119,19 @@
 .preview-log-footer nav { display:flex; align-items:center; gap:10px; }.preview-log-footer button { border:1px solid #dce2d6; border-radius:4px; padding:3px 7px; color:#46593c; background:#fff; }
 .log-state { padding:20px 16px; color:#74806a; font-size:12px; }.log-sources { font-size:10px; color:#74806a; padding:0 16px 14px; }.log-sources summary { cursor:pointer; }.log-sources p { line-height:1.7; }
 @media(max-width:760px) { .preview-log-grid { grid-template-columns:minmax(0,1fr); }.preview-log-header { padding:14px; }.preview-log-table th,.preview-log-table td { padding:11px 8px; }.preview-log-header h3 { font-size:15px; } }
+
+/* Scoped preview presentation; ranks and market values remain API supplied. */
+.comparison-rank.rank-good { color:#166534; }
+.comparison-rank.rank-neutral { color:#4b5563; }
+.comparison-rank.rank-poor { color:#b91c1c; }
+.matchup-hero .betting-markets { margin:24px 0 0; text-align:left; border-top:1px solid #dce2d5; padding-top:20px; }
+.sportsbook-scroll { overflow-x:auto; max-width:100%; }
+.sportsbook-table { width:100%; border-collapse:separate; border-spacing:6px; table-layout:fixed; font-size:13px; }
+.sportsbook-table caption { text-align:left; font-size:11px; color:#4b5563; padding:8px; }
+.sportsbook-table th { text-align:left; font-size:11px; }
+.sportsbook-table th:first-child { width:16%; }
+.sportsbook-table th small,.market-cell small { display:block; font-size:10px; font-weight:400; margin-top:5px; color:#4b5563; }
+.market-cell { padding:12px 6px; text-align:center; border:1px solid #dce2d5; border-radius:6px; background:#f5f7f0; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+.market-grading { margin-top:16px; }
+.market-grading > summary { cursor:pointer; font-size:12px; padding:8px 0; }
+@media(max-width:480px) { .sportsbook-table { border-spacing:3px; font-size:12px; }.sportsbook-table th { font-size:10px; }.market-cell { padding:10px 3px; }.matchup-hero .market-reference { padding:8px; } }

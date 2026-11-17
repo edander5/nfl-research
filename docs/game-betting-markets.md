@@ -98,7 +98,7 @@ Unknown game UUID: existing 404 envelope. Invalid UUID/unknown or repeated query
 
 ## Game Preview behavior
 
-The independent Game Betting Markets section follows the existing rankings comparison. It never reorders or replaces rankings. It shows reported prices, derived signed spreads, totals, hypothetical/provisional results and score leader/tie context. A reported score leader is not asserted to be the final winner. UNKNOWN/UNVERIFIED remain unchanged.
+The independently fetched Game Betting Markets component is embedded in the game summary below the score, before the rankings comparison. Compact team rows show spread, moneyline and game total references. Hypothetical grading and source details remain available in an expandable secondary section. See [UI adjustments](schedule-preview-ui.md). It shows reported prices, derived signed spreads, totals, hypothetical/provisional results and score leader/tie context. A reported score leader is not asserted to be the final winner. UNKNOWN/UNVERIFIED remain unchanged.
 
 Upcoming/unscored games may display retained source-reference values, but no current-offer claim is made. Missing quote times always remain unavailable, even if the artifact was downloaded recently. The UI does not classify a game as completed from kickoff time. Table headings, source attribution, source hashes and artifact-observation timestamps make the limitations inspectable. Small screens use a horizontally scrollable focusable market table. It has independent loading, unavailable, error/retry and failed-reload-with-cached-data states. No polling or provider requests from the browser.
 

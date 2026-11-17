@@ -32,21 +32,23 @@ function open(handler: () => Promise<Response> | Response = () => json(fixture()
   return fn;
 }
 it('displays exact source lines, prices and provisional results without advertising offers', async () => {
-  const fn = open(); const table = await screen.findByRole('table');
+  const fn = open(); const table = await screen.findByRole('table', { name: /Unverified source references/ });
+  fireEvent.click(screen.getByText('Hypothetical grading & source details'));
+  const grading = screen.getByRole('table', { name: /Source-reference comparisons/ });
   expect(within(table).getByText('-3.5')).toBeInTheDocument(); expect(within(table).getByText('+120')).toBeInTheDocument();
   expect(screen.getByText('Current sportsbook offers unavailable')).toBeInTheDocument();
   expect(screen.getByText('Quote freshness UNKNOWN')).toBeInTheDocument(); expect(screen.getByText('nflverse · Sportsbook unknown')).toBeInTheDocument();
-  expect(within(table).getByText('Provisional WIN')).toBeInTheDocument(); expect(within(table).getAllByText('Provisional PUSH')).toHaveLength(2);
+  expect(within(grading).getByText('Provisional WIN')).toBeInTheDocument(); expect(within(grading).getAllByText('Provisional PUSH')).toHaveLength(2);
   expect(screen.getByText(/not verified opening, closing or historical pregame/)).toBeInTheDocument();
   expect(fn.mock.calls[0][0]).toBe(`/api/games/${id}/markets`);
 });
 it('distinguishes artifact observation dates from missing quote timestamps', async () => {
-  open(); await screen.findByRole('table');
+  open(); await screen.findByRole('table', { name: /Unverified source references/ });
   expect(screen.getByText(/Odds last updated: unavailable/)).toHaveTextContent('These are file observations, not quote times.');
   expect(screen.getByText(/Artifact retrieved:/)).toHaveTextContent(new Date('2026-11-01T12:00:00Z').toLocaleString());
 });
 it('does not infer completion from reported scores or change the Game Preview comparison', async () => {
-  open(undefined, true); await screen.findByRole('table');
+  open(undefined, true); await screen.findByRole('table', { name: /Unverified source references/ });
   expect(screen.getByRole('heading', { name: /Game preview/ })).toBeInTheDocument();
   expect(screen.getByText('Historical pregame rankings unavailable')).toBeInTheDocument();
   expect(screen.getAllByText('Reported scores · Finality unverified').length).toBeGreaterThan(0);
@@ -60,7 +62,8 @@ it('shows unavailable market data', async () => {
 it('does not calculate results in the browser and preserves undetermined tie rules', async () => {
   const data = fixture(); data.data.game = game({ reported_home_score: 0, reported_away_score: 0 });
   data.data.references[0].sides[0].result = 'UNDETERMINED'; data.data.references[0].sides[0].reason = 'moneyline_tie_rules_unknown';
-  open(() => json(data)); await screen.findByRole('table');
+  open(() => json(data)); await screen.findByRole('table', { name: /Unverified source references/ });
+  fireEvent.click(screen.getByText('Hypothetical grading & source details'));
   expect(screen.getByText('Undetermined')).toBeInTheDocument(); expect(screen.getByText('Tie rules unknown')).toBeInTheDocument();
   expect(screen.getByText(/Reported score is tied/)).toBeInTheDocument();
 });
@@ -68,15 +71,46 @@ it('loads independently and retries failures', async () => {
   let fail = true; open(() => fail ? json({}, 503) : json(fixture()));
   expect(screen.getByText('Loading market references…')).toBeInTheDocument();
   expect(await screen.findByRole('alert')).toBeInTheDocument(); fail = false;
-  fireEvent.click(screen.getByRole('button', { name: 'Retry market references' })); await screen.findByRole('table');
+  fireEvent.click(screen.getByRole('button', { name: 'Retry market references' })); await screen.findByRole('table', { name: /Unverified source references/ });
 });
 it('keeps cached references visible when reloading fails', async () => {
   let fail = false; open(() => fail ? Promise.reject(new Error('network')) : json(fixture()));
-  await screen.findByRole('table'); fail = true; fireEvent.click(screen.getByRole('button', { name: 'Reload market references' }));
-  expect(await screen.findByRole('alert')).toHaveTextContent('Previously loaded'); expect(screen.getByRole('table')).toBeInTheDocument();
+  await screen.findByRole('table', { name: /Unverified source references/ }); fail = true; fireEvent.click(screen.getByRole('button', { name: 'Reload market references' }));
+  expect(await screen.findByRole('alert')).toHaveTextContent('Previously loaded'); expect(screen.getByRole('table', { name: /Unverified source references/ })).toBeInTheDocument();
 });
 it('rejects mismatched identity and HTML responses', async () => {
   const data = fixture(); data.data.game.id = 'wrong-id';
   vi.stubGlobal('fetch', vi.fn().mockResolvedValue(json(data))); await expect(markets(id)).rejects.toThrow();
   vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response('<html/>'))); await expect(markets(id)).rejects.toThrow();
+});
+
+
+it('pairs exact available and missing values into two team rows', async () => {
+  open();
+  const table = await screen.findByRole('table', { name: /Unverified source references/ });
+  const rows = within(table).getAllByRole('row').slice(1);
+  expect(rows).toHaveLength(2);
+  const away = within(rows[0]).getAllByRole('cell');
+  expect(away[0]).toHaveTextContent('Unavailable');
+  expect(away[1]).toHaveTextContent('+120');
+  expect(away[2]).toHaveTextContent('Over 44');
+  expect(away[2]).toHaveTextContent('Price Unavailable');
+  const home = within(rows[1]).getAllByRole('cell');
+  expect(home[0]).toHaveTextContent('-3.5');
+  expect(home[0]).toHaveTextContent('Price -110');
+  expect(home[1]).toHaveTextContent('Unavailable');
+  expect(home[2]).toHaveTextContent('Under 44');
+  expect(home[2]).toHaveTextContent('Price -110');
+  expect(screen.getByRole('region', { name: 'Team market references' })).toHaveAttribute('tabindex', '0');
+  expect(screen.getByText('Hypothetical grading & source details').parentElement).not.toHaveAttribute('open');
+});
+
+it('places market references inside the summary after scores and before rankings and logs', async () => {
+  open(undefined, true);
+  const title = await screen.findByRole('heading', { name: 'Game Betting Markets' });
+  const hero = title.closest('.matchup-hero')!;
+  expect(hero).not.toBeNull();
+  expect(hero.querySelector('.hero-score')!.compareDocumentPosition(title) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  expect(title.compareDocumentPosition(screen.getByRole('heading', { name: 'Current accepted season comparison' })) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  expect(title.compareDocumentPosition(screen.getByRole('heading', { name: 'Team Game Logs' })) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
 });
