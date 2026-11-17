@@ -1,0 +1,172 @@
+- document:
+  - region "Notifications (F8)":
+    - list
+  - button "Open navigation menu"
+  - main:
+    - textbox "Search teams or players..."
+    - heading "NFL Schedule" [level=1]
+    - button "Week 1"
+    - button "Week 2"
+    - button "Week 3"
+    - button "Week 4"
+    - button "Week 5"
+    - button "Week 6"
+    - button "Week 7"
+    - button "Week 8"
+    - button "Week 9"
+    - button "Week 10"
+    - button "Current 11"
+    - button "Week 12"
+    - button "Week 13"
+    - button "Week 14"
+    - button "Week 15"
+    - button "Week 16"
+    - button "Week 17"
+    - button "Week 18"
+    - text: Thursday, November 12 FINAL Prime Video MetLife Stadium
+    - link "WAS logo":
+      - /url: /nfl/moneyline/WAS
+      - img "WAS logo"
+    - text: Washington Commanders 3-5-1 NFC · EAST 24 - 21 New York Giants 5-3-1 NFC · EAST
+    - link "NYG logo":
+      - /url: /nfl/moneyline/NYG
+      - img "NYG logo"
+    - button "Box Score"
+    - text: Sunday, November 15 FINAL Fox FC Bayern Munich Stadium
+    - link "NE logo":
+      - /url: /nfl/moneyline/NE
+      - img "NE logo"
+    - text: New England Patriots 5-5 AFC · EAST 10 - 35 Detroit Lions 7-2 NFC · NORTH
+    - link "DET logo":
+      - /url: /nfl/moneyline/DET
+      - img "DET logo"
+    - button "Box Score"
+    - text: FINAL CBS Mercedes-Benz Stadium
+    - link "KC logo":
+      - /url: /nfl/moneyline/KC
+      - img "KC logo"
+    - text: Kansas City Chiefs 7-2 AFC · WEST 35 - 13 Atlanta Falcons 3-7 NFC · SOUTH
+    - link "ATL logo":
+      - /url: /nfl/moneyline/ATL
+      - img "ATL logo"
+    - button "Box Score"
+    - text: FINAL Fox Huntington Bank Field
+    - link "HOU logo":
+      - /url: /nfl/moneyline/HOU
+      - img "HOU logo"
+    - text: Houston Texans 3-6 AFC · SOUTH 24 - 27 Cleveland Browns 6-4 AFC · NORTH
+    - link "CLE logo":
+      - /url: /nfl/moneyline/CLE
+      - img "CLE logo"
+    - button "Box Score"
+    - text: FINAL Fox Lambeau Field
+    - link "MIN logo":
+      - /url: /nfl/moneyline/MIN
+      - img "MIN logo"
+    - text: Minnesota Vikings 7-2 NFC · NORTH 30 - 10 Green Bay Packers 6-4 NFC · NORTH
+    - link "GB logo":
+      - /url: /nfl/moneyline/GB
+      - img "GB logo"
+    - button "Box Score"
+    - text: FINAL Fox Nissan Stadium
+    - link "JAX logo":
+      - /url: /nfl/moneyline/JAX
+      - img "JAX logo"
+    - text: Jacksonville Jaguars 7-2 AFC · SOUTH 40 - 23 Tennessee Titans 1-8 AFC · SOUTH
+    - link "TEN logo":
+      - /url: /nfl/moneyline/TEN
+      - img "TEN logo"
+    - button "Box Score"
+    - text: FINAL CBS Lucas Oil Stadium
+    - link "MIA logo":
+      - /url: /nfl/moneyline/MIA
+      - img "MIA logo"
+    - text: Miami Dolphins 1-8 AFC · EAST 22 - 24 Indianapolis Colts 3-7 AFC · SOUTH
+    - link "IND logo":
+      - /url: /nfl/moneyline/IND
+      - img "IND logo"
+    - button "Box Score"
+    - text: FINAL Fox Caesars Superdome
+    - link "CAR logo":
+      - /url: /nfl/moneyline/CAR
+      - img "CAR logo"
+    - text: Carolina Panthers 4-5 NFC · SOUTH 20 - 17 New Orleans Saints 3-6 NFC · SOUTH
+    - link "NO logo":
+      - /url: /nfl/moneyline/NO
+      - img "NO logo"
+    - button "Box Score"
+    - text: FINAL CBS MetLife Stadium
+    - link "BUF logo":
+      - /url: /nfl/moneyline/BUF
+      - img "BUF logo"
+    - text: Buffalo Bills 8-1 AFC · EAST 31 - 12 New York Jets 2-8 AFC · EAST
+    - link "NYJ logo":
+      - /url: /nfl/moneyline/NYJ
+      - img "NYJ logo"
+    - button "Box Score"
+    - text: FINAL CBS Allegiant Stadium
+    - link "SEA logo":
+      - /url: /nfl/moneyline/SEA
+      - img "SEA logo"
+    - text: Seattle Seahawks 6-4 NFC · WEST 21 - 13 Las Vegas Raiders 4-6 AFC · WEST
+    - link "LV logo":
+      - /url: /nfl/moneyline/LV
+      - img "LV logo"
+    - button "Box Score"
+    - text: FINAL CBS State Farm Stadium
+    - link "LAR logo":
+      - /url: /nfl/moneyline/LAR
+      - img "LAR logo"
+    - text: Los Angeles Rams 6-4 NFC · WEST 34 - 6 Arizona Cardinals 3-7 NFC · WEST
+    - link "ARI logo":
+      - /url: /nfl/moneyline/ARI
+      - img "ARI logo"
+    - button "Box Score"
+    - text: FINAL Fox AT&T Stadium
+    - link "SF logo":
+      - /url: /nfl/moneyline/SF
+      - img "SF logo"
+    - text: San Francisco 49ers 8-1 NFC · WEST 46 - 40 Dallas Cowboys 4-6 NFC · EAST
+    - link "DAL logo":
+      - /url: /nfl/moneyline/DAL
+      - img "DAL logo"
+    - button "Box Score"
+    - text: FINAL NBC Paycor Stadium
+    - link "PIT logo":
+      - /url: /nfl/moneyline/PIT
+      - img "PIT logo"
+    - text: Pittsburgh Steelers 6-3 AFC · NORTH 18 - 38 Cincinnati Bengals 7-2 AFC · NORTH
+    - link "CIN logo":
+      - /url: /nfl/moneyline/CIN
+      - img "CIN logo"
+    - button "Box Score"
+    - text: Monday, November 16 FINAL ESPN M&T Bank Stadium
+    - link "LAC logo":
+      - /url: /nfl/moneyline/LAC
+      - img "LAC logo"
+    - text: Los Angeles Chargers 1-8 AFC · WEST 23 - 20 Baltimore Ravens 4-6 AFC · NORTH
+    - link "BAL logo":
+      - /url: /nfl/moneyline/BAL
+      - img "BAL logo"
+    - button "Box Score"
+    - link "Follow us on X":
+      - /url: https://x.com/Buckets2Bucks
+    - link "Join our Discord":
+      - /url: https://discord.gg/gvdJTTG8MU
+    - paragraph: Buckets to Bucks, a Guy Boston Sports Corp Product
+    - paragraph:
+      - text: Need help? Contact us at
+      - link "contact@guybostonsports.com":
+        - /url: mailto:contact@guybostonsports.com
+    - link "Terms of Service":
+      - /url: /terms
+    - text: "|"
+    - link "Privacy Policy":
+      - /url: /privacy
+    - text: "|"
+    - link "Disclaimer":
+      - /url: /disclaimer
+    - paragraph: Gambling Problem? Call 1-800-GAMBLER
+  - text: My Picks ready
+  - button "My Picks 0"
+  - button "Collapse My Picks"

@@ -1,0 +1,210 @@
+- document:
+  - region "Notifications (F8)":
+    - list
+  - button "Open navigation menu"
+  - main:
+    - textbox "Search teams or players..."
+    - heading "NFL Lineups" [level=1]
+    - paragraph: Projected starters and depth charts
+    - text: "Updated: 2:31 PM ET"
+    - button "Refresh"
+    - text: THU 8:15 PM ET 🏟️ Dome
+    - link "IND logo":
+      - /url: /nfl/moneyline/IND
+      - img "IND logo"
+    - text: Colts 3-7 Projected Starters QB
+    - link "View Daniel Jones's player details":
+      - /url: /nfl/player-props/daniel-jones?pos=QB&t=IND
+      - text: Daniel Jones
+    - text: RB
+    - link "View Jonathan Taylor's player details":
+      - /url: /nfl/player-props/jonathan-taylor?pos=RB&t=IND
+      - text: Jonathan Taylor
+    - text: WR
+    - link "View Laquon Treadwell's player details":
+      - /url: /nfl/player-props/laquon-treadwell?pos=WR&t=IND
+      - text: Laquon Treadwell
+    - text: WR
+    - link "View Deion Burks's player details":
+      - /url: /nfl/player-props/deion-burks?pos=WR&t=IND
+      - text: Deion Burks
+    - text: WR
+    - link "View Anthony Gould's player details":
+      - /url: /nfl/player-props/anthony-gould?pos=WR&t=IND
+      - text: Anthony Gould
+    - button "QUES injury update for Anthony Gould": QUES
+    - text: TE
+    - link "View Tyler Warren's player details":
+      - /url: /nfl/player-props/tyler-warren?pos=TE&t=IND
+      - text: Tyler Warren
+    - text: K
+    - link "View Spencer Shrader's player details":
+      - /url: /nfl/player-props/spencer-shrader?pos=K&t=IND
+      - text: Spencer Shrader
+    - text: "@"
+    - link "HOU logo":
+      - /url: /nfl/moneyline/HOU
+      - img "HOU logo"
+    - text: Texans 3-6 Projected Starters QB
+    - link "View C.J. Stroud's player details":
+      - /url: /nfl/player-props/cj-stroud?pos=QB&t=HOU
+      - text: C.J. Stroud
+    - text: RB
+    - link "View David Montgomery's player details":
+      - /url: /nfl/player-props/david-montgomery?pos=RB&t=HOU
+      - text: David Montgomery
+    - text: WR
+    - link "View Nico Collins's player details":
+      - /url: /nfl/player-props/nico-collins?pos=WR&t=HOU
+      - text: Nico Collins
+    - text: WR
+    - link "View Xavier Hutchinson's player details":
+      - /url: /nfl/player-props/xavier-hutchinson?pos=WR&t=HOU
+      - text: Xavier Hutchinson
+    - text: WR
+    - link "View Tank Dell's player details":
+      - /url: /nfl/player-props/tank-dell?pos=WR&t=HOU
+      - text: Tank Dell
+    - text: TE
+    - link "View Dalton Schultz's player details":
+      - /url: /nfl/player-props/dalton-schultz?pos=TE&t=HOU
+      - text: Dalton Schultz
+    - text: K
+    - link "View Ka'imi Fairbairn's player details":
+      - /url: /nfl/player-props/kaimi-fairbairn?pos=K&t=HOU
+      - text: Ka'imi Fairbairn
+    - button "IND logo IND Depth Chart":
+      - img "IND logo"
+      - text: IND Depth Chart
+    - button "HOU logo HOU Depth Chart":
+      - img "HOU logo"
+      - text: HOU Depth Chart
+    - text: SUN 1:00 PM ET 🌤️ 21% Precipitation 60° 13 mph SSW Wind
+    - link "MIA logo":
+      - /url: /nfl/moneyline/MIA
+      - img "MIA logo"
+    - text: Dolphins 1-8 Projected Starters QB
+    - link "View Kyle McCord's player details":
+      - /url: /nfl/player-props/kyle-mccord?pos=QB&t=MIA
+      - text: Kyle McCord
+    - text: RB
+    - link "View Ollie Gordon's player details":
+      - /url: /nfl/player-props/ollie-gordon?pos=RB&t=MIA
+      - text: Ollie Gordon
+    - text: WR
+    - link "View Malik Washington's player details":
+      - /url: /nfl/player-props/malik-washington?pos=WR&t=MIA
+      - text: Malik Washington
+    - text: WR
+    - link "View Caleb Douglas's player details":
+      - /url: /nfl/player-props/caleb-douglas?pos=WR&t=MIA
+      - text: Caleb Douglas
+    - text: WR
+    - link "View Chris Bell's player details":
+      - /url: /nfl/player-props/chris-bell?pos=WR&t=MIA
+      - text: Chris Bell
+    - button "QUES injury update for Chris Bell": QUES
+    - text: TE
+    - link "View Greg Dulcich's player details":
+      - /url: /nfl/player-props/greg-dulcich?pos=TE&t=MIA
+      - text: Greg Dulcich
+    - text: "@"
+    - link "BUF logo":
+      - /url: /nfl/moneyline/BUF
+      - img "BUF logo"
+    - text: Bills 8-1 Projected Starters QB
+    - link "View Josh Allen's player details":
+      - /url: /nfl/player-props/josh-allen?pos=QB&t=BUF
+      - text: Josh Allen
+    - text: RB
+    - link "View James Cook's player details":
+      - /url: /nfl/player-props/james-cook?pos=RB&t=BUF
+      - text: James Cook
+    - text: WR
+    - link "View DJ Moore's player details":
+      - /url: /nfl/player-props/dj-moore?pos=WR&t=BUF
+      - text: DJ Moore
+    - text: WR
+    - link "View Khalil Shakir's player details":
+      - /url: /nfl/player-props/khalil-shakir?pos=WR&t=BUF
+      - text: Khalil Shakir
+    - text: WR
+    - link "View Keon Coleman's player details":
+      - /url: /nfl/player-props/keon-coleman?pos=WR&t=BUF
+      - text: Keon Coleman
+    - text: TE
+    - link "View Dalton Kincaid's player details":
+      - /url: /nfl/player-props/dalton-kincaid?pos=TE&t=BUF
+      - text: Dalton Kincaid
+    - text: K
+    - link "View Tyler Bass's player details":
+      - /url: /nfl/player-props/tyler-bass?pos=K&t=BUF
+      - text: Tyler Bass
+    - button "MIA logo MIA Depth Chart":
+      - img "MIA logo"
+      - text: MIA Depth Chart
+    - button "BUF logo BUF Depth Chart":
+      - img "BUF logo"
+      - text: BUF Depth Chart
+    - text: SUN 1:00 PM ET 🌤️ 26% Precipitation 48° 13 mph WNW Wind
+    - link "NO logo":
+      - /url: /nfl/moneyline/NO
+      - img "NO logo"
+    - text: Saints 3-6 Projected Starters QB
+    - link "View Tyler Shough's player details":
+      - /url: /nfl/player-props/tyler-shough?pos=QB&t=NO
+      - text: Tyler Shough
+    - text: RB
+    - link "View Travis Etienne's player details":
+      - /url: /nfl/player-props/travis-etienne?pos=RB&t=NO
+      - text: Travis Etienne
+    - text: WR
+    - link "View Chris Olave's player details":
+      - /url: /nfl/player-props/chris-olave?pos=WR&t=NO
+      - text: Chris Olave
+    - text: WR
+    - link "View Jordyn Tyson's player details":
+      - /url: /nfl/player-props/jordyn-tyson?pos=WR&t=NO
+      - text: Jordyn Tyson
+    - text: WR
+    - link "View Devaughn Vele's player details":
+      - /url: /nfl/player-props/devaughn-vele?pos=WR&t=NO
+      - text: Devaughn Vele
+    - text: TE
+    - link "View Juwan Johnson's player details":
+      - /url: /nfl/player-props/juwan-johnson?pos=TE&t=NO
+      - text: Juwan Johnson
+    - text: K
+    - link "View Charlie Smyth's player details":
+      - /url: /nfl/player-props/charlie-smyth?pos=K&t=NO
+      - text: Charlie Smyth
+    - text: "@"
+    - link "CHI logo":
+      - /url: /nfl/moneyline/CHI
+      - img "CHI logo"
+    - text: Bears 7-2 Projected Starters QB
+    - link "View Caleb Williams's player details":
+      - /url: /nfl/player-props/caleb-williams?pos=QB&t=CHI
+      - text: Caleb Williams
+    - text: RB
+    - link "View D'Andre Swift's player details":
+      - /url: /nfl/player-props/dandre-swift?pos=RB&t=CHI
+      - text: D'Andre Swift
+    - text: WR
+    - link "View Luther Burden's player details":
+      - /url: /nfl/player-props/luther-burden?pos=WR&t=CHI
+      - text: Luther Burden
+    - text: WR
+    - link "View Rome Odunze's player details":
+      - /url: /nfl/player-props/rome-odunze?pos=WR&t=CHI
+      - text: Rome Odunze
+    - text: WR
+    - link "View Kalif Raymond's player details":
+      - /url: /nfl/player-props/kalif-raymond?pos=WR&t=CHI
+      - text: Kalif Raymond
+    - text: TE
+    - link "View Colston Loveland's player details":
+      - /url: /nfl/player-props/colston-loveland?pos=TE&t=CHI
+      - text: Colston Loveland
+    - text: K
+    - link "View Cairo Santos's player details":

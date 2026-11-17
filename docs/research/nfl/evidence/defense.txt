@@ -1,0 +1,165 @@
+- document:
+  - region "Notifications (F8)":
+    - list
+  - button "Open navigation menu"
+  - main:
+    - textbox "Search teams or players..."
+    - heading "NFL Lineups" [level=1]
+    - paragraph: Projected starters and depth charts
+    - text: "Updated: 2:31 PM ET"
+    - button "Refresh"
+    - text: THU 8:15 PM ET 🏟️ Dome
+    - link "IND logo":
+      - /url: /nfl/moneyline/IND
+      - img "IND logo"
+    - text: Colts 3-7 Projected Starters QB
+    - link "View Daniel Jones's player details":
+      - /url: /nfl/player-props/daniel-jones?pos=QB&t=IND
+      - text: Daniel Jones
+    - text: RB
+    - link "View Jonathan Taylor's player details":
+      - /url: /nfl/player-props/jonathan-taylor?pos=RB&t=IND
+      - text: Jonathan Taylor
+    - text: WR
+    - link "View Laquon Treadwell's player details":
+      - /url: /nfl/player-props/laquon-treadwell?pos=WR&t=IND
+      - text: Laquon Treadwell
+    - text: WR
+    - link "View Deion Burks's player details":
+      - /url: /nfl/player-props/deion-burks?pos=WR&t=IND
+      - text: Deion Burks
+    - text: WR
+    - link "View Anthony Gould's player details":
+      - /url: /nfl/player-props/anthony-gould?pos=WR&t=IND
+      - text: Anthony Gould
+    - button "QUES injury update for Anthony Gould": QUES
+    - text: TE
+    - link "View Tyler Warren's player details":
+      - /url: /nfl/player-props/tyler-warren?pos=TE&t=IND
+      - text: Tyler Warren
+    - text: K
+    - link "View Spencer Shrader's player details":
+      - /url: /nfl/player-props/spencer-shrader?pos=K&t=IND
+      - text: Spencer Shrader
+    - text: "@"
+    - link "HOU logo":
+      - /url: /nfl/moneyline/HOU
+      - img "HOU logo"
+    - text: Texans 3-6 Projected Starters QB
+    - link "View C.J. Stroud's player details":
+      - /url: /nfl/player-props/cj-stroud?pos=QB&t=HOU
+      - text: C.J. Stroud
+    - text: RB
+    - link "View David Montgomery's player details":
+      - /url: /nfl/player-props/david-montgomery?pos=RB&t=HOU
+      - text: David Montgomery
+    - text: WR
+    - link "View Nico Collins's player details":
+      - /url: /nfl/player-props/nico-collins?pos=WR&t=HOU
+      - text: Nico Collins
+    - text: WR
+    - link "View Xavier Hutchinson's player details":
+      - /url: /nfl/player-props/xavier-hutchinson?pos=WR&t=HOU
+      - text: Xavier Hutchinson
+    - text: WR
+    - link "View Tank Dell's player details":
+      - /url: /nfl/player-props/tank-dell?pos=WR&t=HOU
+      - text: Tank Dell
+    - text: TE
+    - link "View Dalton Schultz's player details":
+      - /url: /nfl/player-props/dalton-schultz?pos=TE&t=HOU
+      - text: Dalton Schultz
+    - text: K
+    - link "View Ka'imi Fairbairn's player details":
+      - /url: /nfl/player-props/kaimi-fairbairn?pos=K&t=HOU
+      - text: Ka'imi Fairbairn
+    - button "IND logo IND Depth Chart":
+      - img "IND logo"
+      - text: IND Depth Chart
+    - button "HOU logo HOU Depth Chart":
+      - img "HOU logo"
+      - text: HOU Depth Chart
+    - text: Colts Depth Chart
+    - button "Offense"
+    - button "Defense"
+    - button "Special Teams"
+    - text: Base 4-3 D LDE 1
+    - link "View Arden Key's player details":
+      - /url: /nfl/player-props/arden-key?p=3843843
+      - text: Arden Key
+    - text: "2"
+    - link "View Jaylahn Tuimoloau's player details":
+      - /url: /nfl/player-props/jaylahn-tuimoloau?p=4566154
+      - text: Jaylahn Tuimoloau
+    - text: "3"
+    - link "View George Gumbs Jr.'s player details":
+      - /url: /nfl/player-props/george-gumbs-jr?p=4708238
+      - text: George Gumbs Jr.
+    - text: LDT 1
+    - link "View Grover Stewart's player details":
+      - /url: /nfl/player-props/grover-stewart?p=4058825
+      - text: Grover Stewart
+    - text: "2"
+    - link "View Tim Smith's player details":
+      - /url: /nfl/player-props/tim-smith?p=4692033
+      - text: Tim Smith
+    - text: RDT 1
+    - link "View Adetomiwa Adebawore's player details":
+      - /url: /nfl/player-props/adetomiwa-adebawore?p=4427635
+      - text: Adetomiwa Adebawore
+    - text: "2"
+    - link "View Jerry Tillery's player details":
+      - /url: /nfl/player-props/jerry-tillery?p=3863182
+      - text: Jerry Tillery
+    - button "QUES injury update for Jerry Tillery": QUES
+    - text: "3"
+    - link "View Kevin Givens's player details":
+      - /url: /nfl/player-props/kevin-givens?p=3929641
+      - text: Kevin Givens
+    - text: RDE 1
+    - link "View Laiatu Latu's player details":
+      - /url: /nfl/player-props/laiatu-latu?p=4426473
+      - text: Laiatu Latu
+    - text: "2"
+    - link "View Caden Curry's player details":
+      - /url: /nfl/player-props/caden-curry?p=4685324
+      - text: Caden Curry
+    - text: "3"
+    - link "View Micheal Clemons's player details":
+      - /url: /nfl/player-props/micheal-clemons?p=4240896
+      - text: Micheal Clemons
+    - button "IR injury update for Micheal Clemons": IR
+    - text: WLB 1
+    - link "View Tahj Chambers's player details":
+      - /url: /nfl/player-props/tahj-chambers?p=4692638
+      - text: Tahj Chambers
+    - text: "2"
+    - link "View Akeem Davis-Gaither's player details":
+      - /url: /nfl/player-props/akeem-davis-gaither?p=3917142
+      - text: Akeem Davis-Gaither
+    - button "IR injury update for Akeem Davis-Gaither": IR
+    - text: MLB 1
+    - link "View CJ Allen's player details":
+      - /url: /nfl/player-props/cj-allen?p=4870598
+      - text: CJ Allen
+    - text: "2"
+    - link "View Jaylon Carlies's player details":
+      - /url: /nfl/player-props/jaylon-carlies?p=4601021
+      - text: Jaylon Carlies
+    - button "QUES injury update for Jaylon Carlies": QUES
+    - text: "3"
+    - link "View West Weeks's player details":
+      - /url: /nfl/player-props/west-weeks?p=4587724
+      - text: West Weeks
+    - text: SLB 1
+    - link "View Bryce Boettcher's player details":
+      - /url: /nfl/player-props/bryce-boettcher?p=5088571
+      - text: Bryce Boettcher
+    - text: "2"
+    - link "View Austin Ajiake's player details":
+      - /url: /nfl/player-props/austin-ajiake?p=4374171
+      - text: Austin Ajiake
+    - text: LCB 1
+    - link "View Sauce Gardner's player details":
+      - /url: /nfl/player-props/sauce-gardner?p=4427250
+      - text: Sauce Gardner

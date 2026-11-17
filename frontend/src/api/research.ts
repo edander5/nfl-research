@@ -40,6 +40,30 @@ export interface TeamGamesResponse {
   meta: StatsPolicy & { season: number; season_type: SeasonType; week: number | null;
     limit: number; offset: number; total_count: number; returned_count: number };
 }
+export type TrendWindow = 'L3' | 'L5' | 'L10';
+export interface MetricAggregate {
+  total: number | null; average: number | null; games_with_values: number;
+}
+export interface TeamTrendsResponse {
+  data: {
+    team: TeamView; season: number; season_type: SeasonType; window: TrendWindow;
+    requested_game_count: number; eligible_game_count: number;
+    offense: { net_passing_yards: MetricAggregate; rushing_yards: MetricAggregate; reported_points_scored: MetricAggregate };
+    defense: { net_passing_yards_allowed: MetricAggregate; rushing_yards_allowed: MetricAggregate; reported_points_allowed: MetricAggregate };
+    games: TeamGameStats[];
+  };
+  meta: StatsPolicy & {
+    averages: string; coverage: string; matchup_id: string | null; cutoff_utc: string | null;
+    selection_mode: 'latest_accepted' | 'before_matchup'; unavailable_reason: 'matchup_kickoff_unknown' | null;
+    available_eligible_games: number; accepted_games_in_season_stage: number;
+    excluded_unknown_kickoff_games: number; excluded_at_or_after_matchup_games: number;
+    scheduled_games_in_scope: number; scheduled_games_without_accepted_statistics: number;
+    selected_unknown_status_games: number; selected_unverified_score_games: number;
+    missing_metric_games: Record<string, number>; window_complete: boolean; selected_metrics_complete: boolean;
+    completion_before_cutoff_verified: false; selection_semantics: string; cutoff_semantics: string;
+    scheduled_coverage_semantics: string;
+  };
+}
 async function get<T>(path: string, signal?: AbortSignal): Promise<T> {
   const response = await fetch(path, { signal, headers: { Accept: 'application/json' } });
   if (!response.ok) throw new Error(response.status === 404 ? 'Team research is unavailable for this selection.' :
@@ -48,6 +72,32 @@ async function get<T>(path: string, signal?: AbortSignal): Promise<T> {
   return response.json() as Promise<T>;
 }
 export const research = {
+  trends: async (id: string, season: number, stage: SeasonType, window: TrendWindow, matchup: string, signal?: AbortSignal) => {
+    const result = await get<TeamTrendsResponse>(`/api/teams/${encodeURIComponent(id)}/trends?${new URLSearchParams({
+      season: String(season), season_type: stage, window, matchup_id: matchup,
+    })}`, signal);
+    const data = result?.data, meta = result?.meta;
+    const count = data?.eligible_game_count;
+    const size = Number(window.slice(1));
+    const integer = (value: unknown): value is number => typeof value === 'number' && Number.isInteger(value) && value >= 0;
+    const aggregate = (metric: MetricAggregate | undefined) => metric && integer(metric.games_with_values) &&
+      metric.games_with_values <= count &&
+      (metric.games_with_values === 0 ? metric.average === null : typeof metric.average === 'number' && Number.isFinite(metric.average));
+    if (data?.team?.id !== id || data.season !== season || data.season_type !== stage || data.window !== window ||
+        data.requested_game_count !== size || !integer(count) || count > size ||
+        meta?.matchup_id !== matchup || meta.selection_mode !== 'before_matchup' ||
+        meta.completion_before_cutoff_verified !== false ||
+        ![null, 'matchup_kickoff_unknown'].includes(meta.unavailable_reason) ||
+        (meta.unavailable_reason === 'matchup_kickoff_unknown' ? count !== 0 || meta.cutoff_utc !== null :
+          !meta.cutoff_utc || !Number.isFinite(Date.parse(meta.cutoff_utc))) ||
+        !integer(meta.excluded_unknown_kickoff_games) || !integer(meta.scheduled_games_without_accepted_statistics) ||
+        typeof meta.window_complete !== 'boolean' || typeof meta.selected_metrics_complete !== 'boolean' ||
+        ![data.offense?.net_passing_yards, data.offense?.rushing_yards, data.offense?.reported_points_scored,
+          data.defense?.net_passing_yards_allowed, data.defense?.rushing_yards_allowed, data.defense?.reported_points_allowed].every(aggregate)) {
+      throw new Error('Invalid team trends response.');
+    }
+    return result;
+  },
   comparison: (season: number, stage: RankingStage, signal?: AbortSignal) =>
     get<RankingsResponse>(`/api/team-rankings?${new URLSearchParams({ season: String(season), season_type: stage })}`, signal),
   rankings: (season: number, stage: RankingStage, category: Category, signal?: AbortSignal) =>

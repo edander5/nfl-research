@@ -1,5 +1,12 @@
 # Technical Architecture
 
+Task 023 adds [team performance trends](team-performance-trends.md) to the existing
+team-statistics router. One bounded SQL statement selects accepted reciprocal
+game rows, optional matchup cutoff, coverage and all six averages; one prior team
+lookup establishes identity. Reuse existing column grants and source projections,
+with no schema, provider, dependency or ingestion changes. Historical matchup
+chronology excludes itself/equal/later kickoffs without claiming completion proof.
+
 2026-11-17 audit: [Task 022](research/task-022-expansion-audit.md) distinguishes
 implemented routes/models/components from target architecture below. In particular,
 player domains, Recharts and TanStack Table remain unimplemented; the current

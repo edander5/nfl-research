@@ -1,5 +1,10 @@
 # Vertical-Slice Implementation Roadmap
 
+Task 023: [backend team performance trends](team-performance-trends.md) implements
+six L3/L5/L10 averages and optional matchup chronological exclusions. Task 024
+frontend integration remains proposed for approval. True completed-before-kickoff
+and as-published historical reconstruction remain unsupported.
+
 Latest planning reference (2026-11-17): [Task 022 phased expansion tasks](research/task-022-roadmap.md)
 and [verified current inventory](research/task-022-expansion-audit.md). The milestone
 history below is retained; its earlier “current” labels are chronological. The new

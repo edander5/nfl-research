@@ -1,11 +1,21 @@
 """Explicit column projections from accepted pairs, with reciprocal opponent joins."""
-from sqlalchemy import and_, case, func, select, true
+from sqlalchemy import and_, case, func, or_, select, true
 from sqlalchemy.orm import aliased
 
 from app.models import Game, SourceArtifact, Team, TeamStatsAccepted, TeamStatsPair, TeamGameStatRevision
 
 METRICS = ('net_passing_yards', 'rushing_yards', 'net_passing_yards_allowed', 'rushing_yards_allowed',
            'reported_points_scored', 'reported_points_allowed', 'verified_final_points_scored', 'verified_final_points_allowed')
+TREND_METRICS = METRICS[:6]
+
+
+def metric_aggregates(rows, metrics):
+    fields = []
+    for name in metrics:
+        column = rows.c[name]
+        fields.extend((func.sum(column).label(name+'_total'), func.avg(column).label(name+'_average'),
+                       func.count(column).label(name+'_count')))
+    return fields
 
 
 def accepted_query():
@@ -57,7 +67,8 @@ class TeamStatsRepository:
         rows = self.session.execute(accepted_query().where(Game.id == game_id)).mappings().all()
         return sorted(rows, key=lambda row: (row['side'] != 'HOME', str(row['team_id'])))
 
-    def filtered(self, team_id, filters):
+    @staticmethod
+    def filtered(team_id, filters):
         query = accepted_query().subquery()
         statement = select(query).where(query.c.team_id == team_id, query.c.season == filters.season,
                                         query.c.season_type == filters.season_type)
@@ -76,9 +87,52 @@ class TeamStatsRepository:
 
     def summary(self, team_id, filters):
         rows = self.filtered(team_id, filters)
-        fields = [func.count().label('games_with_accepted_statistics')]
-        for name in METRICS:
-            column = rows.c[name]
-            fields.extend((func.sum(column).label(name+'_total'), func.avg(column).label(name+'_average'),
-                           func.count(column).label(name+'_count')))
+        fields = [func.count().label('games_with_accepted_statistics'), *metric_aggregates(rows, METRICS)]
         return self.session.execute(select(*fields).select_from(rows)).mappings().one()
+
+    def trends(self, team_id, filters):
+        result = self.session.execute(trends_query(team_id, filters)).mappings().all()
+        return result[0], [row for row in result if row['game_id'] is not None]
+
+
+def trends_query(team_id, filters):
+    """One statement snapshot for matchup, coverage, latest N and every metric.
+
+    An optional canonical matchup anchors chronology without asserting completion.
+    Its validation fields are returned even when no accepted games are selected.
+    """
+    rows = TeamStatsRepository.filtered(team_id, filters)
+    anchor = select(Game.id, Game.season, Game.season_type, Game.home_team_id,
+                    Game.away_team_id, Game.scheduled_kickoff_utc).where(
+        Game.id == filters.matchup_id, Game.provider == 'nflverse').cte('matchup')
+    cutoff = select(anchor.c.scheduled_kickoff_utc).scalar_subquery()
+
+    def in_scope(game_id, kickoff):
+        conditions = [kickoff.is_not(None)]
+        if filters.matchup_id is not None:
+            conditions.extend((game_id != filters.matchup_id, kickoff < cutoff))
+        return and_(*conditions)
+
+    eligible = select(rows).where(in_scope(rows.c.game_id, rows.c.scheduled_kickoff_utc)).cte('eligible')
+    def ordering(source):
+        return (source.c.scheduled_kickoff_utc.desc(), source.c.source_game_id.desc(), source.c.game_id.desc())
+
+    selected = select(eligible).order_by(*ordering(eligible)).limit(filters.game_limit).cte('recent_games')
+    aggregate = select(func.count().label('selected_count'), *metric_aggregates(selected, TREND_METRICS),
+        func.count(case((selected.c.status == 'UNKNOWN', 1))).label('unknown_status_count'),
+        func.count(case((selected.c.score_finality != 'CONFIRMED_FINAL', 1))).label('unverified_score_count')
+    ).select_from(selected).cte('trend_aggregates')
+    coverage = select(func.count().label('accepted_count'),
+        func.count(case((rows.c.scheduled_kickoff_utc.is_(None), 1))).label('unknown_kickoff_count')
+    ).select_from(rows).cte('trend_coverage')
+    scheduled_count = select(func.count()).select_from(Game).where(
+        Game.provider == 'nflverse', Game.season == filters.season, Game.season_type == filters.season_type,
+        or_(Game.home_team_id == team_id, Game.away_team_id == team_id),
+        in_scope(Game.id, Game.scheduled_kickoff_utc)).scalar_subquery()
+    eligible_count = select(func.count()).select_from(eligible).scalar_subquery()
+    # Scalar context fields keep the empty/unknown-matchup response a single row.
+    context = [select(anchor.c[name]).scalar_subquery().label('matchup_'+name)
+               for name in ('id', 'season', 'season_type', 'home_team_id', 'away_team_id', 'scheduled_kickoff_utc')]
+    return select(aggregate, coverage, eligible_count.label('eligible_count'),
+        scheduled_count.label('scheduled_count'), *context, selected
+    ).select_from(aggregate.join(coverage, true()).outerjoin(selected, true())).order_by(*ordering(selected))

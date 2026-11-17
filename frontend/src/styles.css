@@ -192,3 +192,30 @@
 :root.dark :focus-visible { outline-color:var(--primary); }
 
 @media(max-width:760px) { .sidebar { flex-wrap:wrap; gap:16px; }.workspace-nav { flex-wrap:wrap; align-items:center; max-width:100%; } }
+
+/* Task 024: reuse comparison tables and theme tokens without changing other sections. */
+.team-performance-trends { margin:32px 0; min-width:0; }
+.team-performance-trends .section-heading { gap:20px; flex-wrap:wrap; }
+.trends-status-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:20px 0; }
+.trends-team-status { background:var(--card); color:var(--foreground); border:1px solid var(--border); border-radius:8px; padding:18px; min-width:0; overflow-wrap:anywhere; }
+.trends-team-status h3 { margin:0 0 12px; font-size:15px; font-weight:650; }
+.trends-team-status h3 span,.trends-team-status p { color:var(--muted-foreground); }
+.trends-team-status p { font-size:12px; line-height:1.7; }
+.trends-team-status .trends-sample { color:var(--foreground); font-weight:600; }
+.trends-team-status .state { min-height:90px; padding:12px; }
+.trends-team-status .error-panel { margin-bottom:0; }
+.trends-team-status .error-panel button { display:block; margin-top:12px; }
+.trends-team-status .text-link { background:none; border:0; padding:6px 0; font-size:12px; }
+.trends-value { color:var(--foreground); font-weight:600; font-size:20px; font-variant-numeric:tabular-nums; }
+.trends-value small { color:var(--muted-foreground); font-weight:400; font-size:10px; }
+.trends-unavailable { color:var(--muted-foreground); }
+.trends-table td > strong { display:block; }
+.trends-table td { min-width:0; }
+@media(max-width:760px) {
+  .trends-status-grid { grid-template-columns:minmax(0,1fr); }
+  .trends-table th,.trends-table td { padding:12px 8px; }
+  .trends-table th:first-child { width:28%; }
+  .trends-value { font-size:17px; }
+  .team-performance-trends .season-control { max-width:100%; }
+  .team-performance-trends select { max-width:100%; }
+}

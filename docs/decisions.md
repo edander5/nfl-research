@@ -142,3 +142,34 @@ and [REA backlog](research/task-022-rea-followups.md) distinguish verified evide
 from proposals. Task 023 and later items, including window/denominator policies,
 remain proposals for separate owner approval; this entry approves no new provider,
 statistical definition, schema or implementation task.
+
+## Decision 76 — Task 023 accepted team performance trends
+
+2026-11-17: owner approved backend-only L3/L5/L10 performance trends for 2024–2026,
+including existing NET passing/rushing for/allowed and source-reported points
+for/allowed, explicit REG/POST and actual samples. Use latest accepted reciprocal
+dated team-game rows, select N before per-metric non-null averages, preserve zeros,
+negatives and unknowns. The new instruction extends the earlier Task 022 proposal
+to six metrics and matchup chronology: optional canonical matchup UUID excludes
+itself and equal/later kickoffs; unknown anchor kickoff yields unavailable trends.
+Rationale: support the future preview without leaking selected/later dated games
+or changing rankings/finality. Current accepted revisions and earlier kickoff do
+not prove completion before cutoff or values as originally published; expose this
+limitation explicitly. Reuse existing APIs/projections/privileges with one snapshot
+statement plus identity lookup; no frontend, schema/migration, permission, data,
+ingestion, source, dependency or Compose changes. [Contract/tests/WSL checks](team-performance-trends.md).
+Task 024 remains a proposal requiring separate approval.
+
+## Decision 77 — Task 024 Game Preview trends integration
+
+Owner approved frontend-only integration of the existing Task 023 trends endpoint.
+Use a shared L3/L5/L10 selector (L5 default) and independent per-team Query keys,
+always sending matchup season/stage/window/ID. Pair each team's passing, rushing
+and source-reported points offense with opposing defense, displaying API averages
+and metric sample counts without client statistical calculations or rankings.
+Rationale: make recent comparisons usable while preserving chronology, missing
+values and optional-section failure isolation. Unknown matchup kickoff remains
+unavailable; no unanchored fallback or FINAL inference. Reuse theme tokens and
+comparison styles with mobile wrapping; preserve other preview sections. No
+backend/data/ingestion/Docker/dependency changes. [UI behavior and actual validation](team-performance-trends-ui.md).
+Task 025 remains proposed for separate approval.

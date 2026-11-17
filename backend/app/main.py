@@ -5,7 +5,7 @@ from fastapi.exceptions import RequestValidationError
 from sqlalchemy.exc import SQLAlchemyError
 from starlette.exceptions import HTTPException
 
-from app.api.errors import database_unavailable, http_error, invalid_request, missing_game, missing_team
+from app.api.errors import database_unavailable, http_error, invalid_request, missing_game, missing_team, invalid_trend_matchup
 from app.api.markets import router as markets_router
 from app.api.team_rankings import router as team_rankings_router
 from app.api.team_stats import router as team_stats_router
@@ -17,7 +17,7 @@ from app.api.health import router
 from app.core.config import Settings
 from app.db.session import make_engine
 from app.services.schedule import GameNotFound
-from app.services.team_stats import TeamNotFound
+from app.services.team_stats import TeamNotFound, InvalidTrendMatchup
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -40,6 +40,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.add_exception_handler(SQLAlchemyError, database_unavailable)
     app.add_exception_handler(GameNotFound, missing_game)
     app.add_exception_handler(TeamNotFound, missing_team)
+    app.add_exception_handler(InvalidTrendMatchup, invalid_trend_matchup)
     app.include_router(router)
     app.include_router(schedule_router)
     app.include_router(team_stats_router)

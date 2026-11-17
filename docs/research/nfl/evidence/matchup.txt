@@ -1,0 +1,210 @@
+- document:
+  - region "Notifications (F8)":
+    - list
+  - button "Open navigation menu"
+  - main:
+    - textbox "Search teams or players..."
+    - heading "NFL Schedule" [level=1]
+    - button "Week 1"
+    - button "Week 2"
+    - button "Week 3"
+    - button "Week 4"
+    - button "Week 5"
+    - button "Week 6"
+    - button "Week 7"
+    - button "Week 8"
+    - button "Week 9"
+    - button "Week 10"
+    - button "Week 11"
+    - button "Week 12"
+    - button "Week 13"
+    - button "Week 14"
+    - button "Week 15"
+    - button "Week 16"
+    - button "Week 17"
+    - button "Week 18"
+    - text: Thursday, November 19 Thu, Nov 19, 8:15 PM ET Prime Video Reliant Stadium
+    - link "IND logo":
+      - /url: /nfl/moneyline/IND
+      - img "IND logo"
+    - text: Indianapolis Colts 3-7 AFC · SOUTH @ IND +513 / -723 HOU
+    - link "HOU -12.5":
+      - /url: /nfl/moneyline/HOU
+    - link "O/U 44.5":
+      - /url: /nfl/game-total/HOU
+    - text: Houston Texans 3-6 AFC · SOUTH
+    - link "HOU logo":
+      - /url: /nfl/moneyline/HOU
+      - img "HOU logo"
+    - button "Matchup Details" [expanded]
+    - text: Reliant Stadium • Retractable • Kickoff 8:15 PM ET • 67°F Overcast • 5mph NE • 0%
+    - heading "Unlock Advanced NFL Matchup Analysis" [level=3]
+    - paragraph: Get full access to advanced analytics, all player props, and premium features.
+    - button "Upgrade to Pro"
+    - text: Last 10 Games IND Last 10 Games 3-7
+    - button "L10"
+    - button "vs HOU"
+    - text: 11/15 vs MIA W 24-22 11/8 vs DAL L 23-27 11/1 @ JAX L 7-42 10/25 @ MIN L 10-16 10/18 vs TEN L 20-26 10/11 @ PIT L 22-34 10/4 @ WAS W 30-13 9/27 vs HOU W 19-17 9/20 @ KC L 30-33 9/13 vs BAL L 23-41 HOU Last 10 Games 3-7
+    - button "L10"
+    - button "vs IND"
+    - text: "11/15 @ CLE L 24-27 11/8 @ LAC W 44-22 10/25 vs NYG L 21-27 10/18 @ JAX W 34-31 10/11 @ TEN W 26-3 10/4 vs DAL L 30-34 9/27 @ IND L 17-19 9/20 vs CIN L 6-20 9/13 vs BUF L 31-36 1/18 @ NE L 16-28 Team matchup research Away and home perspectives · #1 best, #32 worst Season"
+    - button "'25"
+    - button "'26"
+    - text: "IND Offense vs opponent defense IND HOU #23 Pts/Game #18 #10 Rush Yds/Game #11 #30 Pass Yds/Game #27 #15 Red Zone % #22 #31 Yds/Play #16 #23 3rd Down % #16 #6 Time of Poss. #23 #21 Sacks/Game #2 #29 Turnovers #22"
+    - paragraph: "#1 = best, #32 = worst"
+    - text: "DVOA matchup · 2026 season Offense vs defensive DVOA DVOA IND VS HOU -14.7% #28 Off / Def -2.1% #12 -22.4% #32 Pass +4.6% #13 +4.3% #8 Rush -11.0% #15 Offensive starters IND QB D. Jones RB J. Taylor WR1 L. Treadwell WR2 D. Burks WR3 A. Gould TE T. Warren Opp Fantasy Ranking vs Pos"
+    - paragraph: HOU defense · Half-PPR · 2026 · current season (partial)
+    - button "'25"
+    - button "'26"
+    - button "About Half-PPR fantasy scoring"
+    - text: vs QB 23 18.2 vs RB 18 19.7 vs WR 29 30.0 vs TE 7 8.3
+    - paragraph: Fantasy production context, not a selected-stat prediction · average points allowed per game · 9 regular-season games
+    - heading "Unlock Advanced NFL Matchup Analysis" [level=3]
+    - paragraph: Get full access to advanced analytics, all player props, and premium features.
+    - button "Upgrade to Pro"
+    - text: "HOU Offense vs opponent defense HOU IND #9 Pts/Game #29 #29 Rush Yds/Game #29 #4 Pass Yds/Game #16 #9 Red Zone % #17 #9 Yds/Play #30 #16 3rd Down % #5 #23 Time of Poss. #6 #10 Sacks/Game #16 #1 Turnovers #31"
+    - paragraph: "#1 = best, #32 = worst"
+    - text: "DVOA matchup · 2026 season Offense vs defensive DVOA DVOA HOU VS IND +10.1% #9 Off / Def +11.2% #28 +43.5% #5 Pass +16.0% #23 -21.0% #28 Rush +5.7% #31 Offensive starters HOU QB C.J. Stroud RB D. Montgomery WR1 N. Collins WR2 X. Hutchinson WR3 T. Dell TE D. Schultz Opp Fantasy Ranking vs Pos"
+    - paragraph: IND defense · Half-PPR · 2026 · current season (partial)
+    - button "'25"
+    - button "'26"
+    - button "About Half-PPR fantasy scoring"
+    - text: vs QB 19 17.6 vs RB 26 23.0 vs WR 14 25.3 vs TE 20 10.9
+    - paragraph: Fantasy production context, not a selected-stat prediction · average points allowed per game · 10 regular-season games
+    - heading "Unlock Advanced NFL Matchup Analysis" [level=3]
+    - paragraph: Get full access to advanced analytics, all player props, and premium features.
+    - button "Upgrade to Pro"
+    - text: Splits Handle = money wagered · Bets = ticket count
+    - heading "Unlock NFL Betting Splits" [level=3]
+    - paragraph: Get full access to advanced analytics, all player props, and premium features.
+    - button "Upgrade to Pro"
+    - text: Sunday, November 22 Sun, Nov 22, 1:00 PM ET CBS Highmark Stadium
+    - link "MIA logo":
+      - /url: /nfl/moneyline/MIA
+      - img "MIA logo"
+    - text: Miami Dolphins 1-8 AFC · EAST @ MIA +883 / -1507 BUF
+    - link "BUF -16.5":
+      - /url: /nfl/moneyline/BUF
+    - link "O/U 45.5":
+      - /url: /nfl/game-total/BUF
+    - text: Buffalo Bills 8-1 AFC · EAST
+    - link "BUF logo":
+      - /url: /nfl/moneyline/BUF
+      - img "BUF logo"
+    - button "Matchup Details"
+    - text: Sun, Nov 22, 1:00 PM ET Fox Soldier Field
+    - link "NO logo":
+      - /url: /nfl/moneyline/NO
+      - img "NO logo"
+    - text: New Orleans Saints 3-6 NFC · SOUTH @ NO +477 / -657 CHI
+    - link "CHI -11.5":
+      - /url: /nfl/moneyline/CHI
+    - link "O/U 49":
+      - /url: /nfl/game-total/CHI
+    - text: Chicago Bears 7-2 NFC · NORTH
+    - link "CHI logo":
+      - /url: /nfl/moneyline/CHI
+      - img "CHI logo"
+    - button "Matchup Details"
+    - text: Sun, Nov 22, 1:00 PM ET Fox AT&T Stadium
+    - link "TEN logo":
+      - /url: /nfl/moneyline/TEN
+      - img "TEN logo"
+    - text: Tennessee Titans 1-8 AFC · SOUTH @ TEN +332 / -426 DAL
+    - link "DAL -8":
+      - /url: /nfl/moneyline/DAL
+    - link "O/U 55":
+      - /url: /nfl/game-total/DAL
+    - text: Dallas Cowboys 4-6 NFC · EAST
+    - link "DAL logo":
+      - /url: /nfl/moneyline/DAL
+      - img "DAL logo"
+    - button "Matchup Details"
+    - text: Sun, Nov 22, 1:00 PM ET Fox Ford Field
+    - link "TB logo":
+      - /url: /nfl/moneyline/TB
+      - img "TB logo"
+    - text: Tampa Bay Buccaneers 3-6 NFC · SOUTH @ TB +229 / -279 DET
+    - link "DET -6.5":
+      - /url: /nfl/moneyline/DET
+    - link "O/U 45.5":
+      - /url: /nfl/game-total/DET
+    - text: Detroit Lions 7-2 NFC · NORTH
+    - link "DET logo":
+      - /url: /nfl/moneyline/DET
+      - img "DET logo"
+    - button "Matchup Details"
+    - text: Sun, Nov 22, 1:00 PM ET CBS Arrowhead Stadium
+    - link "ARI logo":
+      - /url: /nfl/moneyline/ARI
+      - img "ARI logo"
+    - text: Arizona Cardinals 3-7 NFC · WEST @ ARI +868 / -1522 KC
+    - link "KC -16.5":
+      - /url: /nfl/moneyline/KC
+    - link "O/U 41.5":
+      - /url: /nfl/game-total/KC
+    - text: Kansas City Chiefs 7-2 AFC · WEST
+    - link "KC logo":
+      - /url: /nfl/moneyline/KC
+      - img "KC logo"
+    - button "Matchup Details"
+    - text: Sun, Nov 22, 1:00 PM ET Fox Bank of America Stadium
+    - link "BAL logo":
+      - /url: /nfl/moneyline/BAL
+      - img "BAL logo"
+    - text: Baltimore Ravens 4-6 AFC · NORTH @ BAL +120 / -142 CAR
+    - link "CAR -2.5":
+      - /url: /nfl/moneyline/CAR
+    - link "O/U 44.5":
+      - /url: /nfl/game-total/CAR
+    - text: Carolina Panthers 4-5 NFC · SOUTH
+    - link "CAR logo":
+      - /url: /nfl/moneyline/CAR
+      - img "CAR logo"
+    - button "Matchup Details"
+    - text: Sun, Nov 22, 1:00 PM ET CBS Lincoln Financial Field
+    - link "PIT logo":
+      - /url: /nfl/moneyline/PIT
+      - img "PIT logo"
+    - text: Pittsburgh Steelers 6-3 AFC · NORTH @ PIT -219 / +182 PHI
+    - link "PHI +4.5":
+      - /url: /nfl/moneyline/PHI
+    - link "O/U 38.5":
+      - /url: /nfl/game-total/PHI
+    - text: Philadelphia Eagles 2-7 NFC · EAST
+    - link "PHI logo":
+      - /url: /nfl/moneyline/PHI
+      - img "PHI logo"
+    - button "Matchup Details"
+    - text: Sun, Nov 22, 4:05 PM ET Fox SoFi Stadium
+    - link "NYJ logo":
+      - /url: /nfl/moneyline/NYJ
+      - img "NYJ logo"
+    - text: New York Jets 2-8 AFC · EAST @ NYJ +151 / -180 LAC
+    - link "LAC -3.5":
+      - /url: /nfl/moneyline/LAC
+    - link "O/U 41.5":
+      - /url: /nfl/game-total/LAC
+    - text: Los Angeles Chargers 1-8 AFC · WEST
+    - link "LAC logo":
+      - /url: /nfl/moneyline/LAC
+      - img "LAC logo"
+    - button "Matchup Details"
+    - text: Sun, Nov 22, 4:25 PM ET CBS MetLife Stadium
+    - link "JAX logo":
+      - /url: /nfl/moneyline/JAX
+      - img "JAX logo"
+    - text: Jacksonville Jaguars 7-2 AFC · SOUTH @ JAX -267 / +218 NYG
+    - link "NYG +6":
+      - /url: /nfl/moneyline/NYG
+    - link "O/U 46.5":
+      - /url: /nfl/game-total/NYG
+    - text: New York Giants 5-3-1 NFC · EAST
+    - link "NYG logo":
+      - /url: /nfl/moneyline/NYG
+      - img "NYG logo"
+    - button "Matchup Details"
+    - text: Sun, Nov 22, 4:25 PM ET CBS Empower Field at Mile High
+    - link "LV logo":
+      - /url: /nfl/moneyline/LV
+      - img "LV logo"

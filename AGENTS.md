@@ -2,7 +2,30 @@
 
 This file governs any AI coding agent working in this repository. Read `README.md`, `docs/product-requirements.md`, `docs/architecture.md`, `docs/decisions.md`, and the currently approved task before action.
 
-## Task 022 — current audit scope
+## Task 024 — current approved frontend scope
+
+The owner approved frontend-only Game Preview Team Performance Trends using the
+existing Task 023 API. See `docs/team-performance-trends-ui.md`. Shared L3/L5/L10
+selection, default L5, compares both teams' six API metrics with independent
+loading/errors, actual/per-metric samples, unknown chronology and light/dark
+styling. Always pass matchup season/stage/window/matchup_id; do not calculate
+trends or infer finality in React. No backend, schema, data, ingestion, Docker,
+dependency or publication changes. Existing Task 023 changes in this checkout
+remain prior work; Task 025 and later roadmap items require separate approval.
+
+## Task 023 — prior approved backend scope
+
+The owner approved the read-only L3/L5/L10 Team Performance Trends API, including
+six offensive/defensive yardage and reported-point averages and optional matchup
+chronology. See `docs/team-performance-trends.md`. Reuse accepted reciprocal
+statistics and existing definitions; never infer FINAL or completion-before-cutoff
+from scores/kickoff. Exclude the selected matchup and equal/later kickoffs in
+matchup mode; unknown kickoff yields unavailable trends. No frontend, schema,
+migration, permission, ingestion, source, dependency, Compose, accepted NFL data
+or git publication changes. Synthetic focused backend tests are in scope;
+database fixtures that run migrations/provisioning are not authorized.
+
+## Task 022 — prior audit scope
 
 The owner approved a documentation-only repository audit, independent data-source
 research and phased NFL research roadmap. See

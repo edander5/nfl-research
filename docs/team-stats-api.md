@@ -1,5 +1,9 @@
 # Task 011 — read-only accepted NFL team statistics
 
+Task 023 extends this router with [L3/L5/L10 team trends](team-performance-trends.md)
+at `GET /api/teams/{team_id}/trends`, using the same accepted projections, per-metric
+denominators and privileges. Existing endpoints and definitions below are unchanged.
+
 Owner approved Task 011 on `feature/team-stats-api`, including narrowly scoped API column grants. Owner reports migration 0002, restricted roles, 705 accepted game pairs / 1,410 team rows and 343 passing WSL tests before this task. These are owner-reported baseline results, not new agent verification. No development permissions, schema, data or imports were changed by the agent.
 
 ## Endpoints and response semantics

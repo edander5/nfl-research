@@ -1,0 +1,85 @@
+- document:
+  - region "Notifications (F8)":
+    - list
+  - button "Open navigation menu"
+  - main:
+    - textbox "Search teams or players..."
+    - button "Week & matchups Week 11 · 13 games · All teams"
+    - heading "Player Props" [level=2]
+    - text: Showing 100 of 1317 props
+    - img "Logo"
+    - textbox "Search any NFL player..."
+    - button "Filters All props · over" [expanded]
+    - button "All Propositions"
+    - button "Over"
+    - button "All"
+    - button "Under"
+    - button "Edit Columns"
+    - button "Saved Presets"
+    - button "Books 10/38"
+    - button "Reset NFL player props filters": Reset filters
+    - text: Hit Rates L10
+    - button "Set L10 hit rate range manually": 0%–100%
+    - slider
+    - slider
+    - text: "2026"
+    - button "Set 2026 hit rate range manually": 0%–100%
+    - slider
+    - slider
+    - text: "2025"
+    - button "Set 2025 hit rate range manually": 0%–100%
+    - slider
+    - slider
+    - text: H2H
+    - button "Set H2H hit rate range manually": 0%–100%
+    - slider
+    - slider
+    - text: Odds
+    - spinbutton "Min"
+    - text: to
+    - spinbutton "Max"
+    - text: DVP 2026
+    - button "Set 2026 Defense vs Position rank range manually": 1–32
+    - slider
+    - slider
+    - button "Sort player props by L10, descending": Sort by L10 Descending
+    - link "Jahmyr Gibbs Over 0.5 Anytime TD":
+      - text: Jahmyr Gibbs Over 0.5 Anytime TD
+      - link "Open DraftKings":
+        - text: DK -230
+      - region "Player prop stats. Scroll horizontally to view all enabled metrics.": Game TB @ DET Nov 22 · 1:00 PM Prob 71% DvP 2 L5 80% L10 90% H2H 50% 2026 89% 2025 59%
+    - link "Daniel Jones Over 0.5 Int Thrown":
+      - text: Daniel Jones Over 0.5 Int Thrown
+      - link "Open NoVig":
+        - text: NOVIG -156
+      - region "Player prop stats. Scroll horizontally to view all enabled metrics.": Game IND @ HOU Nov 19 · 8:15 PM Prob 63% DvP 9 L5 100% L10 90% H2H 50% 2026 90% 2025 38%
+    - link "Jonathan Taylor Over 12.5 Rush Attempts":
+      - text: Jonathan Taylor Over 12.5 Rush Attempts
+      - link "Open DraftKings":
+        - text: DK -114
+      - region "Player prop stats. Scroll horizontally to view all enabled metrics.": Game IND @ HOU Nov 19 · 8:15 PM Prob 56% DvP 14 L5 80% L10 90% H2H 100% 2026 90% 2025 94%
+    - link "Xavier Hutchinson Over 2.5 Receptions":
+      - text: Xavier Hutchinson Over 2.5 Receptions
+      - link "Open NoVig":
+        - text: NOVIG -153
+      - region "Player prop stats. Scroll horizontally to view all enabled metrics.": Game IND @ HOU Nov 19 · 8:15 PM Prob 63% DvP 5 L5 80% L10 90% H2H 40% 2026 89% 2025 37%
+    - link "James Cook III Over 0.5 Anytime TD":
+      - text: James Cook III Over 0.5 Anytime TD theScore -170
+      - region "Player prop stats. Scroll horizontally to view all enabled metrics.": Game MIA @ BUF Nov 22 · 1:00 PM Prob 65% DvP 24 L5 100% L10 80% H2H 50% 2026 89% 2025 47%
+    - link "Christian McCaffrey Over 0.5 Anytime TD":
+      - text: Christian McCaffrey Over 0.5 Anytime TD theScore -145
+      - region "Player prop stats. Scroll horizontally to view all enabled metrics.": Game MIN @ SF Nov 22 · 8:20 PM Prob 61% DvP 4 L5 100% L10 80% H2H — 2026 89% 2025 68%
+    - link "Kirk Cousins Over 1.5 Passing TDs":
+      - text: Kirk Cousins Over 1.5 Passing TDs
+      - link "Open BetMGM":
+        - text: MGM +120
+      - region "Player prop stats. Scroll horizontally to view all enabled metrics.": Game MIN @ SF Nov 22 · 8:20 PM Prob 46% DvP 24 L5 80% L10 80% H2H 0% 2026 80% 2025 30%
+    - link "Josh Allen Over 25.5 Pass Attempts":
+      - text: Josh Allen Over 25.5 Pass Attempts
+      - link "Open Caesars":
+        - text: CZR -122
+      - region "Player prop stats. Scroll horizontally to view all enabled metrics.": Game MIA @ BUF Nov 22 · 1:00 PM Prob 56% DvP 1 L5 60% L10 80% H2H 75% 2026 78% 2025 72%
+    - link "Caleb Williams Over 31.5 Pass Attempts":
+      - text: Caleb Williams Over 31.5 Pass Attempts
+      - link "Open FanDuel":
+        - text: FD -114

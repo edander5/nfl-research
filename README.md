@@ -1,5 +1,14 @@
 # NFL Betting Research
 
+Task 024 adds [interactive Team Performance Trends](docs/team-performance-trends-ui.md)
+to Game Preview: shared L3/L5/L10 controls, paired offense/defense averages and
+independent team coverage/error states using the existing matchup-specific API.
+
+Task 023 adds [read-only L3/L5/L10 team performance trends](docs/team-performance-trends.md):
+six yardage/reported-point averages, sample coverage and optional matchup kickoff
+exclusions. Frontend integration remains a separate approval; this is chronological
+reconstruction, not verified historical pregame completion/publication evidence.
+
 Latest planning work: [Task 022 verified implementation audit](docs/research/task-022-expansion-audit.md),
 [independent source feasibility](docs/research/task-022-data-sources.md) and
 [proposed phased roadmap](docs/research/task-022-roadmap.md). This is documentation

@@ -1,0 +1,165 @@
+- document:
+  - region "Notifications (F8)":
+    - list
+  - button "Open navigation menu"
+  - main:
+    - textbox "Search teams or players..."
+    - heading "NFL Lineups" [level=1]
+    - paragraph: Projected starters and depth charts
+    - text: "Updated: 2:31 PM ET"
+    - button "Refresh"
+    - text: THU 8:15 PM ET 🏟️ Dome
+    - link "IND logo":
+      - /url: /nfl/moneyline/IND
+      - img "IND logo"
+    - text: Colts 3-7 Projected Starters QB
+    - link "View Daniel Jones's player details":
+      - /url: /nfl/player-props/daniel-jones?pos=QB&t=IND
+      - text: Daniel Jones
+    - text: RB
+    - link "View Jonathan Taylor's player details":
+      - /url: /nfl/player-props/jonathan-taylor?pos=RB&t=IND
+      - text: Jonathan Taylor
+    - text: WR
+    - link "View Laquon Treadwell's player details":
+      - /url: /nfl/player-props/laquon-treadwell?pos=WR&t=IND
+      - text: Laquon Treadwell
+    - text: WR
+    - link "View Deion Burks's player details":
+      - /url: /nfl/player-props/deion-burks?pos=WR&t=IND
+      - text: Deion Burks
+    - text: WR
+    - link "View Anthony Gould's player details":
+      - /url: /nfl/player-props/anthony-gould?pos=WR&t=IND
+      - text: Anthony Gould
+    - button "QUES injury update for Anthony Gould": QUES
+    - text: TE
+    - link "View Tyler Warren's player details":
+      - /url: /nfl/player-props/tyler-warren?pos=TE&t=IND
+      - text: Tyler Warren
+    - text: K
+    - link "View Spencer Shrader's player details":
+      - /url: /nfl/player-props/spencer-shrader?pos=K&t=IND
+      - text: Spencer Shrader
+    - text: "@"
+    - link "HOU logo":
+      - /url: /nfl/moneyline/HOU
+      - img "HOU logo"
+    - text: Texans 3-6 Projected Starters QB
+    - link "View C.J. Stroud's player details":
+      - /url: /nfl/player-props/cj-stroud?pos=QB&t=HOU
+      - text: C.J. Stroud
+    - text: RB
+    - link "View David Montgomery's player details":
+      - /url: /nfl/player-props/david-montgomery?pos=RB&t=HOU
+      - text: David Montgomery
+    - text: WR
+    - link "View Nico Collins's player details":
+      - /url: /nfl/player-props/nico-collins?pos=WR&t=HOU
+      - text: Nico Collins
+    - text: WR
+    - link "View Xavier Hutchinson's player details":
+      - /url: /nfl/player-props/xavier-hutchinson?pos=WR&t=HOU
+      - text: Xavier Hutchinson
+    - text: WR
+    - link "View Tank Dell's player details":
+      - /url: /nfl/player-props/tank-dell?pos=WR&t=HOU
+      - text: Tank Dell
+    - text: TE
+    - link "View Dalton Schultz's player details":
+      - /url: /nfl/player-props/dalton-schultz?pos=TE&t=HOU
+      - text: Dalton Schultz
+    - text: K
+    - link "View Ka'imi Fairbairn's player details":
+      - /url: /nfl/player-props/kaimi-fairbairn?pos=K&t=HOU
+      - text: Ka'imi Fairbairn
+    - button "IND logo IND Depth Chart":
+      - img "IND logo"
+      - text: IND Depth Chart
+    - button "HOU logo HOU Depth Chart":
+      - img "HOU logo"
+      - text: HOU Depth Chart
+    - text: Colts Depth Chart
+    - button "Offense"
+    - button "Defense"
+    - button "Special Teams"
+    - text: Offense QB 1
+    - link "View Daniel Jones's player details":
+      - /url: /nfl/player-props/daniel-jones?p=3917792
+      - text: Daniel Jones
+    - text: "2"
+    - link "View Anthony Richardson Sr.'s player details":
+      - /url: /nfl/player-props/anthony-richardson-sr?p=4429084
+      - text: Anthony Richardson Sr.
+    - text: "3"
+    - link "View Riley Leonard's player details":
+      - /url: /nfl/player-props/riley-leonard?p=4683423
+      - text: Riley Leonard
+    - text: RB 1
+    - link "View Jonathan Taylor's player details":
+      - /url: /nfl/player-props/jonathan-taylor?p=4242335
+      - text: Jonathan Taylor
+    - text: "2"
+    - link "View Seth McGowan's player details":
+      - /url: /nfl/player-props/seth-mcgowan?p=4686468
+      - text: Seth McGowan
+    - text: "3"
+    - link "View DJ Giddens's player details":
+      - /url: /nfl/player-props/dj-giddens?p=4874509
+      - text: DJ Giddens
+    - text: WR1 1
+    - link "View Laquon Treadwell's player details":
+      - /url: /nfl/player-props/laquon-treadwell?p=3051889
+      - text: Laquon Treadwell
+    - text: "2"
+    - link "View Ashton Dulin's player details":
+      - /url: /nfl/player-props/ashton-dulin?p=4061956
+      - text: Ashton Dulin
+    - text: "3"
+    - link "View D.J. Montgomery's player details":
+      - /url: /nfl/player-props/dj-montgomery?p=4249030
+      - text: D.J. Montgomery
+    - button "IR injury update for D.J. Montgomery": IR
+    - text: WR2 1
+    - link "View Deion Burks's player details":
+      - /url: /nfl/player-props/deion-burks?p=4683151
+      - text: Deion Burks
+    - text: "2"
+    - link "View Nick Westbrook-Ikhine's player details":
+      - /url: /nfl/player-props/nick-westbrook-ikhine?p=3929785
+      - text: Nick Westbrook-Ikhine
+    - text: WR3 1
+    - link "View Anthony Gould's player details":
+      - /url: /nfl/player-props/anthony-gould?p=4429684
+      - text: Anthony Gould
+    - button "QUES injury update for Anthony Gould": QUES
+    - text: "2"
+    - link "View Alec Pierce's player details":
+      - /url: /nfl/player-props/alec-pierce?p=4360078
+      - text: Alec Pierce
+    - button "IR injury update for Alec Pierce": IR
+    - text: TE 1
+    - link "View Tyler Warren's player details":
+      - /url: /nfl/player-props/tyler-warren?p=4431459
+      - text: Tyler Warren
+    - text: "2"
+    - link "View Will Mallory's player details":
+      - /url: /nfl/player-props/will-mallory?p=4362523
+      - text: Will Mallory
+    - button "QUES injury update for Will Mallory": QUES
+    - text: "3"
+    - link "View Drew Ogletree's player details":
+      - /url: /nfl/player-props/drew-ogletree?p=4722908
+      - text: Drew Ogletree
+    - text: "4"
+    - link "View Pharaoh Brown's player details":
+      - /url: /nfl/player-props/pharaoh-brown?p=2971281
+      - text: Pharaoh Brown
+    - text: "5"
+    - link "View Mo Alie-Cox's player details":
+      - /url: /nfl/player-props/mo-alie-cox?p=2998565
+      - text: Mo Alie-Cox
+    - button "IR injury update for Mo Alie-Cox": IR
+    - text: "6"
+    - link "View Carson Towt's player details":
+      - /url: /nfl/player-props/carson-towt?p=4702120

@@ -1,0 +1,210 @@
+- document:
+  - region "Notifications (F8)":
+    - list
+  - button "Open navigation menu"
+  - main:
+    - textbox "Search teams or players..."
+    - button
+    - text: Week 11 Games
+    - button
+    - button "IND"
+    - text: "@"
+    - button "HOU"
+    - button "MIA"
+    - text: "@"
+    - button "BUF"
+    - button "NO"
+    - text: "@"
+    - button "CHI"
+    - button "TEN"
+    - text: "@"
+    - button "DAL"
+    - button "TB"
+    - text: "@"
+    - button "DET"
+    - button "ARI"
+    - text: "@"
+    - button "KC"
+    - button "BAL"
+    - text: "@"
+    - button "CAR"
+    - button "PIT"
+    - text: "@"
+    - button "PHI"
+    - button "NYJ"
+    - text: "@"
+    - button "LAC"
+    - button "JAX"
+    - text: "@"
+    - button "NYG"
+    - button "LV"
+    - text: "@"
+    - button "DEN"
+    - button "MIN"
+    - text: "@"
+    - button "SF"
+    - button "CIN"
+    - text: "@"
+    - button "WSH"
+    - button "HOU logo":
+      - img "HOU logo"
+    - text: AFC AFC South
+    - heading "Houston Texans" [level=2]
+    - text: Moneyline
+    - link "Open NoVig":
+      - text: NOVIG -545
+    - text: POLY -584
+    - link "Open ProphetX":
+      - text: PROX -590
+    - button "Show 7 more moneyline sportsbooks": "+7"
+    - group "Market":
+      - button "Moneyline"
+      - button "Spread" [pressed]
+    - button "MOVE"
+    - button "Save"
+    - button "Track this play": Track
+    - text: Spread
+    - button "Books 10/38"
+    - text: HOU
+    - button
+    - text: "-12.5"
+    - button
+    - slider
+    - text: "-25.5 0 +25.5"
+    - link "Open NoVig":
+      - text: NOVIG +104
+    - text: FAN -105
+    - link "Open Caesars":
+      - text: CZR -106
+    - button "Show more spread sportsbooks": "+4"
+    - button
+    - button "Nov 19 vs IND"
+    - button "Nov 29 vs BAL"
+    - button "Dec 6 @ PIT"
+    - button "Dec 13 @ WAS"
+    - button "Dec 20 vs JAX"
+    - button "Dec 24 @ PHI"
+    - button "Jan 4 @ GB"
+    - button "Jan 10 vs TEN"
+    - button
+    - button "Filters"
+    - button "Advanced Opp. Filters"
+    - heading "Unlock Advanced Opponent Filters" [level=3]
+    - paragraph: Get full access to advanced analytics, all player props, and premium features.
+    - button "Upgrade to Pro"
+    - text: "ML: 30% (3-7) ATSh: 30% (3-7) ATSc (-12.5): 20% (2-8) Avg Margin: +0.2"
+    - button "L5 40%"
+    - button "L10 20%"
+    - button "H2H 0%"
+    - button "2025 21%"
+    - button "2026 22%"
+    - text: WK DATE OPPONENT SCORE ML MARGIN ATSh ATSc (-12.5) W10 Nov 15 @
+    - img "CLE logo"
+    - text: CLE 24-27 L -198 -3 -4.5 W9 Nov 8 @
+    - img "LAC logo"
+    - text: LAC 44-22 W -230 +22 -5.5 W7 Oct 25 vs
+    - img "NYG logo"
+    - text: NYG 21-27 L -520 -6 -10 W6 Oct 18 @
+    - img "JAX logo"
+    - text: JAX 34-31 W +120 +3 2.5 W5 Oct 11 @
+    - img "TEN logo"
+    - text: TEN 26-3 W -325 +23 -6.5 W4 Oct 4 vs
+    - img "DAL logo"
+    - text: DAL 30-34 L -148 -4 -3 W3 Sep 27 @
+    - img "IND logo"
+    - text: IND 17-19 L -125 -2 -1.5 W2 Sep 20 vs
+    - img "CIN logo"
+    - text: CIN 6-20 L -148 -14 -3 W1 Sep 13 vs
+    - img "BUF logo"
+    - text: BUF 31-36 L -108 -5 1.5 PO Jan 18* @
+    - img "NE logo"
+    - text: NE 16-28 L +150 -12 3
+    - button "'25"
+    - button "'26"
+    - button "HOU OFF vs IND DEF"
+    - button "IND OFF vs HOU DEF"
+    - text: "HOU Pass OFF vs IND DEF HOU Pass Off +43.5% #5 DVOA IND Pass Def +16.0% #23 HOU Passing Efficiency"
+    - button "vs Man"
+    - button "vs Zone"
+    - text: "EPA/PLAY -0.030 #13 DVOA +10% #9 SUC% 70% #20 EXP% 11% #10 IND Coverage · Zone-heavy MAN ZONE MAN RATE 38% #5 MAN SUC% 41% #10 MAN EPA/DB 0.239 #24 MAN DVOA +11% #25 ZONE RATE 53% #29 ZONE SUC% 43% #8 ZONE EPA/DB -0.020 #9 ZONE DVOA -10% #8 IND Pass Rush PRES% 21.6% #19 BLTZ% 17.1% #30 SAK% 6.9% #14 QBH% 17.5% #18 Hurry% 6.9% #22 HOU Rush OFF vs IND DEF HOU Rush Off -21.0% #28 DVOA IND Rush Def +5.7% #31 HOU Rushing Efficiency"
+    - button "Inside Zone"
+    - button "Outside Zone"
+    - button "Man / Duo"
+    - text: "EPA/ATT -0.282 #28 DVOA -37% #30 SUC% 16% #32 EXP% 3% #30 HOU Run Scheme Frequency Inside Zone Outside Zone Man / Duo IND Opponent Run Defense Efficiency by Run Type Inside Zone EPA/ATT 0.031 #26 Suc% 43.1% #23 EXP% 9.8% #21 DVOA +1% #25 Outside Zone EPA/ATT 0.002 #27 Suc% 38.1% #18 EXP% 11.9% #16 DVOA +8% #31 Man / Duo EPA/ATT -0.103 #12 Suc% 46.0% #28 EXP% 8.0% #18 DVOA +2% #29 Line of Scrimmage 2026 season"
+    - button "'25"
+    - button "'26"
+    - text: "HOU offense vs IND front Pass protection HOU sack % 5.0% #9 IND pressure 21.6% #19 IND sack % 6.9% #14 Run game HOU YBCo 0.91 #26 IND YBCo allowed 1.64 #30 IND TFL/game 3.2 #32"
+    - group: View all run schemes
+    - text: "IND offense vs HOU front Pass protection IND sack % 7.4% #20 HOU pressure 24.9% #10 HOU sack % 9.5% #2 Run game IND YBCo 1.34 #9 HOU YBCo allowed 1.23 #22 HOU TFL/game 6.0 #4"
+    - group: View all run schemes
+    - text: Pass / Run Distribution HOU · 2026 season
+    - 'img "HOU 2026: Pass 63.6%, Run 36.4%, 552 team plays"': 63.6% 36.4%
+    - text: Pass % 63.6% Run % 36.4% Usage on the field 2026 season
+    - button "'25"
+    - button "'26"
+    - paragraph: HOU offensive tendencies and IND defensive production allowed.
+    - region "Team formation split":
+      - text: Team formation 552 qualifying snaps SG / UC
+      - table:
+        - rowgroup:
+          - row "Metric SG Shotgun 71% UC Under center 29%":
+            - columnheader "Metric"
+            - columnheader "SG Shotgun 71%"
+            - columnheader "UC Under center 29%"
+        - rowgroup:
+          - row "rushing 11.6car/g 52.0ypg 4.5ypc 12.3car/g 35.7ypg 2.9ypc":
+            - rowheader "rushing"
+            - cell "11.6car/g 52.0ypg 4.5ypc"
+            - cell "12.3car/g 35.7ypg 2.9ypc"
+          - row "passing 31.8att/g 230.8ypg 7.3ypa 5.7att/g 43.6ypg 7.7ypa":
+            - rowheader "passing"
+            - cell "31.8att/g 230.8ypg 7.3ypa"
+            - cell "5.7att/g 43.6ypg 7.7ypa"
+          - row "receiving 28.7tgt/g 228.7ypg 8.0ypa 5.2tgt/g 43.6ypg 8.3ypa":
+            - rowheader "receiving"
+            - cell "28.7tgt/g 228.7ypg 8.0ypa"
+            - cell "5.2tgt/g 43.6ypg 8.3ypa"
+          - row "IND defense 57.7rush ypg 177.0pass ypg 74.3rush ypg 61.8pass ypg":
+            - rowheader "IND defense"
+            - cell "57.7rush ypg 177.0pass ypg"
+            - cell "74.3rush ypg 61.8pass ypg"
+    - region "Rushing lanes and passing field":
+      - group "Frequency and opponent matchup key":
+        - text: Less frequent More frequent
+        - group "Persistent underline matchup legend": Favorable Neutral Unfavorable
+      - region "HOU rushing direction":
+        - paragraph: "Fill and percentage show offensive frequency, not matchup strength. Persistent underline shows opponent receptions allowed per game for Receptions, attempts/targets allowed for those markets, otherwise allowed-yards rank: green favorable, red unfavorable, solid white neutral; dashed white means applicable evidence or rank unavailable. Ranks 1–10 allow least, 22–32 allow most; colors favor the selected offense for Over and reverse for Under."
+        - heading "Rushing lanes" [level=3]
+        - group "Three schematic rushing lanes; no rushing depth implied":
+          - text: Lanes
+          - 'button "Left lane: 35.8% of known-direction carries" [pressed]': Left 35.8%
+          - 'button "Middle lane: 22.3% of known-direction carries"': Middle 22.3%
+          - 'button "Right lane: 41.9% of known-direction carries"': Right 41.9%
+          - text: Run lanes
+          - 'button "Left rushing lane: 35.8% of known-direction carries. Favorable opponent-defense matchup for HOU Over. Select for HOU and opponent evidence." [pressed]': 35.8%
+          - 'button "Middle rushing lane: 22.3% of known-direction carries. Unfavorable opponent-defense matchup for HOU Over. Select for HOU and opponent evidence."': 22.3%
+          - 'button "Right rushing lane: 41.9% of known-direction carries. Favorable opponent-defense matchup for HOU Over. Select for HOU and opponent evidence."': 41.9%
+          - text: LINE OF SCRIMMAGE · LOS
+        - text: 215 known-direction carries · column shares use this total.
+        - paragraph: Schematic lanes, not rushing depth or tracked paths.
+        - heading "Left lane" [level=4]
+        - text: vs IND 35.8% of known-direction carries
+        - table "Left all depths HOU versus IND defense. Dash means unavailable.":
+          - caption: Left all depths HOU versus IND defense. Dash means unavailable.
+          - rowgroup:
+            - row "Metric HOU IND allowed":
+              - columnheader "Metric"
+              - columnheader "HOU"
+              - columnheader "IND allowed"
+          - rowgroup:
+            - row "CAR/G 8.6 9.5#24":
+              - rowheader "CAR/G"
+              - cell "8.6"
+              - cell "9.5#24"
+            - row "Yards/G 31.8 58.0#31":
+              - rowheader "Yards/G"
+              - cell "31.8"
+              - cell "58.0#31"
+            - row "Yards/carry 3.7 6.1":
+              - rowheader "Yards/carry"
+              - cell "3.7"

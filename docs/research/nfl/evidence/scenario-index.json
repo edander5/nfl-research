@@ -1,0 +1,1961 @@
+{
+  "navigation": {
+    "evidence_id": "ev_5765e425676ae8170ae3e6fad8b94abc732449822cd5ed8bc49b82f82dfac89e",
+    "steps": [
+      {
+        "id": "scenario_start",
+        "status": "completed"
+      },
+      {
+        "id": "settle",
+        "status": "completed"
+      },
+      {
+        "id": "menu",
+        "status": "completed"
+      },
+      {
+        "id": "nfl",
+        "status": "completed"
+      }
+    ],
+    "accessibility": "- document:\n  - dialog:\n    - button \"Close\"\n    - img \"Buckets to Bucks\"\n    - navigation:\n      - link \"Latest Updates 125\":\n        - /url: /updates\n      - img\n      - text: NBA\n      - img\n      - text: NFL\n      - link \"Standings\":\n        - /url: /nfl/standings\n      - link \"Schedule\":\n        - /url: /nfl/schedule\n      - link \"Lineups\":\n        - /url: /nfl/lineups\n      - link \"Moneyline / Spread\":\n        - /url: /nfl/moneyline\n        - img\n        - text: Moneyline / Spread\n      - link \"Game Total\":\n        - /url: /nfl/game-total\n      - link \"Team Total\":\n        - /url: /nfl/team-total\n      - link \"Player Props\":\n        - /url: /nfl/player-props\n      - text: Injury Impact COMING SOON\n      - img\n      - text: College Football\n      - img\n      - text: College Basketball NEW\n      - img\n      - text: NHL NEW UFC Beta\n      - img\n      - text: MLB OFF-SEASON\n      - img\n      - text: WNBA OFF-SEASON Projections More Tools\n    - link \"Saved\":\n      - /url: /saved-plays\n    - link \"Tracker\":\n      - /url: /bankroll\n    - link \"Tutorials\":\n      - /url: /tutorials\n    - button \"Join / Login\""
+  },
+  "cases": {
+    "/nfl/standings": {
+      "evidence_id": "ev_1bb2e8d9bd4a808872d51f9c2dcc5dbcfe06d744424f023084f4b2ef020effb2",
+      "started": "https://bucketstobucks.com/nfl/standings",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/standings",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/standings"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/standings",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "/nfl/schedule": {
+      "evidence_id": "ev_6ac896ff3bf0eb24202cb1c8443ecb28f82a1e1afb973857f56928308218f099",
+      "started": "https://bucketstobucks.com/nfl/schedule",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/schedule",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/schedule",
+            "/api/nfl/standings",
+            "/api/nfl/live-scores",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/team-logo/MIA",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NO",
+            "/api/nfl/team-logo/CHI",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/TB",
+            "/api/nfl/team-logo/DET",
+            "/api/nfl/team-logo/ARI",
+            "/api/nfl/team-logo/KC",
+            "/api/nfl/team-logo/BAL",
+            "/api/nfl/team-logo/CAR",
+            "/api/nfl/team-logo/PIT",
+            "/api/nfl/team-logo/PHI",
+            "/api/nfl/team-logo/NYJ",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/LV",
+            "/api/nfl/team-logo/DEN",
+            "/api/nfl/team-logo/MIN",
+            "/api/nfl/team-logo/SF",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/WAS"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/schedule",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "/nfl/lineups": {
+      "evidence_id": "ev_82102cc59ce0ac9328037133f3941414a81e080fc7809389d38ea871076183df",
+      "started": "https://bucketstobucks.com/nfl/lineups",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/lineups",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/team-logo/MIA",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NO",
+            "/api/nfl/team-logo/CHI",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/TB",
+            "/api/nfl/team-logo/DET",
+            "/api/nfl/team-logo/ARI",
+            "/api/nfl/team-logo/KC",
+            "/api/nfl/team-logo/BAL",
+            "/api/nfl/team-logo/CAR",
+            "/api/nfl/team-logo/PIT",
+            "/api/nfl/team-logo/PHI",
+            "/api/nfl/team-logo/NYJ",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/LV",
+            "/api/nfl/team-logo/DEN",
+            "/api/nfl/team-logo/MIN",
+            "/api/nfl/team-logo/SF",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/WAS"
+          ]
+        }
+      ]
+    },
+    "/nfl/moneyline": {
+      "evidence_id": "ev_628aabe8ad337b6b6b789464f9af8691ee42ff02a3123e8276bf9fe079f75fe5",
+      "started": "https://bucketstobucks.com/nfl/moneyline",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/moneyline",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/game-odds",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/moneyline",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/games"
+          ]
+        }
+      ]
+    },
+    "/nfl/game-total": {
+      "evidence_id": "ev_6e580413a25b4114a712c4fa53fffc68065dbec91b30ced17fe2e59740c86789",
+      "started": "https://bucketstobucks.com/nfl/game-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/game-odds",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/head-to-head",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE"
+          ]
+        }
+      ]
+    },
+    "/nfl/team-total": {
+      "evidence_id": "ev_8c35c8472cf9cb85a39975d53f8fca3aee4ce7a8a5f53ce47d9e053db8897276",
+      "started": "https://bucketstobucks.com/nfl/team-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/team-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/team-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/player-tendency",
+            "/api/nfl/games",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/game-odds",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/head-to-head",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE",
+            "/api/nfl/team-logo/MIA",
+            "/api/nfl/team-logo/MIN",
+            "/api/nfl/team-logo/PIT",
+            "/api/nfl/team-logo/WAS",
+            "/api/nfl/team-logo/KC",
+            "/api/nfl/team-logo/BAL"
+          ]
+        }
+      ]
+    },
+    "/nfl/player-props": {
+      "evidence_id": "ev_b113cc008211b31fce8e6c36b246721784a72f2a6b1d0e25963075cf0206efba",
+      "started": "https://bucketstobucks.com/nfl/player-props",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/player-props",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/schedule",
+            "/api/nfl/player-props"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/player-props",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/injury-report",
+            "/api/nfl/defense-vs-position",
+            "/api/nfl/headshot/Jahmyr%20Gibbs",
+            "/api/nfl/headshot/Daniel%20Jones",
+            "/api/nfl/headshot/Jonathan%20Taylor",
+            "/api/nfl/headshot/Xavier%20Hutchinson",
+            "/api/nfl/headshot/James%20Cook%20III",
+            "/api/nfl/headshot/Christian%20McCaffrey",
+            "/api/nfl/headshot/Kirk%20Cousins",
+            "/api/nfl/headshot/Josh%20Allen",
+            "/api/nfl/headshot/Caleb%20Williams",
+            "/api/nfl/headshot/Travis%20Etienne%20Jr.",
+            "/api/nfl/headshot/Devin%20Singletary",
+            "/api/nfl/headshot/Brock%20Purdy",
+            "/api/nfl/headshot/D'Andre%20Swift",
+            "/api/nfl/headshot/Dalton%20Schultz",
+            "/api/nfl/headshot/Khalil%20Shakir",
+            "/api/nfl/player-props"
+          ]
+        }
+      ]
+    },
+    "division": {
+      "evidence_id": "ev_23eb5f39d24e2221f4af431b59b2d7906ba2f99189923fcd5a360ccee562185d",
+      "started": "https://bucketstobucks.com/nfl/standings",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/standings",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/standings"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/standings",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "division",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/standings",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/standings",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "all-teams": {
+      "evidence_id": "ev_fbc67865393771381e6cbe8a97c5e1dad6a96bf1ce17b65e0ddc95d7f1d5ecea",
+      "started": "https://bucketstobucks.com/nfl/standings",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/standings",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/standings"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/standings",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "all-teams",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/standings",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/standings",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "schedule-week10": {
+      "evidence_id": "ev_722b3ba669b60dff00806447c0b670aedf7adcb69d59029eec4935141af2cce1",
+      "started": "https://bucketstobucks.com/nfl/schedule",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/schedule",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/schedule",
+            "/api/nfl/standings",
+            "/api/nfl/live-scores",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/team-logo/MIA",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NO",
+            "/api/nfl/team-logo/CHI",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/TB",
+            "/api/nfl/team-logo/DET",
+            "/api/nfl/team-logo/ARI",
+            "/api/nfl/team-logo/KC",
+            "/api/nfl/team-logo/BAL",
+            "/api/nfl/team-logo/CAR",
+            "/api/nfl/team-logo/PIT",
+            "/api/nfl/team-logo/PHI",
+            "/api/nfl/team-logo/NYJ",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/LV",
+            "/api/nfl/team-logo/DEN",
+            "/api/nfl/team-logo/MIN",
+            "/api/nfl/team-logo/SF",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/WAS"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/schedule",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "schedule-week10",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/schedule",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/schedule",
+            "/api/nfl/live-scores"
+          ]
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/schedule",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/team-logo/NE",
+            "/api/nfl/team-logo/ATL",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/GB",
+            "/api/nfl/team-logo/SEA",
+            "/api/nfl/team-logo/LAR"
+          ]
+        }
+      ]
+    },
+    "matchup": {
+      "evidence_id": "ev_c5ec5b0c9d75d80f7b5261d8c78f82a8bd35a8dbca6fb1a742894bac11692d7d",
+      "started": "https://bucketstobucks.com/nfl/schedule",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/schedule",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/schedule",
+            "/api/nfl/standings",
+            "/api/nfl/live-scores",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/team-logo/MIA",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NO",
+            "/api/nfl/team-logo/CHI",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/TB",
+            "/api/nfl/team-logo/DET",
+            "/api/nfl/team-logo/ARI",
+            "/api/nfl/team-logo/KC",
+            "/api/nfl/team-logo/BAL",
+            "/api/nfl/team-logo/CAR",
+            "/api/nfl/team-logo/PIT",
+            "/api/nfl/team-logo/PHI",
+            "/api/nfl/team-logo/NYJ",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/LV",
+            "/api/nfl/team-logo/DEN",
+            "/api/nfl/team-logo/MIN",
+            "/api/nfl/team-logo/SF",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/WAS"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/schedule",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "matchup",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/schedule",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/weather",
+            "/api/nfl/teams",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/depth-chart/IND",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats"
+          ]
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/schedule",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/games"
+          ]
+        }
+      ]
+    },
+    "depth": {
+      "evidence_id": "ev_1aa6f49d6eacac5365783d679d8f629aa3a409007968c0e066ab305e0cbe3fd0",
+      "started": "https://bucketstobucks.com/nfl/lineups",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/lineups",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/team-logo/MIA",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NO",
+            "/api/nfl/team-logo/CHI",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/TB",
+            "/api/nfl/team-logo/DET",
+            "/api/nfl/team-logo/ARI",
+            "/api/nfl/team-logo/KC",
+            "/api/nfl/team-logo/BAL",
+            "/api/nfl/team-logo/CAR",
+            "/api/nfl/team-logo/PIT",
+            "/api/nfl/team-logo/PHI",
+            "/api/nfl/team-logo/NYJ",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/LV",
+            "/api/nfl/team-logo/DEN",
+            "/api/nfl/team-logo/MIN",
+            "/api/nfl/team-logo/SF",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/WAS"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "depth",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/depth-chart/IND"
+          ]
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "defense": {
+      "evidence_id": "ev_be703ce6ead3eac841926a8cba9eb479ceed342497e533481f5b0eee34325119",
+      "started": "https://bucketstobucks.com/nfl/lineups",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/lineups",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/team-logo/MIA",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NO",
+            "/api/nfl/team-logo/CHI",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/TB",
+            "/api/nfl/team-logo/DET",
+            "/api/nfl/team-logo/ARI",
+            "/api/nfl/team-logo/KC",
+            "/api/nfl/team-logo/BAL",
+            "/api/nfl/team-logo/CAR",
+            "/api/nfl/team-logo/PIT",
+            "/api/nfl/team-logo/PHI",
+            "/api/nfl/team-logo/NYJ",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/LV",
+            "/api/nfl/team-logo/DEN",
+            "/api/nfl/team-logo/MIN",
+            "/api/nfl/team-logo/SF",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/WAS"
+          ]
+        },
+        {
+          "id": "defense0",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/depth-chart/IND"
+          ]
+        },
+        {
+          "id": "defense1",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "injury": {
+      "evidence_id": "ev_fa4ad1bac30c954bcba27246b8e69d14b1f274f6e4b5cdbe825ad3b81bb89e28",
+      "started": "https://bucketstobucks.com/nfl/lineups",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/lineups",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/team-logo/MIA",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NO",
+            "/api/nfl/team-logo/CHI",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/TB",
+            "/api/nfl/team-logo/DET",
+            "/api/nfl/team-logo/ARI",
+            "/api/nfl/team-logo/KC",
+            "/api/nfl/team-logo/BAL",
+            "/api/nfl/team-logo/CAR",
+            "/api/nfl/team-logo/PIT",
+            "/api/nfl/team-logo/PHI",
+            "/api/nfl/team-logo/NYJ",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/LV",
+            "/api/nfl/team-logo/DEN",
+            "/api/nfl/team-logo/MIN",
+            "/api/nfl/team-logo/SF",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/WAS"
+          ]
+        },
+        {
+          "id": "injury",
+          "status": "failed",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": "locator.click: Timeout 2500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[aria-label=\"QUES injury update for Anthony Gould\"]')\u001b[22m\n",
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "cancelled",
+          "url": "https://bucketstobucks.com/nfl/lineups",
+          "error": "not executed after an earlier action failure",
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "spread": {
+      "evidence_id": "ev_b6e3e7532c9421c343c0da0c7504f6420be12dd8e04ac5b5947b1f220ff61c02",
+      "started": "https://bucketstobucks.com/nfl/moneyline",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/moneyline",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/moneyline",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/game-odds",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/team-logo/NE",
+            "/api/nfl/team-logo/PIT",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/LV",
+            "/api/nfl/team-logo/ARI",
+            "/api/nfl/team-logo/KC",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/TEN"
+          ]
+        },
+        {
+          "id": "spread",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/moneyline",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/moneyline",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/CIN"
+          ]
+        }
+      ]
+    },
+    "game-tall": {
+      "evidence_id": "ev_814fdd9751062ceca9d2320428bfca790d7001e9a3bc5ed299987ff8a5826663",
+      "started": "https://bucketstobucks.com/nfl/game-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/game-odds",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/head-to-head",
+            "/api/nfl/headshot/C.J.%20Stroud"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE"
+          ]
+        }
+      ]
+    },
+    "game-window2": {
+      "evidence_id": "ev_7b6a29d3cc24eb1081976ca59f62b22b55e5a6b1e2adf0671396de39ad1da950",
+      "started": "https://bucketstobucks.com/nfl/game-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/game-odds",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/headshot/C.J.%20Stroud"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/betting-splits",
+            "/api/nfl/head-to-head",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE"
+          ]
+        },
+        {
+          "id": "game-window2",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "game-under": {
+      "evidence_id": "ev_bc3f83c0d3e41d5bdc259d7a75791a189ad5157c88c3c0bfc86236066baa8b9d",
+      "started": "https://bucketstobucks.com/nfl/game-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/game-odds",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/head-to-head",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "game-under",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "game-half": {
+      "evidence_id": "ev_b2627f09ed3cef3f915ab8b408e933d271682914dcc9aaa8c2d06fff4fa52830",
+      "started": "https://bucketstobucks.com/nfl/game-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/game-odds",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/head-to-head",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE"
+          ]
+        },
+        {
+          "id": "game-half",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "game-line2": {
+      "evidence_id": "ev_ffdda7049fdd10f7b5fd0632cb05bc152f999f2ece17ae63ec4865ec5e250746",
+      "started": "https://bucketstobucks.com/nfl/game-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/game-odds",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/headshot/C.J.%20Stroud",
+            "/api/nfl/head-to-head",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "game-line2",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "game-contribution": {
+      "evidence_id": "ev_5b8a454114438ccba4061de54df6392c33663e3b1663be82b173de6e9393e4b2",
+      "started": "https://bucketstobucks.com/nfl/game-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/game-odds",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/headshot/C.J.%20Stroud",
+            "/api/nfl/head-to-head",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE"
+          ]
+        },
+        {
+          "id": "game-contribution0",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "game-rankings": {
+      "evidence_id": "ev_40067bdd526d1e8d6c7e3f743d8b20122c87e3010c5a62ce1619b18c8a9f108d",
+      "started": "https://bucketstobucks.com/nfl/game-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/game-odds",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/head-to-head",
+            "/api/nfl/headshot/C.J.%20Stroud",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE"
+          ]
+        },
+        {
+          "id": "game-rankings0",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "game-buf": {
+      "evidence_id": "ev_066c8cfe1592f6208acc17f3f8e02db7e03b56cca451b2de0da71d73bf2364f4",
+      "started": "https://bucketstobucks.com/nfl/game-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/game-odds",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/head-to-head",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE"
+          ]
+        },
+        {
+          "id": "game-buf",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total/BUF?scheduleSeasonType=2&scheduleWeek=11&gameId=1392367",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/game-odds",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/depth-chart/BUF",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/injury-report",
+            "/api/nfl/games",
+            "/api/nfl/head-to-head"
+          ]
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total/BUF?scheduleSeasonType=2&scheduleWeek=11&gameId=1392367",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "game-week": {
+      "evidence_id": "ev_8f4f371c40c4416136eac4569fc329279d9f2352afeb40a9a6669f07d5ac65e8",
+      "started": "https://bucketstobucks.com/nfl/game-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/game-odds",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/head-to-head",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE",
+            "/api/nfl/headshot/C.J.%20Stroud"
+          ]
+        },
+        {
+          "id": "game-week",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/schedule"
+          ]
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/game-odds",
+            "/api/nfl/head-to-head"
+          ]
+        }
+      ]
+    },
+    "team-l5": {
+      "evidence_id": "ev_0a34067d2094a4f5d66085734109d8cb254c8a83f60f0546307cd3a8b6f1da03",
+      "started": "https://bucketstobucks.com/nfl/team-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/team-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/team-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/player-tendency",
+            "/api/nfl/games",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/game-odds",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/team-logo/MIA",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/MIN",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/PIT",
+            "/api/nfl/team-logo/WAS",
+            "/api/nfl/team-logo/KC",
+            "/api/nfl/team-logo/BAL",
+            "/api/nfl/headshot/C.J.%20Stroud",
+            "/api/nfl/head-to-head",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE"
+          ]
+        },
+        {
+          "id": "team-l5",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/team-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/team-total",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "team-h2h2": {
+      "evidence_id": "ev_2a82d29732ac2320671fb8c939d6f7f9f77bb20755967bbd1a8308aed2e99bc6",
+      "started": "https://bucketstobucks.com/nfl/team-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/team-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/team-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule"
+          ]
+        },
+        {
+          "id": "team-h2h2",
+          "status": "failed",
+          "url": "https://bucketstobucks.com/nfl/team-total",
+          "error": "locator.click: Timeout 3500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"H2H\")')\u001b[22m\n",
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "cancelled",
+          "url": "https://bucketstobucks.com/nfl/team-total",
+          "error": "not executed after an earlier action failure",
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "props-filter2": {
+      "evidence_id": "ev_89ac6b13b15e5569c6944f86705bbebeb2fed6475ed497beec2527dad3104144",
+      "started": "https://bucketstobucks.com/nfl/player-props",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/player-props",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/schedule",
+            "/api/nfl/player-props"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/player-props",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/injury-report",
+            "/api/nfl/defense-vs-position"
+          ]
+        },
+        {
+          "id": "props-filter2",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/player-props",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/headshot/Jahmyr%20Gibbs",
+            "/api/nfl/headshot/Daniel%20Jones",
+            "/api/nfl/headshot/Jonathan%20Taylor",
+            "/api/nfl/headshot/Xavier%20Hutchinson",
+            "/api/nfl/headshot/James%20Cook%20III",
+            "/api/nfl/headshot/Christian%20McCaffrey",
+            "/api/nfl/headshot/Kirk%20Cousins",
+            "/api/nfl/headshot/Josh%20Allen",
+            "/api/nfl/headshot/Caleb%20Williams",
+            "/api/nfl/headshot/Travis%20Etienne%20Jr.",
+            "/api/nfl/headshot/Devin%20Singletary",
+            "/api/nfl/headshot/Brock%20Purdy",
+            "/api/nfl/headshot/D'Andre%20Swift",
+            "/api/nfl/headshot/Dalton%20Schultz",
+            "/api/nfl/headshot/Khalil%20Shakir",
+            "/api/nfl/headshot/Dalton%20Kincaid",
+            "/api/nfl/headshot/Devaughn%20Vele",
+            "/api/nfl/headshot/Kyle%20Monangai",
+            "/api/nfl/player-props"
+          ]
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/player-props",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "mobile": {
+      "evidence_id": "ev_10ab3a71869704f7391f8bef2259b9b794dad0325b5bf729177e693549246eec",
+      "started": "https://bucketstobucks.com/nfl/game-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "threshold-cross": {
+      "evidence_id": "ev_96caea67b15635add8669c135d9b1c45841c12df96b1cd8d07734fdd3ab14d57",
+      "started": "https://bucketstobucks.com/nfl/game-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/game-odds",
+            "/api/nfl/team-logo/HOU",
+            "/api/nfl/headshot/C.J.%20Stroud",
+            "/api/nfl/head-to-head",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "line44",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "line435",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        }
+      ]
+    },
+    "rank-direction": {
+      "evidence_id": "ev_a44f0e78ee8059f070d904ef4ef9b03ee5146f55ec64198687d9515fa8a19e51",
+      "started": "https://bucketstobucks.com/nfl/game-total",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/HOU",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/game-odds",
+            "/api/nfl/team-logo/HOU"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/betting-splits",
+            "/api/nfl/head-to-head",
+            "/api/nfl/team-logo/CLE",
+            "/api/nfl/team-logo/LAC",
+            "/api/nfl/team-logo/NYG",
+            "/api/nfl/team-logo/JAX",
+            "/api/nfl/team-logo/TEN",
+            "/api/nfl/team-logo/DAL",
+            "/api/nfl/team-logo/IND",
+            "/api/nfl/team-logo/CIN",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/team-logo/NE"
+          ]
+        },
+        {
+          "id": "rank-direction",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/game-total",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/headshot/C.J.%20Stroud"
+          ]
+        }
+      ]
+    },
+    "standing-team": {
+      "evidence_id": "ev_291bbda171d2c4f7b966bdae50483578893883521e1e0726dbe0d6ded47ce1e9",
+      "started": "https://bucketstobucks.com/nfl/standings",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/standings",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/standings"
+          ]
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/standings",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "standing-team",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/moneyline/BUF",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settled",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/moneyline/BUF",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/nfl/active-week",
+            "/api/nfl/teams",
+            "/api/nfl/team-rankings",
+            "/api/nfl/ftn-stats",
+            "/api/nfl/schedule",
+            "/api/nfl/game-odds",
+            "/api/nfl/injury-report",
+            "/api/nfl/qb-situational",
+            "/api/nfl/depth-chart/BUF",
+            "/api/nfl/team-player-games",
+            "/api/nfl/games",
+            "/api/nfl/team-logo/BUF",
+            "/api/nfl/player-tendency",
+            "/api/nfl/weather",
+            "/api/nfl/fantasy-rankings",
+            "/api/nfl/betting-splits"
+          ]
+        }
+      ]
+    },
+    "props-sort": {
+      "evidence_id": "ev_2b2f18588530ce3941f69253e2cb998455c47942fb4af0b22c4e121dbdb12801",
+      "started": "https://bucketstobucks.com/nfl/player-props",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/player-props",
+          "error": null,
+          "first_party_api_requests": []
+        },
+        {
+          "id": "settle",
+          "status": "completed",
+          "url": "https://bucketstobucks.com/nfl/player-props",
+          "error": null,
+          "first_party_api_requests": [
+            "/api/ncaab/research/teams",
+            "/api/search-player-catalog",
+            "/api/auth/user",
+            "/api/subscription/plans",
+            "/api/nfl/active-week",
+            "/api/nfl/schedule",
+            "/api/nfl/player-props"
+          ]
+        },
+        {
+          "id": "props-sort",
+          "status": "failed",
+          "url": "https://bucketstobucks.com/nfl/player-props",
+          "error": "locator.click: Timeout 3500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"Sort by L10\")')\u001b[22m\n",
+          "first_party_api_requests": [
+            "/api/nfl/injury-report",
+            "/api/nfl/defense-vs-position",
+            "/api/nfl/headshot/Jahmyr%20Gibbs",
+            "/api/nfl/headshot/Daniel%20Jones",
+            "/api/nfl/headshot/Jonathan%20Taylor",
+            "/api/nfl/headshot/Xavier%20Hutchinson",
+            "/api/nfl/headshot/James%20Cook%20III",
+            "/api/nfl/headshot/Christian%20McCaffrey",
+            "/api/nfl/headshot/Kirk%20Cousins",
+            "/api/nfl/headshot/Josh%20Allen",
+            "/api/nfl/headshot/Caleb%20Williams",
+            "/api/nfl/headshot/Travis%20Etienne%20Jr.",
+            "/api/nfl/headshot/Devin%20Singletary",
+            "/api/nfl/headshot/Brock%20Purdy",
+            "/api/nfl/headshot/D'Andre%20Swift",
+            "/api/nfl/headshot/Dalton%20Schultz",
+            "/api/nfl/headshot/Khalil%20Shakir",
+            "/api/nfl/player-props"
+          ]
+        },
+        {
+          "id": "settled",
+          "status": "cancelled",
+          "url": "https://bucketstobucks.com/nfl/player-props",
+          "error": "not executed after an earlier action failure",
+          "first_party_api_requests": []
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,210 @@
+- document:
+  - region "Notifications (F8)":
+    - list
+  - button "Open navigation menu"
+  - main:
+    - textbox "Search teams or players..."
+    - heading "NFL Standings" [level=1]
+    - paragraph: 2026 Regular Season
+    - group "Standings view":
+      - button "League"
+      - button "Division" [pressed]
+      - button "All Teams"
+      - button "Playoff Picture" [disabled]
+      - button "Playoff Bracket" [disabled]
+    - heading "American Football Conference" [level=2]
+    - heading "AFC East" [level=3]
+    - table:
+      - rowgroup:
+        - row "# Team W L T PCT GB":
+          - columnheader "#"
+          - columnheader "Team"
+          - columnheader "W"
+          - columnheader "L"
+          - columnheader "T"
+          - columnheader "PCT"
+          - columnheader "GB"
+      - rowgroup:
+        - row "1 BUF Buffalo Bills 8 1 0 .889 —":
+          - cell "1"
+          - cell "BUF Buffalo Bills":
+            - link "BUF Buffalo Bills":
+              - /url: /nfl/moneyline/BUF
+          - cell "8"
+          - cell "1"
+          - cell "0"
+          - cell ".889"
+          - cell "—"
+        - row "2 NE New England Patriots 5 5 0 .500 3.5":
+          - cell "2"
+          - cell "NE New England Patriots":
+            - link "NE New England Patriots":
+              - /url: /nfl/moneyline/NE
+          - cell "5"
+          - cell "5"
+          - cell "0"
+          - cell ".500"
+          - cell "3.5"
+        - row "3 NYJ New York Jets 2 8 0 .200 6.5":
+          - cell "3"
+          - cell "NYJ New York Jets":
+            - link "NYJ New York Jets":
+              - /url: /nfl/moneyline/NYJ
+          - cell "2"
+          - cell "8"
+          - cell "0"
+          - cell ".200"
+          - cell "6.5"
+        - row "4 MIA Miami Dolphins 1 8 0 .111 7":
+          - cell "4"
+          - cell "MIA Miami Dolphins":
+            - link "MIA Miami Dolphins":
+              - /url: /nfl/moneyline/MIA
+          - cell "1"
+          - cell "8"
+          - cell "0"
+          - cell ".111"
+          - cell "7"
+    - heading "AFC North" [level=3]
+    - table:
+      - rowgroup:
+        - row "# Team W L T PCT GB":
+          - columnheader "#"
+          - columnheader "Team"
+          - columnheader "W"
+          - columnheader "L"
+          - columnheader "T"
+          - columnheader "PCT"
+          - columnheader "GB"
+      - rowgroup:
+        - row "1 CIN Cincinnati Bengals 7 2 0 .778 —":
+          - cell "1"
+          - cell "CIN Cincinnati Bengals":
+            - link "CIN Cincinnati Bengals":
+              - /url: /nfl/moneyline/CIN
+          - cell "7"
+          - cell "2"
+          - cell "0"
+          - cell ".778"
+          - cell "—"
+        - row "2 PIT Pittsburgh Steelers 6 3 0 .667 1":
+          - cell "2"
+          - cell "PIT Pittsburgh Steelers":
+            - link "PIT Pittsburgh Steelers":
+              - /url: /nfl/moneyline/PIT
+          - cell "6"
+          - cell "3"
+          - cell "0"
+          - cell ".667"
+          - cell "1"
+        - row "3 CLE Cleveland Browns 6 4 0 .600 1.5":
+          - cell "3"
+          - cell "CLE Cleveland Browns":
+            - link "CLE Cleveland Browns":
+              - /url: /nfl/moneyline/CLE
+          - cell "6"
+          - cell "4"
+          - cell "0"
+          - cell ".600"
+          - cell "1.5"
+        - row "4 BAL Baltimore Ravens 4 6 0 .400 3.5":
+          - cell "4"
+          - cell "BAL Baltimore Ravens":
+            - link "BAL Baltimore Ravens":
+              - /url: /nfl/moneyline/BAL
+          - cell "4"
+          - cell "6"
+          - cell "0"
+          - cell ".400"
+          - cell "3.5"
+    - heading "AFC South" [level=3]
+    - table:
+      - rowgroup:
+        - row "# Team W L T PCT GB":
+          - columnheader "#"
+          - columnheader "Team"
+          - columnheader "W"
+          - columnheader "L"
+          - columnheader "T"
+          - columnheader "PCT"
+          - columnheader "GB"
+      - rowgroup:
+        - row "1 JAX Jacksonville Jaguars 7 2 0 .778 —":
+          - cell "1"
+          - cell "JAX Jacksonville Jaguars":
+            - link "JAX Jacksonville Jaguars":
+              - /url: /nfl/moneyline/JAX
+          - cell "7"
+          - cell "2"
+          - cell "0"
+          - cell ".778"
+          - cell "—"
+        - row "2 HOU Houston Texans 3 6 0 .333 4":
+          - cell "2"
+          - cell "HOU Houston Texans":
+            - link "HOU Houston Texans":
+              - /url: /nfl/moneyline/HOU
+          - cell "3"
+          - cell "6"
+          - cell "0"
+          - cell ".333"
+          - cell "4"
+        - row "3 IND Indianapolis Colts 3 7 0 .300 4.5":
+          - cell "3"
+          - cell "IND Indianapolis Colts":
+            - link "IND Indianapolis Colts":
+              - /url: /nfl/moneyline/IND
+          - cell "3"
+          - cell "7"
+          - cell "0"
+          - cell ".300"
+          - cell "4.5"
+        - row "4 TEN Tennessee Titans 1 8 0 .111 6":
+          - cell "4"
+          - cell "TEN Tennessee Titans":
+            - link "TEN Tennessee Titans":
+              - /url: /nfl/moneyline/TEN
+          - cell "1"
+          - cell "8"
+          - cell "0"
+          - cell ".111"
+          - cell "6"
+    - heading "AFC West" [level=3]
+    - table:
+      - rowgroup:
+        - row "# Team W L T PCT GB":
+          - columnheader "#"
+          - columnheader "Team"
+          - columnheader "W"
+          - columnheader "L"
+          - columnheader "T"
+          - columnheader "PCT"
+          - columnheader "GB"
+      - rowgroup:
+        - row "1 KC Kansas City Chiefs 7 2 0 .778 —":
+          - cell "1"
+          - cell "KC Kansas City Chiefs":
+            - link "KC Kansas City Chiefs":
+              - /url: /nfl/moneyline/KC
+          - cell "7"
+          - cell "2"
+          - cell "0"
+          - cell ".778"
+          - cell "—"
+        - row "2 DEN Denver Broncos 7 2 0 .778 —":
+          - cell "2"
+          - cell "DEN Denver Broncos":
+            - link "DEN Denver Broncos":
+              - /url: /nfl/moneyline/DEN
+          - cell "7"
+          - cell "2"
+          - cell "0"
+          - cell ".778"
+          - cell "—"
+        - row "3 LV Las Vegas Raiders 4 6 0 .400 3.5":
+          - cell "3"
+          - cell "LV Las Vegas Raiders":
+            - link "LV Las Vegas Raiders":
+              - /url: /nfl/moneyline/LV
+          - cell "4"
+          - cell "6"

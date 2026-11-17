@@ -1,0 +1,14 @@
+settle
+    - text: "44.5"
+    - paragraph: "Over: 60% (6-4) Avg Total: 49.6"
+    - text: "Game Log Over: 60% (6-4)Avg: 49.6 WK DATE OPPONENT SCORE TOTAL HIST LINE O/U W10 Nov 15 @"
+
+line44
+    - text: "44.0"
+    - paragraph: "Over: 67% (6-3-1) Avg Total: 49.6"
+    - text: "Game Log Over: 67% (6-3-1)Avg: 49.6 WK DATE OPPONENT SCORE TOTAL HIST LINE O/U W10 Nov 15 @"
+
+line435
+    - text: "43.5"
+    - paragraph: "Over: 70% (7-3) Avg Total: 49.6"
+    - text: "Game Log Over: 70% (7-3)Avg: 49.6 WK DATE OPPONENT SCORE TOTAL HIST LINE O/U W10 Nov 15 @"

@@ -129,3 +129,63 @@ class SummaryMeta(StatsPolicy):
 class TeamSeasonStatsResponse(BaseModel):
     data: TeamSeasonStats
     meta: SummaryMeta
+
+
+class TrendFilters(SeasonFilters):
+    window: Literal['L3', 'L5', 'L10'] = 'L5'
+    matchup_id: UUID | None = None
+
+    @property
+    def game_limit(self):
+        return int(self.window[1:])
+
+
+class OffensiveTrends(BaseModel):
+    net_passing_yards: MetricAggregate
+    rushing_yards: MetricAggregate
+    reported_points_scored: MetricAggregate
+
+
+class DefensiveTrends(BaseModel):
+    net_passing_yards_allowed: MetricAggregate
+    rushing_yards_allowed: MetricAggregate
+    reported_points_allowed: MetricAggregate
+
+
+class TeamTrends(BaseModel):
+    team: TeamView
+    season: int
+    season_type: SeasonType
+    window: Literal['L3', 'L5', 'L10']
+    requested_game_count: int
+    eligible_game_count: int
+    offense: OffensiveTrends
+    defense: DefensiveTrends
+    games: list[TeamGameStats]
+
+
+class TrendsMeta(SummaryMeta):
+    matchup_id: UUID | None
+    cutoff_utc: datetime | None
+    selection_mode: Literal['latest_accepted', 'before_matchup']
+    unavailable_reason: Literal['matchup_kickoff_unknown'] | None = None
+    available_eligible_games: int
+    accepted_games_in_season_stage: int
+    excluded_unknown_kickoff_games: int
+    excluded_at_or_after_matchup_games: int
+    scheduled_games_in_scope: int
+    scheduled_games_without_accepted_statistics: int
+    selected_unknown_status_games: int
+    selected_unverified_score_games: int
+    missing_metric_games: dict[str, int]
+    window_complete: bool
+    selected_metrics_complete: bool
+    completion_before_cutoff_verified: Literal[False] = False
+    selection_semantics: str = 'Latest N accepted reciprocal team-game rows with known kickoff, ordered kickoff/source ID/UUID descending. With matchup_id, require kickoff strictly before the matchup and exclude the matchup itself. Select games before counting non-null metric values; never backfill individual metrics.'
+    cutoff_semantics: str = 'Chronological reconstruction from current accepted revisions, not verified completed-before-kickoff eligibility or statistics as originally published. UNKNOWN status and reported points remain unverified. Missing matchup kickoff returns unavailable trends, never an unfiltered fallback.'
+    scheduled_coverage_semantics: str = 'Known-kickoff stored schedule in the requested season/stage and cutoff scope; missing accepted statistics may include future games. Unknown-kickoff games are excluded, not zero-performance games.'
+
+
+class TeamTrendsResponse(BaseModel):
+    data: TeamTrends
+    meta: TrendsMeta

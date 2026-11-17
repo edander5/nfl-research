@@ -1,0 +1,9 @@
+# Lineups
+
+**Observed.** Shared header → NFL Lineups → Projected starters and depth charts → ET update time and Refresh → matchup cards. Each card pairs away and home teams. Cards show kickoff and venue context such as Dome or weather, logos, records, and projected skill-position starters QB, RB, WR, TE and K where available. Multiple WR slots are possible. QUES injury badge buttons appear on affected rows. Logos link to team research and player names link to prop detail with position and team context.
+
+From the collapsed matchup card, IND Depth Chart expanded a Colts depth section inline while preserving the URL. [Default screenshot](screenshots/lineups-desktop.png) and [interaction ledger](evidence/README.md).
+
+**Implementation.** Essential components are matchup slate, team roster panel, ordered projected-starter rows, injury badges, freshness and per-team depth disclosure. Data includes event, kickoff, venue/weather, team, position group, ordered depth slots, player IDs, projection status, injury status/details and timestamps. On small screens stack team panels and allow wide depth tables to scroll. Acceptance: depth expansion preserves the matchup, missing positions remain explicit, and player links retain team and player identity. Keep injuries and projections distinct from official lineup confirmation. Refresh semantics, injury popover, alternate slate selection and failure recovery merit targeted verification. Defensive grouping details are in the evidence ledger where visible.
+
+Defense replaced the offense list with Base 4-3 D positions, including LDE, LDT, RDT and RDE, with numbered roster slots and injury badges. The previously fetched IND depth chart supported this switch during the sampled interval. Special Teams was visible as a sibling control. [Defense excerpt](evidence/defense.txt), [defense viewport](screenshots/lineups-depth-defense.png).

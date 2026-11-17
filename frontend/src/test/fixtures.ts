@@ -41,3 +41,25 @@ export const noTeamLogs: import('../api/research').TeamGamesResponse = {
     definition_version: 'net_pass_negative_sacks_v1', statistics_semantics: 'Synthetic accepted NET statistics',
     score_semantics: 'Reported only', aggregate_semantics: 'Not pregame', origin_semantics: 'Declared' },
 };
+
+// Empty trends keyed to the actual request for existing Game Preview regressions.
+export function noTrends(path: string): import('../api/research').TeamTrendsResponse {
+  const url = new URL(path, 'http://synthetic.invalid');
+  const teamId = url.pathname.split('/')[3];
+  const team = teamId === game().away_team.id ? game().away_team : game().home_team;
+  const window = url.searchParams.get('window') as import('../api/research').TrendWindow;
+  const empty = () => ({ total:null, average:null, games_with_values:0 });
+  return { data: { team:{...team,id:teamId}, season:Number(url.searchParams.get('season')),
+    season_type:url.searchParams.get('season_type') as 'REG'|'POST', window,
+    requested_game_count:Number(window.slice(1)), eligible_game_count:0,
+    offense:{net_passing_yards:empty(),rushing_yards:empty(),reported_points_scored:empty()},
+    defense:{net_passing_yards_allowed:empty(),rushing_yards_allowed:empty(),reported_points_allowed:empty()}, games:[] },
+    meta:{ ...noTeamLogs.meta, averages:'Synthetic per-metric samples',coverage:'Synthetic accepted data',
+      matchup_id:url.searchParams.get('matchup_id'),cutoff_utc:game().scheduled_kickoff_utc,selection_mode:'before_matchup',unavailable_reason:null,
+      available_eligible_games:0,accepted_games_in_season_stage:0,excluded_unknown_kickoff_games:0,
+      excluded_at_or_after_matchup_games:0,scheduled_games_in_scope:0,scheduled_games_without_accepted_statistics:0,
+      selected_unknown_status_games:0,selected_unverified_score_games:0,missing_metric_games:{},
+      window_complete:false,selected_metrics_complete:false,completion_before_cutoff_verified:false,
+      selection_semantics:'Synthetic selection',cutoff_semantics:'Synthetic current accepted reconstruction; not a verified pregame snapshot.',scheduled_coverage_semantics:'Synthetic stored schedule',
+    } };
+}

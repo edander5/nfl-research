@@ -7,7 +7,7 @@ from app.db.session import get_session
 from app.repositories.team_stats import TeamStatsRepository
 from app.schemas.schedule import ErrorResponse
 from app.schemas.team_stats import (GameLogFilters, SeasonFilters, TeamGameLogsResponse,
-                                    GameTeamStatsResponse, TeamSeasonStatsResponse)
+                                    GameTeamStatsResponse, TeamSeasonStatsResponse, TrendFilters, TeamTrendsResponse)
 from app.services.team_stats import TeamStatsService
 
 router = APIRouter(prefix='/api', tags=['team statistics'], dependencies=[Depends(validate_query_keys)],
@@ -38,3 +38,13 @@ def team_stats(team_id: UUID, filters: Annotated[SeasonFilters, Query()],
                service: TeamStatsService = Depends(get_team_stats_service)):
     """Reconstructed season aggregates; not pregame rankings or evidence of game completion."""
     return service.summary(team_id, filters)
+
+
+@router.get('/teams/{team_id}/trends', response_model=TeamTrendsResponse)
+def team_trends(team_id: UUID, filters: Annotated[TrendFilters, Query()],
+                service: TeamStatsService = Depends(get_team_stats_service)):
+    """L3/L5/L10 accepted team trends; optional matchup excludes itself and later kickoffs.
+
+    Points are source-reported. Chronology does not verify completion before kickoff.
+    """
+    return service.trends(team_id, filters)

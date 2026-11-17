@@ -1,0 +1,210 @@
+- document:
+  - region "Notifications (F8)":
+    - list
+  - button "Open navigation menu"
+  - main:
+    - textbox "Search teams or players..."
+    - button "Previous week or round"
+    - text: Week 11 Games
+    - button "Next week or round"
+    - button "IND"
+    - text: "@"
+    - button "HOU"
+    - button "MIA"
+    - text: "@"
+    - button "BUF"
+    - button "NO"
+    - text: "@"
+    - button "CHI"
+    - button "TEN"
+    - text: "@"
+    - button "DAL"
+    - button "TB"
+    - text: "@"
+    - button "DET"
+    - button "ARI"
+    - text: "@"
+    - button "KC"
+    - button "BAL"
+    - text: "@"
+    - button "CAR"
+    - button "PIT"
+    - text: "@"
+    - button "PHI"
+    - button "NYJ"
+    - text: "@"
+    - button "LAC"
+    - button "JAX"
+    - text: "@"
+    - button "NYG"
+    - button "LV"
+    - text: "@"
+    - button "DEN"
+    - button "MIN"
+    - text: "@"
+    - button "SF"
+    - button "CIN"
+    - text: "@"
+    - button "WSH"
+    - button "HOU logo":
+      - img "HOU logo"
+    - text: AFC AFC South
+    - heading "Houston Texans" [level=2]
+    - paragraph: vs Indianapolis Colts
+    - text: Game Total
+    - button
+    - text: "44.5"
+    - button
+    - button "MOVE"
+    - button "Over"
+    - button "Under"
+    - button "Books 10/38"
+    - link "Open NoVig":
+      - text: NOVIG +104
+    - text: POLY -101
+    - link "Open ProphetX":
+      - text: PROX +104
+    - button "+7"
+    - button "Full Game"
+    - button "1st Half"
+    - button "Save"
+    - button "Track this play": Track
+    - button
+    - button "Nov 19 vs IND"
+    - button "Nov 29 vs BAL"
+    - button "Dec 6 @ PIT"
+    - button "Dec 13 @ WAS"
+    - button "Dec 20 vs JAX"
+    - button "Dec 24 @ PHI"
+    - button "Jan 4 @ GB"
+    - button "Jan 10 vs TEN"
+    - button
+    - button "Filters"
+    - button "vs Opp. Defense"
+    - heading "Unlock Advanced NFL Filters" [level=3]
+    - paragraph: Get full access to advanced analytics, all player props, and premium features.
+    - button "Upgrade to Pro"
+    - heading "Houston Texans — Game Total O/U" [level=3]
+    - paragraph: "Over: 60% (6-4) Avg Total: 49.6"
+    - button "L5 80%"
+    - button "L10 60%"
+    - button "L20 45%"
+    - button "H2H 54%"
+    - button "2025 26%"
+    - button "2026 67%"
+    - checkbox "Team Cont. %"
+    - text: Team Cont. %
+    - img: 1/18 @NE 9/13 vsBUF 9/20 vsCIN 9/27 @IND 10/4 vsDAL 10/11 @TEN 10/18 @JAX 10/25 vsNYG 11/8 @LAC 11/15 @CLE 20 35 50 75 44.5 36% 44 46% 67 23% 26 47% 36 47% 64 90% 29 52% 65 44% 48 67% 66 47% 51
+    - text: "Game Log Over: 60% (6-4)Avg: 49.6 WK DATE OPPONENT SCORE TOTAL HIST LINE O/U W10 Nov 15 @"
+    - img "CLE logo"
+    - text: CLE 24-27 51 40.5 W9 Nov 8 @
+    - img "LAC logo"
+    - text: LAC 44-22 66 40.5 W7 Oct 25 vs
+    - img "NYG logo"
+    - text: NYG 21-27 48 42.5 W6 Oct 18 @
+    - img "JAX logo"
+    - text: JAX 34-31 65 42.5 W5 Oct 11 @
+    - img "TEN logo"
+    - text: TEN 26-3 29 37.5 W4 Oct 4 vs
+    - img "DAL logo"
+    - text: DAL 30-34 64 48.5 W3 Sep 27 @
+    - img "IND logo"
+    - text: IND 17-19 36 41.5 W2 Sep 20 vs
+    - img "CIN logo"
+    - text: CIN 6-20 26 45.5 W1 Sep 13 vs
+    - img "BUF logo"
+    - text: BUF 31-36 67 44.5 PO Jan 18* @
+    - img "NE logo"
+    - text: NE 16-28 44 40.5 Pass / Run Distribution HOU · 2026 season
+    - 'img "HOU 2026: Pass 63.6%, Run 36.4%, 552 team plays"': 63.6% 36.4%
+    - text: Pass % 63.6% Run % 36.4% Usage on the field 2026 season
+    - button "'25"
+    - button "'26"
+    - paragraph: HOU offensive tendencies and IND defensive production allowed.
+    - region "Team formation split":
+      - text: Team formation 552 qualifying snaps SG / UC
+      - table:
+        - rowgroup:
+          - row "Metric SG Shotgun 71% UC Under center 29%":
+            - columnheader "Metric"
+            - columnheader "SG Shotgun 71%"
+            - columnheader "UC Under center 29%"
+        - rowgroup:
+          - row "rushing 11.6car/g 52.0ypg 4.5ypc 12.3car/g 35.7ypg 2.9ypc":
+            - rowheader "rushing"
+            - cell "11.6car/g 52.0ypg 4.5ypc"
+            - cell "12.3car/g 35.7ypg 2.9ypc"
+          - row "passing 31.8att/g 230.8ypg 7.3ypa 5.7att/g 43.6ypg 7.7ypa":
+            - rowheader "passing"
+            - cell "31.8att/g 230.8ypg 7.3ypa"
+            - cell "5.7att/g 43.6ypg 7.7ypa"
+          - row "receiving 28.7tgt/g 228.7ypg 8.0ypa 5.2tgt/g 43.6ypg 8.3ypa":
+            - rowheader "receiving"
+            - cell "28.7tgt/g 228.7ypg 8.0ypa"
+            - cell "5.2tgt/g 43.6ypg 8.3ypa"
+          - row "IND defense 57.7rush ypg 177.0pass ypg 74.3rush ypg 61.8pass ypg":
+            - rowheader "IND defense"
+            - cell "57.7rush ypg 177.0pass ypg"
+            - cell "74.3rush ypg 61.8pass ypg"
+    - region "Rushing lanes and passing field":
+      - group "Frequency and opponent matchup key":
+        - text: Less frequent More frequent
+        - group "Persistent underline matchup legend": Favorable Neutral Unfavorable
+      - region "HOU rushing direction":
+        - paragraph: "Fill and percentage show offensive frequency, not matchup strength. Persistent underline shows opponent receptions allowed per game for Receptions, attempts/targets allowed for those markets, otherwise allowed-yards rank: green favorable, red unfavorable, solid white neutral; dashed white means applicable evidence or rank unavailable. Ranks 1–10 allow least, 22–32 allow most; colors favor the selected offense for Over and reverse for Under."
+        - heading "Rushing lanes" [level=3]
+        - group "Three schematic rushing lanes; no rushing depth implied":
+          - text: Lanes
+          - 'button "Left lane: 35.8% of known-direction carries" [pressed]': Left 35.8%
+          - 'button "Middle lane: 22.3% of known-direction carries"': Middle 22.3%
+          - 'button "Right lane: 41.9% of known-direction carries"': Right 41.9%
+          - text: Run lanes
+          - 'button "Left rushing lane: 35.8% of known-direction carries. Favorable opponent-defense matchup for HOU Over. Select for HOU and opponent evidence." [pressed]': 35.8%
+          - 'button "Middle rushing lane: 22.3% of known-direction carries. Unfavorable opponent-defense matchup for HOU Over. Select for HOU and opponent evidence."': 22.3%
+          - 'button "Right rushing lane: 41.9% of known-direction carries. Favorable opponent-defense matchup for HOU Over. Select for HOU and opponent evidence."': 41.9%
+          - text: LINE OF SCRIMMAGE · LOS
+        - text: 215 known-direction carries · column shares use this total.
+        - paragraph: Schematic lanes, not rushing depth or tracked paths.
+        - heading "Left lane" [level=4]
+        - text: vs IND 35.8% of known-direction carries
+        - table "Left all depths HOU versus IND defense. Dash means unavailable.":
+          - caption: Left all depths HOU versus IND defense. Dash means unavailable.
+          - rowgroup:
+            - row "Metric HOU IND allowed":
+              - columnheader "Metric"
+              - columnheader "HOU"
+              - columnheader "IND allowed"
+          - rowgroup:
+            - row "CAR/G 8.6 9.5#24":
+              - rowheader "CAR/G"
+              - cell "8.6"
+              - cell "9.5#24"
+            - row "Yards/G 31.8 58.0#31":
+              - rowheader "Yards/G"
+              - cell "31.8"
+              - cell "58.0#31"
+            - row "Yards/carry 3.7 6.1":
+              - rowheader "Yards/carry"
+              - cell "3.7"
+              - cell "6.1"
+            - row "Explosive run % 6.5% 17.9%":
+              - rowheader "Explosive run %"
+              - cell "6.5%"
+              - cell "17.9%"
+            - row "Stuffed run % 16.9% 10.5%":
+              - rowheader "Stuffed run %"
+              - cell "16.9%"
+              - cell "10.5%"
+        - text: 77 carries · 286 yards
+      - region "HOU passing direction":
+        - paragraph: "Fill and percentage show offensive frequency, not matchup strength. Persistent underline shows opponent receptions allowed per game for Receptions, attempts/targets allowed for those markets, otherwise allowed-yards rank: green favorable, red unfavorable, solid white neutral; dashed white means applicable evidence or rank unavailable. Ranks 1–10 allow least, 22–32 allow most; colors favor the selected offense for Over and reverse for Under."
+        - heading "Passing field" [level=3]
+        - text: Select zone to dive deeper
+        - group "Eighteen air-yard zones; schematic depth bands, not exact catch locations":
+          - text: Air yds
+          - 'button "Left all depths: 27.9% of known-direction attempts"': Left 27.9%
+          - 'button "Middle all depths: 26.0% of known-direction attempts"': Middle 26.0%
+          - 'button "Right all depths: 46.1% of known-direction attempts"': Right 46.1%
+          - text: 21+
+          - 'button "Left 21+ air yards: 2.8% of all known-depth attempts. Favorable opponent-defense matchup for HOU Over. Select for HOU and opponent evidence."': 2.8%
+          - 'button "Middle 21+ air yards: 2.2% of all known-depth attempts. Unfavorable opponent-defense matchup for HOU Over. Select for HOU and opponent evidence."': 2.2%
