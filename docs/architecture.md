@@ -1,5 +1,20 @@
 # Technical Architecture
 
+Task 026 adds [Game Total research](game-total-research-api.md) on the existing team
+router. Trends and market research share accepted chronology/coverage selection;
+one read snapshot joins selected score rows and identity/hash-validated schedule
+references, plus a separate team lookup. Python computes exact Decimal outcomes
+and bounded-sample summaries. No new schema, permissions, ingestion, dependency,
+source or frontend. Same-season H2H/SEASON and L20 support are specific to the new
+research contract; existing trend/rank/market APIs keep their behavior.
+
+Task 025 proposes [shared game-research components](research/task-025-component-architecture.md)
+and a [game-first roadmap](research/task-025-game-research-roadmap.md), without
+implementation authorization. Keep sample/metric/outcome computation in FastAPI,
+with one observation contract driving chart/log/summary in React. Existing
+dependencies suffice for controls/tables; Recharts remains uninstalled and needs
+task-specific approval for the proposed first chart UI.
+
 Task 023 adds [team performance trends](team-performance-trends.md) to the existing
 team-statistics router. One bounded SQL statement selects accepted reciprocal
 game rows, optional matchup cutoff, coverage and all six averages; one prior team

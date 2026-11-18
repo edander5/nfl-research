@@ -63,3 +63,20 @@ export function noTrends(path: string): import('../api/research').TeamTrendsResp
       selection_semantics:'Synthetic selection',cutoff_semantics:'Synthetic current accepted reconstruction; not a verified pregame snapshot.',scheduled_coverage_semantics:'Synthetic stored schedule',
     } };
 }
+
+export function noGameResearch(path:string):import('../api/gameResearch').GameResearchResponse {
+  const url=new URL(path,'http://synthetic.invalid');
+  const base=noTrends(path),line=url.searchParams.get('line');
+  const window=url.searchParams.get('window') as import('../api/gameResearch').ResearchWindow;
+  return {data:{team:base.data.team,season:base.data.season,season_type:base.data.season_type,
+    matchup_id:url.searchParams.get('matchup_id')!,opponent_id:base.data.team.id===game().away_team.id?game().home_team.id:game().away_team.id,
+    market:'GAME_TOTAL',period:'FULL_GAME',window,requested_game_count:window.startsWith('L')?Number(window.slice(1)):null,
+    line,threshold_origin:line===null?null:'MANUAL',side:(url.searchParams.get('side')??'OVER') as 'OVER'|'UNDER',availability:'EMPTY',observations:[],
+    summary:{eligible_game_count:0,games_with_usable_scores:0,games_without_usable_scores:0,average_combined_points:null,
+      over_count:line===null?null:0,under_count:line===null?null:0,push_count:line===null?null:0,
+      hit_rate:null,hit_rate_numerator:line===null?null:0,hit_rate_denominator:line===null?null:0,
+      hit_rate_denominator_policy:'usable_scores_including_pushes',hit_rate_unit:'fraction',outcomes_unavailable_reason:line===null?'threshold_required':'no_usable_scores'}},
+    meta:{...base.meta,selection_mode:'before_matchup',unavailable_reason:'no_eligible_games',accepted_games_in_scope:0,
+      games_with_reference_total:0,games_without_reference_total:0,scores_complete:false,references_complete:false,
+      cross_season:false,reference_lines_verified_pregame:false,threshold_semantics:'Synthetic threshold policy',reference_semantics:'Unverified references'}};
+}

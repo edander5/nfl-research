@@ -95,17 +95,22 @@ class TeamStatsRepository:
         return result[0], [row for row in result if row['game_id'] is not None]
 
 
-def trends_query(team_id, filters):
-    """One statement snapshot for matchup, coverage, latest N and every metric.
+def history_selection(team_id, filters):
+    """Shared accepted chronology and coverage; never infer game completion.
 
-    An optional canonical matchup anchors chronology without asserting completion.
-    Its validation fields are returned even when no accepted games are selected.
+    Returns the selected rows and one metadata CTE, including empty selections.
+    H2H is restricted to the canonical matchup opponent in the requested season/stage.
     """
     rows = TeamStatsRepository.filtered(team_id, filters)
     anchor = select(Game.id, Game.season, Game.season_type, Game.home_team_id,
                     Game.away_team_id, Game.scheduled_kickoff_utc).where(
         Game.id == filters.matchup_id, Game.provider == 'nflverse').cte('matchup')
     cutoff = select(anchor.c.scheduled_kickoff_utc).scalar_subquery()
+    opponent = select(case((anchor.c.home_team_id == team_id, anchor.c.away_team_id),
+                           else_=anchor.c.home_team_id)).scalar_subquery()
+    h2h = filters.window == 'H2H'
+    if h2h:
+        rows = select(rows).where(rows.c.opponent_id == opponent).cte('h2h_stats')
 
     def in_scope(game_id, kickoff):
         conditions = [kickoff.is_not(None)]
@@ -114,25 +119,39 @@ def trends_query(team_id, filters):
         return and_(*conditions)
 
     eligible = select(rows).where(in_scope(rows.c.game_id, rows.c.scheduled_kickoff_utc)).cte('eligible')
+
     def ordering(source):
         return (source.c.scheduled_kickoff_utc.desc(), source.c.source_game_id.desc(), source.c.game_id.desc())
 
     selected = select(eligible).order_by(*ordering(eligible)).limit(filters.game_limit).cte('recent_games')
-    aggregate = select(func.count().label('selected_count'), *metric_aggregates(selected, TREND_METRICS),
-        func.count(case((selected.c.status == 'UNKNOWN', 1))).label('unknown_status_count'),
-        func.count(case((selected.c.score_finality != 'CONFIRMED_FINAL', 1))).label('unverified_score_count')
-    ).select_from(selected).cte('trend_aggregates')
     coverage = select(func.count().label('accepted_count'),
         func.count(case((rows.c.scheduled_kickoff_utc.is_(None), 1))).label('unknown_kickoff_count')
     ).select_from(rows).cte('trend_coverage')
-    scheduled_count = select(func.count()).select_from(Game).where(
+    scheduled = select(func.count()).select_from(Game).where(
         Game.provider == 'nflverse', Game.season == filters.season, Game.season_type == filters.season_type,
         or_(Game.home_team_id == team_id, Game.away_team_id == team_id),
-        in_scope(Game.id, Game.scheduled_kickoff_utc)).scalar_subquery()
+        in_scope(Game.id, Game.scheduled_kickoff_utc))
+    if h2h:
+        scheduled = scheduled.where(or_(
+            and_(Game.home_team_id == team_id, Game.away_team_id == opponent),
+            and_(Game.away_team_id == team_id, Game.home_team_id == opponent)))
+    scheduled_count = scheduled.scalar_subquery()
     eligible_count = select(func.count()).select_from(eligible).scalar_subquery()
     # Scalar context fields keep the empty/unknown-matchup response a single row.
     context = [select(anchor.c[name]).scalar_subquery().label('matchup_'+name)
                for name in ('id', 'season', 'season_type', 'home_team_id', 'away_team_id', 'scheduled_kickoff_utc')]
-    return select(aggregate, coverage, eligible_count.label('eligible_count'),
-        scheduled_count.label('scheduled_count'), *context, selected
-    ).select_from(aggregate.join(coverage, true()).outerjoin(selected, true())).order_by(*ordering(selected))
+    metadata = select(coverage, eligible_count.label('eligible_count'), scheduled_count.label('scheduled_count'),
+        opponent.label('matchup_opponent_id'), *context).select_from(coverage).cte('history_metadata')
+    return selected, metadata
+
+
+def trends_query(team_id, filters):
+    """One statement snapshot for shared history, all six metrics and coverage."""
+    selected, metadata = history_selection(team_id, filters)
+    aggregate = select(func.count().label('selected_count'), *metric_aggregates(selected, TREND_METRICS),
+        func.count(case((selected.c.status == 'UNKNOWN', 1))).label('unknown_status_count'),
+        func.count(case((selected.c.score_finality != 'CONFIRMED_FINAL', 1))).label('unverified_score_count')
+    ).select_from(selected).cte('trend_aggregates')
+    return select(aggregate, metadata, selected).select_from(
+        aggregate.join(metadata, true()).outerjoin(selected, true())).order_by(
+            selected.c.scheduled_kickoff_utc.desc(), selected.c.source_game_id.desc(), selected.c.game_id.desc())

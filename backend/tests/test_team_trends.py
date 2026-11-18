@@ -4,13 +4,15 @@ SQLite uses only a minimal projection of existing tables, not application DDL or
 migrations. PostgreSQL-only permission/trigger behavior has a separate marked test.
 """
 import asyncio
+import hashlib
+import json
 from datetime import datetime, timedelta, timezone
 from uuid import uuid4
 
 import pytest
 from httpx import ASGITransport, AsyncClient
 from fastapi.testclient import TestClient
-from sqlalchemy import Column, MetaData, Table, create_engine, event, select, text
+from sqlalchemy import Column, JSON, MetaData, Table, create_engine, event, select, text
 from sqlalchemy.dialects.postgresql import dialect
 from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import Session
@@ -31,42 +33,54 @@ def dataset():
     metadata = MetaData()
     columns = {
         Team: ('id', 'code', 'name'),
-        SourceArtifact: ('id', 'provider', 'sha256', 'origin_status', 'documented_source_url', 'license_url', 'attribution'),
+        SourceArtifact: ('id', 'provider', 'sha256', 'origin_status', 'documented_source_url', 'license_url', 'attribution',
+                         'retrieved_at', 'recorded_at'),
         Game: ('id', 'provider', 'source_game_id', 'season', 'season_type', 'week', 'scheduled_kickoff_utc',
                'source_gameday', 'source_artifact_id', 'reported_home_score', 'reported_away_score', 'status',
-               'final_evidence_url', 'final_verified_at', 'home_team_id', 'away_team_id'),
+               'final_evidence_url', 'final_verified_at', 'home_team_id', 'away_team_id', 'raw_source_record',
+               'source_record_sha256', 'source_away_team', 'source_home_team'),
         TeamStatsAccepted: API_STATS_COLUMNS['team_stats_accepted'],
         TeamStatsPair: API_STATS_COLUMNS['team_stats_pairs'],
         TeamGameStatRevision: API_STATS_COLUMNS['team_game_stat_revisions'],
     }
     tables = {model: Table(model.__tablename__, metadata,
-        *[Column(name, model.__table__.c[name].type, primary_key=model.__table__.c[name].primary_key)
+        *[Column(name, JSON() if name == 'raw_source_record' else model.__table__.c[name].type,
+                 primary_key=model.__table__.c[name].primary_key)
           for name in names]) for model, names in columns.items()}
     engine = create_engine('sqlite://')
     metadata.create_all(engine)
     with Session(engine) as session:
         team, opponent, stranger, artifact = uuid4(), uuid4(), uuid4(), uuid4()
+        start = datetime(2026, 9, 1, tzinfo=timezone.utc)
         session.execute(tables[Team].insert(), [dict(id=team, code='AAA', name='Synthetic A'),
             dict(id=opponent, code='BBB', name='Synthetic B'), dict(id=stranger, code='CCC', name='Synthetic C')])
         session.execute(tables[SourceArtifact].insert(), dict(id=artifact, provider='nflverse', sha256='a'*64,
-            origin_status='DECLARED', attribution='Synthetic fixture', documented_source_url=None, license_url=None))
-        start = datetime(2026, 9, 1, tzinfo=timezone.utc)
+            origin_status='DECLARED', attribution='Synthetic fixture', documented_source_url=None, license_url=None,
+            retrieved_at=None, recorded_at=start))
 
         def add(index, *, season=2026, stage='REG', dated=True, accepted=True, reciprocal=True,
-                own=None, other=None, scores=(None, None), kickoff=None, home=True, provider='nflverse'):
+                own=None, other=None, scores=(None, None), kickoff=None, home=True, provider='nflverse',
+                reference='44.5', opponent_id=None):
             game_id, pair_id = uuid4(), uuid4()
+            against = opponent_id if opponent_id is not None else opponent
             date = (kickoff or start+timedelta(days=index*7)) if dated else None
+            source_id = f'synthetic-{season}-{stage}-{index:02}'
+            other_code = 'CCC' if against == stranger else 'BBB'
+            raw = dict(game_id=source_id, season=str(season), home_team='AAA' if home else other_code,
+                       away_team=other_code if home else 'AAA', total_line=reference)
+            digest = hashlib.sha256(json.dumps(raw, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode()).hexdigest()
             session.execute(tables[Game].insert(), dict(id=game_id, provider=provider,
-                source_game_id=f'synthetic-{season}-{stage}-{index:02}', season=season, season_type=stage,
+                source_game_id=source_id, season=season, season_type=stage,
                 week=index, scheduled_kickoff_utc=date, source_gameday=date.date() if date else None,
                 source_artifact_id=artifact, reported_home_score=scores[0], reported_away_score=scores[1],
-                home_team_id=team if home else opponent, away_team_id=opponent if home else team,
-                status='UNKNOWN', final_evidence_url=None, final_verified_at=None))
+                home_team_id=team if home else against, away_team_id=against if home else team,
+                status='UNKNOWN', final_evidence_url=None, final_verified_at=None, raw_source_record=raw,
+                source_record_sha256=digest, source_away_team=raw['away_team'], source_home_team=raw['home_team']))
             session.execute(tables[TeamStatsPair].insert(), dict(id=pair_id, game_id=game_id,
                 source_artifact_id=artifact, definition_version='net_pass_negative_sacks_v1', recorded_at=start))
-            for identity, other_id, side, metric in ((team, opponent, 'HOME' if home else 'AWAY', own),
-                                                    (opponent, team, 'AWAY' if home else 'HOME', other)):
-                if identity == opponent and not reciprocal:
+            for identity, other_id, side, metric in ((team, against, 'HOME' if home else 'AWAY', own),
+                                                    (against, team, 'AWAY' if home else 'HOME', other)):
+                if identity == against and not reciprocal:
                     continue
                 metric = dict(net_passing_yards=100*index, rushing_yards=10*index) if metric is None else metric
                 net = metric.get('net_passing_yards')

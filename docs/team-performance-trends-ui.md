@@ -74,6 +74,10 @@ Open `http://127.0.0.1:5173`, choose a real schedule game and check:
 
 ## Next task for approval
 
-After reviewing this UI, the next [expansion roadmap](research/task-022-roadmap.md) implementation task is **Task 025 — bounded hypothetical game-line calculation API**: user-entered spread/total scenarios over accepted history using existing exact Decimal and provisional-score semantics. That backend task is not authorized by Task 024. Player foundation and new providers remain later phases.
+The owner subsequently assigned Task 025 to planning against the seven-tab research.
+The [updated roadmap](research/task-025-game-research-roadmap.md) now recommends
+**proposed Task 026 — full-game Game Total research API**, followed by shared chart,
+line/filter/summary/log UI. The earlier Task 025 backend proposal is superseded;
+no new implementation is authorized by this guide. Player work/providers remain later.
 
 References: [existing Game Preview](game-preview.md), [team logs](game-preview-team-logs.md), [theme behavior](dark-mode.md), [API eligibility contract](team-performance-trends.md) and [expansion roadmap](research/task-022-roadmap.md). No new external research was required.

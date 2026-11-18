@@ -2,7 +2,51 @@
 
 This file governs any AI coding agent working in this repository. Read `README.md`, `docs/product-requirements.md`, `docs/architecture.md`, `docs/decisions.md`, and the currently approved task before action.
 
-## Task 024 — current approved frontend scope
+## Collapsible navigation — current approved frontend scope
+
+Owner approved a shared collapsible desktop sidebar and closed-by-default mobile
+navigation disclosure. See `docs/sidebar-navigation.md`. Preserve routes, API calls,
+page behavior and Light/Dark/System theme. Persist desktop preference, keep icon
+links/theme accessible and provide keyboard focus/expanded semantics. Frontend
+changes/tests/typecheck/build only; no dependencies, backend, data, Docker or git
+publication changes. Further roadmap tasks still require separate approval.
+
+## Task 027 — prior approved frontend scope
+
+Owner approved the interactive Game Total dashboard in existing Game Preview.
+See `docs/game-total-research-ui.md`. Use Task 026 API outcomes, rates and
+matchup-specific selections; preserve missing values, source finality and reference
+line caveats. Team/window/manual-line/side controls synchronize native SVG history,
+summary and log. No backend, schema, ingestion, dependency, Docker or publication
+changes. Frontend tests, type checks and production build are authorized.
+Task 028 Team Total API remains a proposal requiring separate approval.
+
+## Task 026 — prior approved backend scope
+
+Owner approved the read-only Game Total historical research API. See
+`docs/game-total-research-api.md`. Reuse accepted reciprocal selection and exact
+Decimal comparisons; support same-season/stage L3/L5/L10/L20/SEASON/H2H with
+required matchup chronology, manual lines and independent unverified source total
+references. Hit rates use usable scored observations including pushes, with
+explicit numerator/denominator; no line means unavailable custom outcomes.
+No frontend, schema/migration/permission, ingestion, dependency, external source,
+accepted NFL record or Docker configuration changes. Do not infer FINAL or quote
+publication/closing status. Synthetic focused backend tests are authorized;
+fixtures that provision/migrate a PostgreSQL database remain excluded. Task 027
+UI is subsequently approved under Task 027 above; new dependencies still require approval.
+
+## Task 025 — prior approved planning scope
+
+The owner approved documentation-only integration of the seven-tab REA frontend
+research in `docs/research/nfl/` into the game-first development roadmap. See
+`docs/research/task-025-game-research-roadmap.md`. Verify existing source, identify
+reusable components/data gaps and propose small backend/frontend tasks; no code,
+database/ingestion changes, installs, Docker execution, additional REA work or
+git publication. This task number supersedes the earlier unapproved Task 025
+manual-line implementation proposal. Proposed Task 026 and later items require
+separate approval. Earlier task scopes below are historical context.
+
+## Task 024 — prior approved frontend scope
 
 The owner approved frontend-only Game Preview Team Performance Trends using the
 existing Task 023 API. See `docs/team-performance-trends-ui.md`. Shared L3/L5/L10

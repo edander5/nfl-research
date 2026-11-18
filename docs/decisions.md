@@ -173,3 +173,67 @@ unavailable; no unanchored fallback or FINAL inference. Reuse theme tokens and
 comparison styles with mobile wrapping; preserve other preview sections. No
 backend/data/ingestion/Docker/dependency changes. [UI behavior and actual validation](team-performance-trends-ui.md).
 Task 025 remains proposed for separate approval.
+
+## Decision 78 — Task 025 frontend-research planning and game-first priority
+
+Owner assigned Task 025 to planning/documentation using the seven NFL tab briefs in
+`docs/research/nfl/`, superseding the earlier unapproved Task 025 calculation-API
+proposal. Prioritize Game Total, Team Total, Moneyline/Spread and supported matchup
+rankings before player research/props, reusing existing canonical IDs, accepted
+statistics, API layers, theme and frontend components. Rationale: validate common
+chart/filter/line/summary/log behavior in incremental game-level slices instead of
+duplicating dashboards or starting over. [Gap analysis](research/task-025-frontend-gap-analysis.md),
+[component proposal](research/task-025-component-architecture.md),
+[feasibility](research/task-025-data-feasibility.md) and
+[roadmap](research/task-025-game-research-roadmap.md) distinguish current code,
+reported observations and proposals. No code, data, dependency, source, additional
+REA, Docker or publication changes are authorized. Proposed Task 026 onward,
+new rate/window/rank definitions and Recharts installation each require explicit
+approval in their implementation scope; none is adopted by this planning entry.
+
+## Decision 79 — Task 026 Game Total historical research
+
+Owner approved backend-only Game Total history and exact optional manual line
+research, extending the first Task 025 proposal to L20, SEASON, same-season H2H
+and available historical reference totals. Use existing accepted reciprocal rows,
+explicit 2024–2026 season/REG or POST, required canonical matchup and strict
+before-kickoff chronology. SEASON means all eligible games in the requested scope;
+H2H means all against the canonical matchup opponent within that same scope, not
+cross-season/combined-stage history. Unknown chronology/identity returns unavailable.
+Select N before checking scores, preserve nulls and zeros, and expose observation
+IDs/provenance for a future synchronized chart/log. Exact Decimal outcomes and
+counts remain separate from per-game identity/hash-validated source reference
+lines. Hit rate is selected-side hits / usable-score count including pushes; null
+on empty denominator. Without a line, custom counts/outcomes/rates are unavailable,
+never fabricated losses. Rationale: supply one reusable, reviewable research
+contract from existing data without a second pipeline. UNKNOWN/finality and
+unknown quote timing are unchanged; no certified closing/prepublication snapshots.
+No frontend, physical schema/migration/permissions, ingestion, provider, dependency,
+Docker configuration or accepted NFL records changed. [Contract/tests/WSL commands](game-total-research-api.md).
+Task 027 UI and any Recharts installation require separate approval.
+
+## Decision 80 — Task 027 interactive Game Total dashboard
+
+Owner approved frontend-only Game Preview integration of the Task 026 contract.
+Use a single selected-team query with complete matchup/control keys and cancellation,
+L5 default, unset manual line, explicit Apply/Clear and half-point steps. Render
+backend summaries/outcomes without new statistical calculations; pushes stay in
+its documented denominator. Chart and log share observations, with chronological
+chart presentation and newest-first table. Native SVG supplies the bounded bar
+series, threshold and keyboard details without adding a dependency. Existing
+preview sections and theme tokens remain intact. Reference totals, source finality
+and pregame snapshot uncertainty remain explicit. No backend, data, dependency or
+Docker changes. See [implementation and verification](game-total-research-ui.md).
+Task 028 Team Total backend is the next proposal, requiring separate approval.
+
+## Decision 81 — Collapsible shared navigation
+
+Owner approved a frontend-only navigation improvement after Task 027. Extract the
+shared sidebar without changing routes or page requests. Desktop collapse uses an
+80px icon rail, persisted under `nfl-research-sidebar-collapsed`; accessible link
+names/titles and the native Light/Dark/System selector remain available. Mobile
+uses a closed-by-default, in-flow disclosure at 760px, keeping content unobscured
+without a modal focus trap. Escape and navigation close it and return focus to the
+menu button. Desktop preference is independent of the transient mobile state.
+No dependencies, backend, data, Docker or publication changes. Existing theme
+preference and first-paint behavior remain unchanged. See [navigation guide](sidebar-navigation.md).

@@ -64,13 +64,14 @@ export interface TeamTrendsResponse {
     scheduled_coverage_semantics: string;
   };
 }
-async function get<T>(path: string, signal?: AbortSignal): Promise<T> {
+export async function getResearch<T>(path: string, signal?: AbortSignal): Promise<T> {
   const response = await fetch(path, { signal, headers: { Accept: 'application/json' } });
   if (!response.ok) throw new Error(response.status === 404 ? 'Team research is unavailable for this selection.' :
     response.status === 422 ? 'These research filters are not supported.' : 'The research service is unavailable. Please try again.');
   if (!response.headers.get('content-type')?.includes('application/json')) throw new Error('The server returned an unexpected response.');
   return response.json() as Promise<T>;
 }
+const get = getResearch;
 export const research = {
   trends: async (id: string, season: number, stage: SeasonType, window: TrendWindow, matchup: string, signal?: AbortSignal) => {
     const result = await get<TeamTrendsResponse>(`/api/teams/${encodeURIComponent(id)}/trends?${new URLSearchParams({

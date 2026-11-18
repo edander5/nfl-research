@@ -8,6 +8,7 @@ import { PreviewTeamLogs } from '../components/PreviewTeamLogs';
 import { BettingMarkets } from '../components/BettingMarkets';
 import { MatchupComparison } from '../components/MatchupComparison';
 import { TeamPerformanceTrends } from '../components/TeamPerformanceTrends';
+import { GameTotalResearch } from '../components/gameResearch/GameTotalResearch';
 export function Matchup() {
   const { gameId = '' } = useParams();
   const [params] = useSearchParams();
@@ -26,6 +27,7 @@ export function Matchup() {
   <PreviewTeamLogs key={`logs-${game.id}`} game={game} />
   <MatchupComparison key={game.id} game={game} />
   <TeamPerformanceTrends key={`trends-${game.id}`} game={game} />
+  <GameTotalResearch key={`game-research-${game.id}`} game={game} />
   <div className="detail-grid"><Card><CardContent><h2 className="detail-title">Game information</h2><dl><dt>Game status</dt><dd>{game.status}</dd><dt>Kickoff</dt><dd>{kickoff(game.scheduled_kickoff_utc)}</dd><dt>UTC kickoff</dt><dd>{game.scheduled_kickoff_utc ?? 'Not available'}</dd><dt>Venue designation</dt><dd>{game.neutral_site === null ? 'Not available' : game.neutral_site ? 'Neutral site' : 'Home site'}</dd><dt>Overtime reported</dt><dd>{game.overtime === null ? 'Not available' : game.overtime ? 'Yes' : 'No'}</dd></dl>{game.status === 'FINAL' && game.final_evidence && <SourceLink url={game.final_evidence.url}>Stored final evidence</SourceLink>}</CardContent></Card>
   <Card><CardContent><h2 className="detail-title">Source &amp; provenance</h2><dl><dt>Provider</dt><dd>{game.provenance.provider}</dd><dt>Source origin</dt><dd>{game.provenance.origin_status === 'VERIFIED' ? 'Verified origin recorded' : 'Declared · Not independently authenticated'}</dd><dt>Retrieved</dt><dd>{game.provenance.retrieved_at ?? 'Not recorded'}</dd><dt>Database artifact observation (UTC)</dt><dd>{game.provenance.recorded_at}</dd><dt>Source game ID</dt><dd>{game.provenance.source_game_id}</dd></dl><div className="source-links"><SourceLink url={game.provenance.documented_source_url}>Documented source</SourceLink><SourceLink url={game.provenance.license_url}>Data license</SourceLink></div><p className="coverage-note">{game.provenance.attribution ?? 'Attribution not recorded.'}</p><details className="hash-details"><summary>Artifact SHA-256</summary><code>{game.provenance.artifact_sha256}</code></details></CardContent></Card></div>
   <PolicyNotice policy={query.data.meta} /></>;

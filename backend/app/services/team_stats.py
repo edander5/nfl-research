@@ -13,6 +13,15 @@ class InvalidTrendMatchup(Exception):
     pass
 
 
+def validate_matchup(row, team_id, filters):
+    if filters.matchup_id is not None:
+        if row['matchup_id'] is None:
+            raise GameNotFound()
+        if (row['matchup_season'] != filters.season or row['matchup_season_type'] != filters.season_type
+                or team_id not in (row['matchup_home_team_id'], row['matchup_away_team_id'])):
+            raise InvalidTrendMatchup()
+
+
 def aggregates(row, names):
     return {name: MetricAggregate(total=row[name+'_total'], average=row[name+'_average'],
                                  games_with_values=row[name+'_count']) for name in names}
@@ -63,12 +72,7 @@ class TeamStatsService:
     def trends(self, team_id, filters):
         team = self.require_team(team_id)
         row, games = self.repository.trends(team_id, filters)
-        if filters.matchup_id is not None:
-            if row['matchup_id'] is None:
-                raise GameNotFound()
-            if (row['matchup_season'] != filters.season or row['matchup_season_type'] != filters.season_type
-                    or team_id not in (row['matchup_home_team_id'], row['matchup_away_team_id'])):
-                raise InvalidTrendMatchup()
+        validate_matchup(row, team_id, filters)
         count = row['selected_count']
         missing = {name: count-row[name+'_count'] for name in TREND_METRICS}
         metrics = aggregates(row, TREND_METRICS)

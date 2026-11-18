@@ -107,7 +107,7 @@ it('loads the blocking first-paint script in the head before the app', () => {
   expect(html).not.toMatch(/(?:defer|async)[^>]*src="\/theme.js"/);
 });
 
-it('keeps rank colors readable on both theme surfaces', () => {
+it('keeps blue accents and semantic rank colors readable on both theme surfaces', () => {
   const luminance = (hex: string) => {
     const values = hex.slice(1).match(/../g)!.map(part => {
       const s = parseInt(part, 16) / 255;
@@ -118,6 +118,24 @@ it('keeps rank colors readable on both theme surfaces', () => {
   for (const selector of [':root {', ':root.dark {']) {
     const block = css.slice(css.indexOf(selector)).split('}')[0];
     const token = (name: string) => block.match(new RegExp(`--${name}:\\s*(#[a-f0-9]+)`))![1];
+    // Primary text, selected controls and focus rings must stay readable.
+    expect(token('primary')).toBe('#2563eb');
+    expect(token('background')).toBe(selector === ':root {' ? '#f3f4f6' : '#111827');
+    expect(token('card')).toBe(selector === ':root {' ? '#ffffff' : '#1f2937');
+    for (const [foreground, background] of [
+      ['link', 'card'], ['link', 'background'], ['link', 'muted'],
+      ['ring', 'card'], ['ring', 'background'],
+      ['foreground', 'card'], ['foreground', 'background'],
+      ['muted-foreground', 'card'], ['muted-foreground', 'background'],
+      ['raised-muted-foreground', 'muted'],
+      ['positive', 'positive-background'], ['negative', 'negative-background'],
+      ['warning', 'warning-background'], ['primary-hover-foreground', 'primary-hover'],
+      ['primary-foreground', 'primary'],
+    ]) {
+      const expand = (hex: string) => hex.length === 4 ? '#' + [...hex.slice(1)].map(c => c + c).join('') : hex;
+      const a = luminance(expand(token(foreground))), b = luminance(expand(token(background)));
+      expect((Math.max(a, b) + .05) / (Math.min(a, b) + .05)).toBeGreaterThanOrEqual(4.5);
+    }
     for (const foreground of ['positive', 'negative', 'neutral']) {
       for (const background of ['card', 'muted']) {
         const expand = (hex: string) => hex.length === 4 ? '#' + [...hex.slice(1)].map(c => c + c).join('') : hex;
@@ -147,4 +165,14 @@ it('honors saved dark preference before mount even when the system is light', ()
   render(<ThemeToggle />);
   expect(control()).toHaveValue('dark');
   expect(document.documentElement.style.colorScheme).toBe('dark');
+});
+
+
+it('centralizes all component colors in semantic theme tokens', () => {
+  const components = css.slice(css.indexOf(':root { font-family'));
+  expect(components).not.toMatch(/#[\da-f]{3,8}\b|(?:background|color):\s*white\b/i);
+  expect(css).toContain('--sidebar-background:var(--muted)');
+  expect(css).toContain('--sidebar-background:var(--card)');
+  expect(css).toContain('.research-outcome-hit { color:var(--positive); }');
+  expect(css).toContain('.research-outcome-miss { color:var(--negative); }');
 });

@@ -1,5 +1,18 @@
 # NFL Betting Research
 
+Task 026 adds [Game Total historical research](docs/game-total-research-api.md):
+read-only same-season L3/L5/L10/L20/SEASON/H2H observations, exact optional manual
+thresholds, explicit score/push samples and unverified historical reference totals.
+Task 027 adds the [interactive Game Total dashboard](docs/game-total-research-ui.md)
+with team/window/line/side controls, native SVG chart, API hit rates and synchronized
+game log. Runtime limitations and WSL commands are recorded in the guides.
+
+Task 025 planning: [seven-tab frontend gap analysis](docs/research/task-025-frontend-gap-analysis.md),
+[shared components](docs/research/task-025-component-architecture.md),
+[data/dependency feasibility](docs/research/task-025-data-feasibility.md) and
+[updated game-first roadmap](docs/research/task-025-game-research-roadmap.md).
+The next proposed task is Task 028 (Team Total research API), requiring approval.
+
 Task 024 adds [interactive Team Performance Trends](docs/team-performance-trends-ui.md)
 to Game Preview: shared L3/L5/L10 controls, paired offense/defense averages and
 independent team coverage/error states using the existing matchup-specific API.
@@ -9,7 +22,7 @@ six yardage/reported-point averages, sample coverage and optional matchup kickof
 exclusions. Frontend integration remains a separate approval; this is chronological
 reconstruction, not verified historical pregame completion/publication evidence.
 
-Latest planning work: [Task 022 verified implementation audit](docs/research/task-022-expansion-audit.md),
+Earlier planning baseline: [Task 022 implementation audit](docs/research/task-022-expansion-audit.md),
 [independent source feasibility](docs/research/task-022-data-sources.md) and
 [proposed phased roadmap](docs/research/task-022-roadmap.md). This is documentation
 only; future implementation tasks require approval. Older status notes below are

@@ -30,6 +30,16 @@ def compare(delta):
     return 'WIN' if delta > 0 else 'LOSS' if delta < 0 else 'PUSH'
 
 
+def source_record_error(raw, expected, record_sha256):
+    """Validate the original schedule record before displaying any reference line."""
+    if not isinstance(raw, dict):
+        return 'source_record_unavailable'
+    digest = hashlib.sha256(json.dumps(raw, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode()).hexdigest()
+    if any(raw.get(key) != value for key, value in expected.items()) or digest != record_sha256:
+        return 'source_record_identity_or_hash_mismatch'
+    return None
+
+
 def reference_sides(raw, away_score, home_score):
     warnings = []
     values = {field: number(raw, field, warnings) for field in FIELDS}
@@ -77,14 +87,11 @@ class MarketsService:
         view = game_view(game)
         response = MarketsResponse(data=MarketsData(game=view, references=[]))
         raw = game.raw_source_record
-        if not isinstance(raw, dict):
-            response.data.unavailable_reason = 'source_record_unavailable'
-            return response
         expected = dict(game_id=game.source_game_id, away_team=game.source_away_team,
                         home_team=game.source_home_team, season=str(game.season))
-        digest = hashlib.sha256(json.dumps(raw, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode()).hexdigest()
-        if any(raw.get(key) != value for key, value in expected.items()) or digest != game.source_record_sha256:
-            response.data.unavailable_reason = 'source_record_identity_or_hash_mismatch'
+        problem = source_record_error(raw, expected, game.source_record_sha256)
+        if problem:
+            response.data.unavailable_reason = problem
             return response
         sides, warnings = reference_sides(raw, game.reported_away_score, game.reported_home_score)
         source = game.source_artifact

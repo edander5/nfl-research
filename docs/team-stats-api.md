@@ -1,5 +1,9 @@
 # Task 011 — read-only accepted NFL team statistics
 
+Task 026 adds adjacent [Game Total historical research](game-total-research-api.md)
+at `GET /api/teams/{team_id}/game-research`, reusing accepted-game selection without
+altering the existing team-statistics, trends or ranking contracts below.
+
 Task 023 extends this router with [L3/L5/L10 team trends](team-performance-trends.md)
 at `GET /api/teams/{team_id}/trends`, using the same accepted projections, per-metric
 denominators and privileges. Existing endpoints and definitions below are unchanged.

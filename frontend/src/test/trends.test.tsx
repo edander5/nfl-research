@@ -8,7 +8,7 @@ import type { MetricAggregate, TeamTrendsResponse, TrendWindow } from '../api/re
 import type { Game } from '../api/types';
 import { TeamPerformanceTrends } from '../components/TeamPerformanceTrends';
 import { ThemeToggle } from '../theme/ThemeToggle';
-import { detail, emptyRankings, game, noMarkets, noTeamLogs, noTrends } from './fixtures';
+import { detail, emptyRankings, game, noMarkets, noTeamLogs, noTrends, noGameResearch } from './fixtures';
 
 // Synthetic API averages deliberately differ by team, metric and selected window.
 function fixture(url: string): TeamTrendsResponse {
@@ -27,6 +27,7 @@ type Handler = (url: string, init?: RequestInit) => Response | Promise<Response>
 function mock(handler: Handler = url => json(fixture(url)), data=game()) {
   const fetcher = vi.fn((path: string, init?: RequestInit) => {
     const url=String(path);
+    if (url.includes('/game-research?')) return json(noGameResearch(url));
     if (url.includes('/trends?')) return handler(url,init);
     if (url.startsWith('/api/teams/')) return json(noTeamLogs);
     if (url.endsWith('/markets')) return json(noMarkets(data));

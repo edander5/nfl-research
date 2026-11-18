@@ -1,6 +1,15 @@
 # Task 022 — phased integration roadmap
 
-2026-11-17. **Proposals for approval, not implementation authorization.** Preserve FastAPI/repository/service/schema boundaries, PostgreSQL/SQLAlchemy/Alembic, React/TypeScript/Vite, Query/Router, Tailwind and Docker Compose. No restart, new platform, queue/cache service or bulk rewrite is needed. Task numbers after 022 below are proposed; approve one narrow task at a time.
+2026-11-17 original planning baseline. **Current game-level sequence is now [Task 025's updated roadmap](task-025-game-research-roadmap.md)**, informed by the seven-tab [frontend research](nfl/README.md). Preserve FastAPI/repository/service/schema boundaries, PostgreSQL/SQLAlchemy/Alembic, React/TypeScript/Vite, Query/Router, Tailwind and Docker Compose. No restart, new platform, queue/cache service or bulk rewrite is needed.
+
+| Task | Current source-verified / approval status |
+|---|---|
+| 023 | Implemented: six-metric L3/L5/L10 API with optional matchup cutoff; [actual contract](../team-performance-trends.md), superseding original four-metric/no-matchup proposal below |
+| 024 | Implemented: Game Preview trends with independent teams, L3/L5/L10 local selector and mandatory matchup context; [actual UI](../team-performance-trends-ui.md), not the originally proposed combined Season/window selector |
+| 025 | Owner assigned this number to documentation-only integration planning, not the old manual-line implementation proposal |
+| 026 onward | New game-first proposals in [revised roadmap](task-025-game-research-roadmap.md); no implementation authorized |
+
+The architecture notes and Tasks 023–040 below are retained as the **original proposal archive**, not a competing live task list. Unapproved game task numbers are replaced by Task 025's sequence; later player-phase scopes remain relevant but must be renumbered upon approval. Statistical/window/denominator proposals below are not automatically adopted by a later implementation.
 
 Related: [verified inventory](task-022-expansion-audit.md), [data gates](task-022-data-sources.md), [REA backlog](task-022-rea-followups.md). No target code, private endpoints, assets, signed links or response datasets are permitted dependencies.
 
@@ -227,6 +236,6 @@ Each item is intentionally bounded, but schema, guarded importer, real migration
 
 Use current unit/HTTP/RTL suites; isolated PostgreSQL tests explicitly approved for schema/grants/SQL behavior; owner browser smoke for actual rendering/charts/first paint. Add regression cases at each changed business rule; do not multiply tests that only mirror presentation internals. Measure SQL query count and representative response latency before adding caches; keep optional source failures isolated. No commit, merge, push or deployment is included in any proposed task unless later explicitly approved.
 
-## Single recommended next implementation task
+## Current recommended next implementation task
 
-Approve **Task 023, read-only recent team trends API**, with its explicit current-accepted window contract. It uses data/provenance already stored, provides the four recent offense/defense averages needed by the existing preview, centralizes consistent selection and avoids frontend multi-page calculations. It needs no new provider, dependency, schema, migration, permission or import. Historical pregame eligibility stays unavailable. Task 024 is a separate frontend approval after that API is reviewed and tested.
+Tasks 023/024 are now implemented. Approve **proposed Task 026, Game Total research API**, as specified in the [updated game-research roadmap](task-025-game-research-roadmap.md#proposed-task-026--full-game-game-total-research-api-single-recommended-next-task). It reuses accepted team-game selection and reported scores for a bounded combined-point series, exact manual thresholds and explicit outcome/sample/rate contracts. No frontend, schema, provider, ingestion or dependency changes are included. Then review the shared chart/filter/log UI in proposed Task 027. Game Total → Team Total → Moneyline/Spread → supported ranking expansion precedes player work.

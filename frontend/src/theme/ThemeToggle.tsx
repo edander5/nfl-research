@@ -29,7 +29,7 @@ export function ThemeToggle() {
     return () => window.removeEventListener('storage', sync);
   }, []);
   return <div className="theme-control"><label htmlFor="theme-preference">Theme</label>
-    <select id="theme-preference" value={theme} onChange={event => {
+    <select id="theme-preference" title={`Theme: ${theme}`} value={theme} onChange={event => {
       const next = valid(event.target.value);
       setTheme(next);
       try { localStorage.setItem(key, next); } catch { /* Keep the in-memory choice usable. */ }

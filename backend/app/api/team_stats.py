@@ -9,6 +9,9 @@ from app.schemas.schedule import ErrorResponse
 from app.schemas.team_stats import (GameLogFilters, SeasonFilters, TeamGameLogsResponse,
                                     GameTeamStatsResponse, TeamSeasonStatsResponse, TrendFilters, TeamTrendsResponse)
 from app.services.team_stats import TeamStatsService
+from app.repositories.game_research import GameResearchRepository
+from app.schemas.game_research import GameResearchFilters, GameResearchResponse
+from app.services.game_research import GameResearchService
 
 router = APIRouter(prefix='/api', tags=['team statistics'], dependencies=[Depends(validate_query_keys)],
     responses={404: {'model': ErrorResponse}, 422: {'model': ErrorResponse},
@@ -48,3 +51,17 @@ def team_trends(team_id: UUID, filters: Annotated[TrendFilters, Query()],
     Points are source-reported. Chronology does not verify completion before kickoff.
     """
     return service.trends(team_id, filters)
+
+
+def get_game_research_service(session: Session = Depends(get_session)):
+    return GameResearchService(GameResearchRepository(session))
+
+
+@router.get('/teams/{team_id}/game-research', response_model=GameResearchResponse)
+def game_research(team_id: UUID, filters: Annotated[GameResearchFilters, Query()],
+                  service: GameResearchService = Depends(get_game_research_service)):
+    """Same-season full-game totals, optional manual line, and unverified reference lines.
+
+    Matchup chronology and accepted statistics never establish FINAL or pregame publication.
+    """
+    return service.research(team_id, filters)

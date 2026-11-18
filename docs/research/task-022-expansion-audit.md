@@ -1,5 +1,11 @@
 # Task 022 — NFL research expansion audit
 
+This is the Task 022 historical snapshot. Tasks 023/024 have since implemented
+recent team trends and their Game Preview UI. For the current source-verified
+inventory, seven-tab research comparison and revised game-first sequence, see
+[Task 025 gap analysis](task-025-frontend-gap-analysis.md) and
+[updated roadmap](task-025-game-research-roadmap.md).
+
 Audit date: 2026-11-17. Scope: repository inspection, independent public-source research and documentation only. No feature implementation is authorized by this report. Task 022 supersedes earlier task exclusions only for this audit; all future work below requires approval. The Buckets to Bucks report is feature evidence, never a data feed, specification or permission to copy code.
 
 ## Reading map and evidence labels

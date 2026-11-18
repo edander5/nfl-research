@@ -1,5 +1,11 @@
 # Vertical-Slice Implementation Roadmap
 
+Current game-level planning: [Task 025 updated roadmap](research/task-025-game-research-roadmap.md).
+Tasks 023/024 are implemented; Task 025 is documentation only. The new proposed
+sequence is Game Total API/UI → Team Total API/UI → Moneyline/Spread API/UI →
+supported matchup rankings, then optional reference/filter/navigation extensions.
+It replaces unapproved game task numbering below; player work remains later.
+
 Task 023: [backend team performance trends](team-performance-trends.md) implements
 six L3/L5/L10 averages and optional matchup chronological exclusions. Task 024
 frontend integration remains proposed for approval. True completed-before-kickoff
